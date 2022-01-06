@@ -1,0 +1,302 @@
+<!-- <p-card  fxLayout="column" fxLayoutAlign="center center">
+    <ng-template pTemplate="title" style="text-align: center;">
+        Audit Report
+       
+    </ng-template>
+    <ng-template pTemplate="subtitle">
+        Project Data
+    </ng-template>
+    <ng-template pTemplate="content">
+        <form [formGroup]="projectForm1">
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="projectCode">Project Code</label>
+                    <input pInputText type="text" readonly id="projectCode" value="pcode" name="projectCode" formControlName="projectCode"><br>
+                    <small *ngIf="!projectForm1.get('projectCode')?.valid && projectForm1.get('projectCode')?.touched">
+                        <span style="color:red;">
+                            Please enter valid project code.
+                        </span>
+                    </small>
+                </div>
+            </div>
+            
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="taskCode">Task Code</label>
+                    <input pInputText type="text" readonly id="taskCode" name="taskCode" formControlName="taskCode"><br>
+                    <small *ngIf="!projectForm1.get('taskCode')?.valid && projectForm1.get('taskCode')?.touched">
+                        <span style="color:red;">
+                            Please enter valid task code.
+                        </span>
+                    </small>
+                </div>
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="taskCode">Project Description</label>
+                    <input pInputText type="text" id="pdesc" name="pdesc" formControlName="pDescription"><br>
+                    <small *ngIf="!projectForm1.get('pDescription')?.valid && projectForm1.get('pDescription')?.touched">
+                        <span style="color:red;">
+                            Please enter valid Project Description.
+                        </span>
+                    </small>
+                </div>
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="taskCode">Client Id</label>
+                    <p-dropdown [options]=clientIds [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedClient" optionLabel='clientId' placeholder="select Client ID"></p-dropdown>
+                    <br>
+                    <small *ngIf="!projectForm1.get('clientId')?.valid && projectForm1.get('clientId')?.touched">
+                        <span style="color:red;">
+                            Please enter valid Client Id.
+                        </span>
+                    </small>
+                </div>
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="taskCode">Billing Code</label>
+                    <input pInputText type="text" id="bCode" name="bCode" formControlName="bCode"><br>
+                    <small *ngIf="!projectForm1.get('bCode')?.valid && projectForm1.get('bCode')?.touched">
+                        <span style="color:red;">
+                            Please enter valid Billing code.
+                        </span>
+                    </small>
+                </div>
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="taskCode">Annual Year</label>
+                    <p-dropdown [options]=years [(ngModel)]="selectedYear" [ngModelOptions]="{standalone: true}" [virtualScroll]="true" optionLabel='year' placeholder="select year"></p-dropdown>
+                    <br>
+                    <small *ngIf="!projectForm1.get('annualYear')?.valid && projectForm1.get('annualYear')?.touched">
+                        <span style="color:red;">
+                            Please enter valid Annual Year.
+                        </span>
+                    </small>
+                </div>
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="taskCode">Activation Date</label>
+                    <p-calendar [(ngModel)]="activeDate" [ngModelOptions]="{standalone: true}"></p-calendar>
+                    <br>
+                    <small *ngIf="!projectForm1.get('activeDate')?.valid && projectForm1.get('activeDate')?.touched">
+                        <span style="color:red;">
+                            Please enter valid Activation Date.
+                        </span>
+                    </small>
+                </div>
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="taskCode">Deactivation Date</label>
+                    <p-calendar [(ngModel)]="activeDate" [ngModelOptions]="{standalone: true}"></p-calendar>
+                    <br>
+                    <small *ngIf="!projectForm1.get('deactiveDate')?.valid && projectForm1.get('deactiveDate')?.touched">
+                        <span style="color:red;">
+                            Please enter valid Deactivation Date.
+                        </span>
+                    </small>
+                </div>
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="taskCode">Grace Period</label>
+                    <input pInputText type="text" id="gPeriod" name="gPeriod" formControlName="gPeriod"><br>
+                    <small *ngIf="!projectForm1.get('gPeriod')?.valid && projectForm1.get('gPeriod')?.touched">
+                        <span style="color:red;">
+                            Please enter valid Grace Period.
+                        </span>
+                    </small>
+                </div>
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="taskCode">Activity</label>
+                    <p-dropdown [options]=activities [(ngModel)]="selectedActivity" [ngModelOptions]="{standalone: true}" optionLabel='activity' placeholder="select Activity"></p-dropdown><br>
+                    <small *ngIf="!projectForm1.get('activity')?.valid && projectForm1.get('activity')?.touched">
+                        <span style="color:red;">
+                            Please enter valid Activity.
+                        </span>
+                    </small>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+    <p-divider></p-divider> -->
+
+
+    <!-- <ng-template pTemplate="footer">
+        <div class="p-fluid" style="margin-bottom: 30px;" >
+            <button [disabled]="!projectForm1.valid" pButton label="Save" (click)="onSave()">
+            </button>
+        </div>
+    </ng-template>
+    
+</p-card> -->
+
+
+<h2 style="margin-top: 70px;">
+    <p>Project Data</p>
+</h2>
+ <p-divider></p-divider>
+
+    <form [formGroup]="projectForm1">
+        <div class="p-grid" style="margin-top: 70px;">
+        <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
+          
+              
+    
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="projectCode">Project Code</label>
+                        <input pInputText type="text" readonly id="projectCode" value="pcode" name="projectCode" formControlName="projectCode"><br>
+                        <small *ngIf="!projectForm1.get('projectCode')?.valid && projectForm1.get('projectCode')?.touched">
+                            <span style="color:red;">
+                                Please enter valid project code.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+                
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="taskCode">Task Code</label>
+                        <input pInputText type="text" readonly id="taskCode" name="taskCode" formControlName="taskCode"><br>
+                        <small *ngIf="!projectForm1.get('taskCode')?.valid && projectForm1.get('taskCode')?.touched">
+                            <span style="color:red;">
+                                Please enter valid task code.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+    
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="taskCode">Project Description</label>
+                        <input pInputText type="text" id="pdesc" name="pdesc" formControlName="pDescription"><br>
+                        <small *ngIf="!projectForm1.get('pDescription')?.valid && projectForm1.get('pDescription')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Project Description.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+    
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="taskCode">Client Id</label>
+                        <p-dropdown [options]=clientIds [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedClient" optionLabel='clientId' placeholder="select Client ID"></p-dropdown>
+                        <br>
+                        <small *ngIf="!projectForm1.get('clientId')?.valid && projectForm1.get('clientId')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Client Id.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="taskCode">Billing Code</label>
+                        <input pInputText type="text" id="bCode" name="bCode" formControlName="bCode"><br>
+                        <small *ngIf="!projectForm1.get('bCode')?.valid && projectForm1.get('bCode')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Billing code.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+           
+        </div>
+        
+        <div class="p-col-4 p-offset-1">
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="taskCode">Annual Year</label>
+                        <p-dropdown [options]=years [(ngModel)]="selectedYear" [ngModelOptions]="{standalone: true}" [virtualScroll]="true" optionLabel='year' placeholder="select year"></p-dropdown>
+                        <br>
+                        <small *ngIf="!projectForm1.get('annualYear')?.valid && projectForm1.get('annualYear')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Annual Year.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+            
+    
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="taskCode">Activation Date</label>
+                        <p-calendar [(ngModel)]="activeDate" [ngModelOptions]="{standalone: true}"></p-calendar>
+                        <br>
+                        <small *ngIf="!projectForm1.get('activeDate')?.valid && projectForm1.get('activeDate')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Activation Date.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+    
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="taskCode">Deactivation Date</label>
+                        <p-calendar [(ngModel)]="deactiveDate" [ngModelOptions]="{standalone: true}"></p-calendar>
+                        <br>
+                        <small *ngIf="!projectForm1.get('deactiveDate')?.valid && projectForm1.get('deactiveDate')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Deactivation Date.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+    
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="taskCode">Grace Period</label>
+                        <input pInputText type="text" id="gPeriod" name="gPeriod" formControlName="gPeriod"><br>
+                        <small *ngIf="!projectForm1.get('gPeriod')?.valid && projectForm1.get('gPeriod')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Grace Period.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+    
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="taskCode">Activity</label>
+                        <p-dropdown [options]=activities [(ngModel)]="selectedActivity" [ngModelOptions]="{standalone: true}" optionLabel='activity' placeholder="select Activity"></p-dropdown><br>
+                        <small *ngIf="!projectForm1.get('activity')?.valid && projectForm1.get('activity')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Activity.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+            
+        <p-divider></p-divider>
+    
+        <!-- <ng-template pTemplate="footer">
+            <button pButton>Save</button>
+        </ng-template> -->
+    
+        <div class="p-fluid" style="margin-bottom: 30px;" >
+            <button [disabled]="!projectForm1.valid" pButton label="Save" (click)="onSave()">
+            </button>
+        </div>
+        
+</div>
+</div>
+</form>

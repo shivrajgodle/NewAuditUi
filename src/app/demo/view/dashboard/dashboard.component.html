@@ -1,0 +1,93 @@
+
+<!-- <p-card  fxLayout="column" fxLayoutAlign="center center">
+    <ng-template pTemplate="title" style="text-align: center;">
+        Audit Report
+    </ng-template>
+    <ng-template pTemplate="content">
+        <form [formGroup]="project">
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="projectCode">Project Code</label>
+                    <input pInputText type="text" id="projectCode" name="projectCode" formControlName="projectCode"><br>
+                    <small *ngIf="!project.get('projectCode')?.valid && project.get('projectCode')?.touched">
+                        <span style="color:red;">
+                            Please enter valid project code.
+                        </span>
+                    </small>
+                </div>
+            </div>
+            
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="taskCode">Task Code</label>
+                    <input pInputText type="text" id="taskCode" name="taskCode" formControlName="taskCode"><br>
+                    <small *ngIf="!project.get('taskCode')?.valid && project.get('taskCode')?.touched">
+                        <span style="color:red;">
+                            Please enter valid task code.
+                        </span>
+                    </small>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+    <p-divider></p-divider>
+
+     <ng-template pTemplate="footer">
+        <button pButton>Save</button>
+    </ng-template> -->
+<!--
+    <ng-template pTemplate="footer">
+        <div class="p-fluid" style="margin-bottom: 30px;" >
+            <button [disabled]="!project.valid" pButton label="Save" (click)="onSave()">
+            </button>
+        </div>
+    </ng-template>
+    
+</p-card> -->
+
+<h2>
+    <p>
+        Audit Report
+    </p>
+</h2>
+<p-divider></p-divider>
+<div class="p-grid" style="margin-top: 70px;">
+    <div class="p-col-4 p-offset-4">
+        
+        <form [formGroup]="project" style="border-radius: 1px solid black;">
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="projectCode">Project Code</label>
+                    <input pInputText type="text" id="projectCode" name="projectCode" formControlName="projectCode"><br>
+                    <small *ngIf="!project.get('projectCode')?.valid && project.get('projectCode')?.touched">
+                        <span style="color:red;">
+                            Please enter valid project code.
+                        </span>
+                    </small>
+                </div>
+            </div>
+            
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="taskCode">Task Code</label>
+                    <input pInputText type="text" id="taskCode" name="taskCode" formControlName="taskCode"><br>
+                    <small *ngIf="!project.get('taskCode')?.valid && project.get('taskCode')?.touched">
+                        <span style="color:red;">
+                            Please enter valid task code.
+                        </span>
+                    </small>
+                </div>
+            </div>
+        </form>
+    <p-divider></p-divider>
+
+    <!-- <ng-template pTemplate="footer">
+        <button pButton>Save</button>
+    </ng-template> -->
+
+        <div class="p-fluid" style="margin-bottom: 30px;" >
+            <button [disabled]="!project.valid" pButton label="Save" (click)="onSave()">
+            </button>
+        </div>
+    </div>
+</div>
