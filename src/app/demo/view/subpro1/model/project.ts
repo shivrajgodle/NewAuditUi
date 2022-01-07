@@ -1,12 +1,22 @@
 export interface Project{
-    pcode:string;
-    tcode:string;
-    pdesc:string;
+    projectCode: string ;
+    
+    taskCode:string ;
+    
+    projectDescription:string;
+
     clientId:string;
-    bCode:string;
-    annualYear:number;
-    activeDate:string;
-    deactiveDate:string;
-    gPeriod:string;
-    activity:string;
+ 
+    billingCode:string;
+
+    annualYear:number;	
+    
+    activatonDate:Date;	
+
+    deactivatonDate:Date;	
+        
+    gracePeriod:string;	
+            
+    activity:string ;
+
 }

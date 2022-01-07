@@ -28,7 +28,7 @@ import { ProjectComponent } from './demo/view/project/project.component';
             {
                 path: '', component: AppMainComponent,
                 children: [
-                    {path: 'uikit/dashboard', component:DashboardComponent},
+                    {path: '', component:DashboardComponent},
                     {path: 'uikit/project', component:ProjectComponent},
                     {path: 'utilities/display', component: DisplayComponent},
                     {path: 'utilities/elevation', component: ElevationComponent},

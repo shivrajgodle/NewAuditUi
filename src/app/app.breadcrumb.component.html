@@ -1,7 +1,6 @@
 <div class="route-bar">
     <div class="route-bar-breadcrumb">
-        <i class="pi pi-home"></i>
-        <span>/ </span>
+        <a routerLink=""><i class="pi pi-home"></i></a>
         <ng-template ngFor let-item let-last="last" [ngForOf]="items">
             <a [routerLink]="item.routerLink" *ngIf="item.routerLink">{{item.label}}</a>
             <ng-container *ngIf="!item.routerLink">{{item.label}}</ng-container>

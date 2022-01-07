@@ -185,7 +185,7 @@
                 <div class="p-fluid">
                     <div class="p-field">
                         <label for="taskCode">Project Description</label>
-                        <input pInputText type="text" id="pdesc" name="pdesc" formControlName="pDescription"><br>
+                        <input pInputText type="text" id="pdesc" name="pdesc" formControlName="projectDescription"><br>
                         <small *ngIf="!projectForm1.get('pDescription')?.valid && projectForm1.get('pDescription')?.touched">
                             <span style="color:red;">
                                 Please enter valid Project Description.
@@ -199,7 +199,7 @@
                         <label for="taskCode">Client Id</label>
                         <p-dropdown [options]=clientIds [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedClient" optionLabel='clientId' placeholder="select Client ID"></p-dropdown>
                         <br>
-                        <small *ngIf="!projectForm1.get('clientId')?.valid && projectForm1.get('clientId')?.touched">
+                        <small *ngIf="!projectForm1.get('clientIds')?.valid && projectForm1.get('clientIds')?.touched">
                             <span style="color:red;">
                                 Please enter valid Client Id.
                             </span>
@@ -209,7 +209,7 @@
                 <div class="p-fluid">
                     <div class="p-field">
                         <label for="taskCode">Billing Code</label>
-                        <input pInputText type="text" id="bCode" name="bCode" formControlName="bCode"><br>
+                        <input pInputText type="text" id="bCode" name="bCode" formControlName="billingCode"><br>
                         <small *ngIf="!projectForm1.get('bCode')?.valid && projectForm1.get('bCode')?.touched">
                             <span style="color:red;">
                                 Please enter valid Billing code.
@@ -265,7 +265,7 @@
                 <div class="p-fluid">
                     <div class="p-field">
                         <label for="taskCode">Grace Period</label>
-                        <input pInputText type="text" id="gPeriod" name="gPeriod" formControlName="gPeriod"><br>
+                        <input pInputText type="text" id="gPeriod" name="gPeriod" formControlName="gracePeriod"><br>
                         <small *ngIf="!projectForm1.get('gPeriod')?.valid && projectForm1.get('gPeriod')?.touched">
                             <span style="color:red;">
                                 Please enter valid Grace Period.
@@ -278,7 +278,7 @@
                     <div class="p-field">
                         <label for="taskCode">Activity</label>
                         <p-dropdown [options]=activities [(ngModel)]="selectedActivity" [ngModelOptions]="{standalone: true}" optionLabel='activity' placeholder="select Activity"></p-dropdown><br>
-                        <small *ngIf="!projectForm1.get('activity')?.valid && projectForm1.get('activity')?.touched">
+                        <small *ngIf="!projectForm1.get('activities')?.valid && projectForm1.get('activities')?.touched">
                             <span style="color:red;">
                                 Please enter valid Activity.
                             </span>

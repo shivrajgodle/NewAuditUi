@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { DataSharedService } from 'src/app/data-shared.service';
+import { ProjectServiceService } from 'src/app/Services/project-service.service';
 import { Project } from './model/project';
 
 interface Year{
@@ -43,7 +44,7 @@ export class Subpro1Component implements OnInit{
   activeDate:string;
   deactiveDate:string;
  
-  constructor(private router: Router, private messageService: MessageService, private service:DataSharedService) {
+  constructor(private router: Router,private proservice:ProjectServiceService ,private messageService: MessageService, private service:DataSharedService) {
   this.years=[];
   for(let i=1951;i<=2050;i++)
   {
@@ -85,13 +86,13 @@ export class Subpro1Component implements OnInit{
     this.projectForm1=new FormGroup({
       projectCode:new FormControl(this.pcode,Validators.required),
       taskCode:new FormControl(this.tcode,Validators.required),
-      pDescription:new FormControl('',Validators.required),
+      projectDescription:new FormControl('',Validators.required),
       clientId:new FormControl(''),
-      bCode:new FormControl('',Validators.required),
+      billingCode:new FormControl('',Validators.required),
       annualYear:new FormControl(''),
-      activeDate:new FormControl(''),
-      deactiveDate:new FormControl(''),
-      gPeriod:new FormControl('',Validators.required),
+      activatonDate:new FormControl(''),
+      deactivatonDate:new FormControl(''),
+      gracePeriod:new FormControl('',Validators.required),
       activity:new FormControl('')
     });
 
@@ -103,10 +104,22 @@ export class Subpro1Component implements OnInit{
     this.projectForm1.value.clientId=this.selectedClient['clientId'];
     this.projectForm1.value.annualYear=this.selectedYear['year'];
     this.projectForm1.value.activity=this.selectedActivity['activity'];
-    this.projectForm1.value.activeDate=this.activeDate;
-    this.projectForm1.value.deactiveDate=this.deactiveDate;
+    this.projectForm1.value.activatonDate=this.activeDate;
+    this.projectForm1.value.deactivatonDate=this.deactiveDate;
     
     console.log('inside project formgroup',this.activeDate);
     console.log(this.projectForm1.value);
+
+    this.proservice.projectData(this.projectForm1.value).subscribe(
+      (data:any)=>{
+        console.log("sproject data successfully added");
+        console.log(data);
+        
+        
+      },
+      (error)=>{
+        alert("something went wrong");
+      }
+    );
   }
 }
