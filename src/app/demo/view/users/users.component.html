@@ -1,0 +1,209 @@
+<app-project></app-project>
+
+<h2 style="margin-top: 70px;">
+    <p>User Data</p>
+</h2>
+ <p-divider></p-divider>
+
+    <form [formGroup]="userForm">
+        <div class="p-grid" style="margin-top: 70px;">
+        <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
+          
+              
+    
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="projectCode">Email Id</label>
+                        <input pInputText type="email" id="email" value="email" name="email" formControlName="email"><br>
+                        <small *ngIf="!userForm.get('email')?.valid && userForm.get('email')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Email ID.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+                
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="taskCode">Name</label>
+                        <input pInputText type="text"  id="name" name="name" formControlName="name"><br>
+                        <small *ngIf="!userForm.get('name')?.valid && userForm.get('name')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Name.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+    
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="taskCode">Contact</label>
+                        <input pInputText type="text" id="contact" name="contact" formControlName="contact"><br>
+                        <small *ngIf="!userForm.get('contact')?.valid && userForm.get('contact')?.touched">
+                            <span style="color:red;">
+                                Please enter valid contact number.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="taskCode">linedInPRofile</label>
+                        <input pInputText type="text" id="linedInPRofile" name="linedInPRofile" formControlName="linedInPRofile"><br>
+                        <small *ngIf="!userForm.get('linedInPRofile')?.valid && userForm.get('linedInPRofile')?.touched">
+                            <span style="color:red;">
+                                Please enter valid linedInPRofile.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+    
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="role">Role</label>
+                        <p-dropdown [options]=roles [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedRole" optionLabel='role' placeholder="select Role"></p-dropdown>
+                        <br>
+                        <small *ngIf="!userForm.get('roles')?.valid && userForm.get('roles')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Role.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="experiance">Experiance</label>
+                        <input pInputText type="text" id="experiance" name="experiance" formControlName="experiance">
+                        <br>
+                        <small *ngIf="!userForm.get('experiance')?.valid && userForm.get('experiance')?.touched">
+                            <span style="color:red;">
+                                Please enter valid experiance.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="taskCode">Past Clients</label>
+                        <input pInputTextarea type="text" id="pastClients" name="pastClients" formControlName="pastClients"><br>
+                        <small *ngIf="!userForm.get('pastClients')?.valid && userForm.get('pastClients')?.touched">
+                            <span style="color:red;">
+                                Please enter valid past Clients names.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="p-col-4 p-offset-1">
+    
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="expertise">expertise</label>
+                        <p-dropdown [options]=expertise [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedExperties" optionLabel='expertise' placeholder="select expertise"></p-dropdown>
+                        <br>
+                        <small *ngIf="!userForm.get('expertise')?.valid && userForm.get('expertise')?.touched">
+                            <span style="color:red;">
+                                Please enter valid expertise.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+           
+        
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="departmentName">department Name</label>
+                        <input pInputText type="text" id="departmentName" name="departmentName" formControlName="departmentName"><br>
+                        <small *ngIf="!userForm.get('departmentName')?.valid && userForm.get('departmentName')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Department Name.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="location">Location</label>
+                        <input pInputText type="text" id="location" name="location" formControlName="location"><br>
+                        <small *ngIf="!userForm.get('location')?.valid && userForm.get('location')?.touched">
+                            <span style="color:red;">
+                                Please enter valid location.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="reportingTo">Reporting To</label>
+                        <input pInputText type="email" id="reportingTo" name="reportingTo" formControlName="reportingTo"><br>
+                        <small *ngIf="!userForm.get('reportingTo')?.valid && userForm.get('reportingTo')?.touched">
+                            <span style="color:red;">
+                                Please enter valid PWC Email
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="data1">Data 1</label>
+                        <input pInputText type="text" id="data1" name="data1" formControlName="data1"><br>
+                        <small *ngIf="!userForm.get('data1')?.valid && userForm.get('data1')?.touched">
+                            <span style="color:red;">
+                                Please enter valid data.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="data2">Data 2</label>
+                        <input pInputText type="text" id="data2" name="data2" formControlName="data2"><br>
+                        <small *ngIf="!userForm.get('data2')?.valid && userForm.get('data2')?.touched">
+                            <span style="color:red;">
+                                Please enter valid data.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="data3">Data 3</label>
+                        <input pInputText type="text" id="data3" name="data3" formControlName="data3"><br>
+                        <small *ngIf="!userForm.get('data3')?.valid && userForm.get('data3')?.touched">
+                            <span style="color:red;">
+                                Please enter valid data.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+            
+        <p-divider></p-divider>
+    
+        <!-- <ng-template pTemplate="footer">
+            <button pButton>Save</button>
+        </ng-template> -->
+    
+        <div class="p-fluid" style="margin-bottom: 30px;" >
+            <button [disabled]="!userForm.valid" pButton label="Next" (click)="onSave()">
+            </button>
+        </div>
+        
+</div>
+</div>
+</form>
+

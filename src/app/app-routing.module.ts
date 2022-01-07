@@ -21,6 +21,10 @@ import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
 import { DashboardComponent } from './demo/view/dashboard/dashboard.component';
 import { ProjectComponent } from './demo/view/project/project.component';
+import { BillingComponent } from './demo/view/billing/billing.component';
+import { Subpro1Component } from './demo/view/subpro1/subpro1.component';
+import { UsersComponent } from './demo/view/users/users.component';
+import { RulesComponent } from './demo/view/rules/rules.component';
 
 @NgModule({
     imports: [
@@ -30,6 +34,10 @@ import { ProjectComponent } from './demo/view/project/project.component';
                 children: [
                     {path: '', component:DashboardComponent},
                     {path: 'uikit/project', component:ProjectComponent},
+                    {path:'uikit/billing', component:BillingComponent},
+                    {path:'uikit/subpro',component:Subpro1Component},
+                    {path:'uikit/users',component:UsersComponent},
+                    {path:'uikit/rules',component:RulesComponent},
                     {path: 'utilities/display', component: DisplayComponent},
                     {path: 'utilities/elevation', component: ElevationComponent},
                     {path: 'utilities/flexbox', component: FlexboxComponent},

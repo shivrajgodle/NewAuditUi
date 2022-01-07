@@ -31,8 +31,8 @@ export class DashboardComponent implements OnInit {
   {
     this.data=this.project.value;
     this.service.setData(this.project.value.projectCode,this.project.value.taskCode)
-    console.log(this.data,"akkkiii");
-  this.router.navigate(['/uikit/project']);    
+    console.log(this.data);
+  this.router.navigate(['/uikit/subpro']);    
   }
 
 }

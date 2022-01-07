@@ -112,9 +112,9 @@ export class Subpro1Component implements OnInit{
 
     this.proservice.projectData(this.projectForm1.value).subscribe(
       (data:any)=>{
-        console.log("sproject data successfully added");
+        alert("sproject data successfully added");
         console.log(data);
-        
+        this.router.navigate(['/uikit/users']);
         
       },
       (error)=>{

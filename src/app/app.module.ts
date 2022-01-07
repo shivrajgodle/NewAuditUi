@@ -141,6 +141,9 @@ import { DashboardComponent } from './demo/view/dashboard/dashboard.component';
 import { ProjectComponent } from './demo/view/project/project.component';
 import { Subpro1Component } from './demo/view/subpro1/subpro1.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { BillingComponent } from './demo/view/billing/billing.component';
+import { UsersComponent } from './demo/view/users/users.component';
+import { RulesComponent } from './demo/view/rules/rules.component';
 
 FullCalendarModule.registerPlugins([
     dayGridPlugin,
@@ -272,6 +275,9 @@ FullCalendarModule.registerPlugins([
         DashboardComponent,
         ProjectComponent,
         Subpro1Component,
+        BillingComponent,
+        UsersComponent,
+        RulesComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
