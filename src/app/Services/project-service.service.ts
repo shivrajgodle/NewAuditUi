@@ -9,6 +9,10 @@ import { User } from '../demo/view/users/model/users';
   providedIn: 'root'
 })
 export class ProjectServiceService {
+  
+  getProjectDetails() {
+    return this.http.get(`${environment.baseUrl}/projects`);
+  }
 
   constructor(private http:HttpClient) { }
 
@@ -22,5 +26,10 @@ export class ProjectServiceService {
     console.log(data);
     
     return this.http.post<User>(`${environment.baseUrl}/auditors`, data);
+  }
+
+  ruleData(data:any)
+  {
+    return this.http.post(`${environment.baseUrl}/escrule`, data);
   }
 }

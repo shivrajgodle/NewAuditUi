@@ -1,2 +1,233 @@
 <app-project></app-project>
-<p>rules works!</p>
+
+<h2 style="margin-top: 70px;">
+    <p>Escalation Data</p>
+</h2>
+ <p-divider></p-divider>
+
+    <form [formGroup]="ruleForm">
+        <div class="p-grid" style="margin-top: 70px;">
+        <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
+          
+              
+    
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="projectId">Project ID</label>
+                        <p-dropdown [options]=projectData [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedProjectId" optionLabel='projectId' placeholder="select Project ID"></p-dropdown><br>
+                        <small *ngIf="!ruleForm.get('projectId')?.valid && ruleForm.get('projectId')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Project ID.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+                
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="trigger">Trigger</label>
+                        <input pInputText type="text"  id="trigger" name="trigger" formControlName="trigger"><br>
+                        <small *ngIf="!ruleForm.get('trigger')?.valid && ruleForm.get('trigger')?.touched">
+                            <span style="color:red;">
+                                Please enter valid trigger.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+    
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="level">Level</label>
+                        <input pInputText type="text" id="level" name="level" formControlName="level"><br>
+                        <small *ngIf="!ruleForm.get('level')?.valid && ruleForm.get('level')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Level.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="escalationIds">Escalation Id's</label>
+                        <input pInputTextarea type="text" id="escalationIds" name="escalationIds" formControlName="escalationIds"><br>
+                        <small *ngIf="!ruleForm.get('escalationIds')?.valid && ruleForm.get('escalationIds')?.touched">
+                            <span style="color:red;">
+                                Please enter valid escalation Ids.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="noDaysNoResponse">Number of Days No Response</label>
+                        <input pInputText type="text" id="noDaysNoResponse" name="noDaysNoResponse" formControlName="noDaysNoResponse"><br>
+                        <small *ngIf="!ruleForm.get('noDaysNoResponse')?.valid && ruleForm.get('noDaysNoResponse')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Number of Days of No Response.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="reminderPeriod1">Reminder Period1</label>
+                        <input pInputText type="text" id="reminderPeriod1" name="reminderPeriod1" formControlName="reminderPeriod1">
+                        <br>
+                        <small *ngIf="!ruleForm.get('reminderPeriod1')?.valid && ruleForm.get('reminderPeriod1')?.touched">
+                            <span style="color:red;">
+                                Please enter valid reminder Period1.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="reminderIds1">Reminder Id1</label>
+                        <input pInputTextarea type="text" id="reminderIds1" name="reminderIds1" formControlName="reminderIds1"><br>
+                        <small *ngIf="!ruleForm.get('reminderIds1')?.valid && ruleForm.get('reminderIds1')?.touched">
+                            <span style="color:red;">
+                                Please enter valid reminder Id.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+           
+    
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="reminderPeriod2">Reminder Period2</label>
+                        <input pInputTextarea type="text" id="reminderPeriod2" name="reminderPeriod2" formControlName="reminderPeriod2"><br>
+                        <small *ngIf="!ruleForm.get('reminderPeriod2')?.valid && ruleForm.get('reminderPeriod2')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Reminder Period2.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+        
+            <div class="p-col-4 p-offset-1">
+        
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="reminderIds2">Reminder Ids2</label>
+                        <input pInputText type="text" id="reminderIds2" name="reminderIds2" formControlName="reminderIds2"><br>
+                        <small *ngIf="!ruleForm.get('reminderIds2')?.valid && ruleForm.get('reminderIds2')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Reminder Ids2.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="reminderPeriod3">Reminder Period3</label>
+                        <input pInputText type="text" id="reminderPeriod3" name="reminderPeriod3" formControlName="reminderPeriod3"><br>
+                        <small *ngIf="!ruleForm.get('reminderPeriod3')?.valid && ruleForm.get('reminderPeriod3')?.touched">
+                            <span style="color:red;">
+                                Please enter valid reminder Period3.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="reminderIds3">Reminder Ids3</label>
+                        <input pInputText type="email" id="reminderIds3" name="reminderIds3" formControlName="reminderIds3"><br>
+                        <small *ngIf="!ruleForm.get('reminderIds3')?.valid && ruleForm.get('reminderIds3')?.touched">
+                            <span style="color:red;">
+                                Please enter valid reminder Ids3
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="templateEscalation">Template Escalation</label>
+                        <input pInputText type="text" id="templateEscalation" name="templateEscalation" formControlName="templateEscalation"><br>
+                        <small *ngIf="!ruleForm.get('templateEscalation')?.valid && ruleForm.get('templateEscalation')?.touched">
+                            <span style="color:red;">
+                                Please enter valid template Escalation.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="templateReminder">Template Reminder</label>
+                        <input pInputText type="text" id="templateReminder" name="templateReminder" formControlName="templateReminder"><br>
+                        <small *ngIf="!ruleForm.get('templateReminder')?.valid && ruleForm.get('templateReminder')?.touched">
+                            <span style="color:red;">
+                                Please enter valid template Reminder.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="scope">Scope</label>
+                        <input pInputText type="text" id="scope" name="scope" formControlName="scope"><br>
+                        <small *ngIf="!ruleForm.get('scope')?.valid && ruleForm.get('scope')?.touched">
+                            <span style="color:red;">
+                                Please enter valid scope.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="entityIdStr">Entity Id</label>
+                        <input pInputText type="text" id="entityIdStr" name="entityIdStr" formControlName="entityIdStr"><br>
+                        <small *ngIf="!ruleForm.get('entityIdStr')?.valid && ruleForm.get('entityIdStr')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Entity Id Str.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="entityIdNum">Entity Id</label>
+                        <input pInputText type="text" id="entityIdNum" name="entityIdNum" formControlName="entityIdNum"><br>
+                        <small *ngIf="!ruleForm.get('entityIdNum')?.valid && ruleForm.get('entityIdNum')?.touched">
+                            <span style="color:red;">
+                                Please enter valid entity Id Num.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+            
+        <p-divider></p-divider>
+    
+        <!-- <ng-template pTemplate="footer">
+            <button pButton>Save</button>
+        </ng-template> -->
+    
+        <div class="p-fluid" style="margin-bottom: 30px;" >
+            <button [disabled]="!ruleForm.valid" pButton label="Next" (click)="onSave()">
+            </button>
+        </div>
+        
+</div>
+</div>
+</form>
+
