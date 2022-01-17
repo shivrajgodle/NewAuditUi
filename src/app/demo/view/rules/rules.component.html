@@ -1,12 +1,12 @@
 <app-project></app-project>
 
-<h2 style="margin-top: 70px;">
+<h2 style="margin-top: 30px;">
     <p>Escalation Data</p>
 </h2>
  <p-divider></p-divider>
 
     <form [formGroup]="ruleForm">
-        <div class="p-grid" style="margin-top: 70px;">
+        <div class="p-grid" style="margin-top: 30px;">
         <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
           
               
@@ -38,7 +38,7 @@
                 <div class="p-fluid">
                     <div class="p-field">
                         <label for="level">Level</label>
-                        <input pInputText type="text" id="level" name="level" formControlName="level"><br>
+                        <p-dropdown [options]=level [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedLevel" optionLabel='level' placeholder="select Level"></p-dropdown><br>
                         <small *ngIf="!ruleForm.get('level')?.valid && ruleForm.get('level')?.touched">
                             <span style="color:red;">
                                 Please enter valid Level.

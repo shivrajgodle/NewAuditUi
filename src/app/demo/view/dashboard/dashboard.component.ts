@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Router } from '@angular/router';
 import { DataSharedService } from 'src/app/data-shared.service';
 
 @Component({
@@ -18,19 +18,17 @@ export class DashboardComponent implements OnInit {
       projectCode: new FormControl('',Validators.required),
       taskCode: new FormControl('',Validators.required),
     });
-
-    
-
   }
 
 
-  ngOnInit(): void {
-   
-  }
+  ngOnInit(): void {  }
+
   onSave()
   {
     this.data=this.project.value;
-    this.service.setData(this.project.value.projectCode,this.project.value.taskCode)
+    this.service.setData(this.project.value.projectCode,this.project.value.taskCode);
+    localStorage.setItem('pcode',this.project.value.projectCode);
+    localStorage.setItem('tcode',this.project.value.taskCode);
     console.log(this.data);
   this.router.navigate(['/uikit/subpro']);    
   }

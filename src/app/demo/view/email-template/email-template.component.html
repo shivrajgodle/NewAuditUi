@@ -1,0 +1,123 @@
+
+<h2 style="margin-top: 20px;">
+    <p>Email Template</p>
+</h2>
+ <p-divider></p-divider>
+
+    <form [formGroup]="emailTemplateForm">
+        <div class="p-grid" style="margin-top: 30px;">
+        <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
+                          
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="templateName">Template Name</label>
+                        <input pInputText type="text"  id="templateName" name="templateName" formControlName="templateName"><br>
+                        <small *ngIf="!emailTemplateForm.get('templateName')?.valid && emailTemplateForm.get('templateName')?.touched">
+                            <span style="color:red;">
+                                Please enter valid template Name.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="projectId">Project Id</label>
+                        <input pInputText type="text"  id="projectId" name="projectId" formControlName="projectId"><br>
+                        <small *ngIf="!emailTemplateForm.get('projectId')?.valid && emailTemplateForm.get('projectId')?.touched">
+                            <span style="color:red;">
+                                Please enter valid project Id.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+                     
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="toList">To List</label>
+                        <textarea pInputTextarea type="text" id="toList" name="toList" formControlName="toList"><br>
+                        <small *ngIf="!emailTemplateForm.get('toList')?.valid && emailTemplateForm.get('toList')?.touched">
+                            <span style="color:red;">
+                                Please enter valid To List.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+           
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="ccList">CC List</label>
+                        <textarea pInputTextarea type="text" id="ccList" name="ccList" formControlName="ccList"></textarea><br>
+                        <small *ngIf="!emailTemplateForm.get('ccList')?.valid && emailTemplateForm.get('ccList')?.touched">
+                            <span style="color:red;">
+                                Please enter valid cc List.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+            
+            
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="sector">bcc List</label>
+                        <textarea pInputTextarea type="text" id="bccList" name="bccList" formControlName="bccList"></textarea><br>
+                        <small *ngIf="!emailTemplateForm.get('bccList')?.valid && emailTemplateForm.get('bccList')?.touched">
+                            <span style="color:red;">
+                                Please enter valid bcc List.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="p-col-4 p-offset-1">
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="emailSubject">Email Subject</label>
+                        <textarea pInputTextarea type="text" id="emailSubject" name="emailSubject" formControlName="emailSubject"></textarea><br>
+                        <small *ngIf="!emailTemplateForm.get('emailSubject')?.valid && emailTemplateForm.get('emailSubject')?.touched">
+                            <span style="color:red;">
+                                Please enter valid email Subject.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="emailBody">Email Body</label>
+                        <textarea pInputTextarea type="text" id="emailBody" name="emailBody" formControlName="emailBody"></textarea><br>
+                        <small *ngIf="!emailTemplateForm.get('emailBody')?.valid && emailTemplateForm.get('emailBody')?.touched">
+                            <span style="color:red;">
+                                Please enter valid email Body.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="variables">Variables</label>
+                        <textarea pInputTextarea type="text" id="variables" name="variables" formControlName="variables"></textarea><br>
+                        <small *ngIf="!emailTemplateForm.get('variables')?.valid && emailTemplateForm.get('variables')?.touched">
+                            <span style="color:red;">
+                                Please enter valid variables.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+        <p-divider></p-divider>
+    
+        <!-- <ng-template pTemplate="footer">
+            <button pButton>Save</button>
+        </ng-template> -->
+    
+        <div class="p-fluid" style="margin-bottom: 30px;" >
+            <button [disabled]="!emailTemplateForm.valid" pButton label="Next" (click)="onSave()">
+            </button>
+        </div>
+        </div>
+        </div>
+</form>

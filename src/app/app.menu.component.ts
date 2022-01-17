@@ -19,7 +19,7 @@ export class AppMenuComponent implements OnInit {
         this.model = [
             {label: 'Home', icon: 'pi pi-fw pi-home', routerLink: ['']},
             {
-                label: 'Client Management', icon: 'pi pi-fw pi-compass', routerLink: ['utilities'],
+                label: 'Client Management', icon: 'pi pi-fw pi-compass', routerLink: ['/uikit/client'],
             },
             {
                 label: 'Audit plan', icon: 'pi pi-fw pi-briefcase', routerLink: ['/pages'],

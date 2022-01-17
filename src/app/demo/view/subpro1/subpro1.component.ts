@@ -1,6 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { MessageService } from 'primeng/api';
 import { DataSharedService } from 'src/app/data-shared.service';
 import { ProjectServiceService } from 'src/app/Services/project-service.service';
@@ -46,7 +47,7 @@ export class Subpro1Component implements OnInit{
  
   constructor(private router: Router,private proservice:ProjectServiceService ,private messageService: MessageService, private service:DataSharedService) {
   this.years=[];
-  for(let i=1951;i<=2050;i++)
+  for(let i=2022;i>=1950;i--)
   {
     this.years.push({
       year:i      
@@ -79,8 +80,10 @@ export class Subpro1Component implements OnInit{
 
   ngOnInit(): void {
     // console.log(this.pcode1);
-    this.pcode=this.service.getData1();
-    this.tcode=this.service.getData2();
+    this.pcode=localStorage.getItem('pcode');
+    this.tcode=localStorage.getItem('tcode');
+    // this.pcode=this.service.getData1();
+    // this.tcode=this.service.getData2();
     console.log(this.pcode, this.tcode);
 
     this.projectForm1=new FormGroup({

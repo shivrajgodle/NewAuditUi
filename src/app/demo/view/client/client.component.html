@@ -1,0 +1,134 @@
+<app-client-status></app-client-status>
+
+<h2 style="margin-top: 20px;">
+    <p>Client Data</p>
+</h2>
+ <p-divider></p-divider>
+
+    <form [formGroup]="clientForm">
+        <div class="p-grid" style="margin-top: 30px;">
+        <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
+          
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="clientId">Client ID</label>
+                        <p-dropdown [options]=clientIds [(ngModel)]="selectedClientId" [ngModelOptions]="{standalone: true}" optionLabel='clientId' (click)="onClick()"  placeholder="select Client"></p-dropdown><br>
+                        <small *ngIf="!clientForm.get('clientId')?.valid && clientForm.get('clientId')?.touched">
+                            <span style="color:red;">
+                                Please enter valid client Id.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+                
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="legalName">Legal Name</label>
+                        <input pInputText type="text"  id="legalName" name="legalName" formControlName="legalName"><br>
+                        <small *ngIf="!clientForm.get('legalName')?.valid && clientForm.get('legalName')?.touched">
+                            <span style="color:red;">
+                                Please enter valid legal Name.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="groupCompany">Group Company</label>
+                        <input pInputText type="text"  id="groupCompany" name="groupCompany" formControlName="groupCompany"><br>
+                        <small *ngIf="!clientForm.get('groupCompany')?.valid && clientForm.get('groupCompany')?.touched">
+                            <span style="color:red;">
+                                Please enter valid group Company.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+                
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="ownershipNature">Ownership Nature</label>
+                        <input pInputText type="text" id="ownershipNature" name="ownershipNature" formControlName="ownershipNature"><br>
+                        <small *ngIf="!clientForm.get('ownershipNature')?.valid && clientForm.get('ownershipNature')?.touched">
+                            <span style="color:red;">
+                                Please enter valid ownership Nature.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="p-col-4 p-offset-1">
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="industry">Industry</label>
+                        <input pInputText type="text" id="industry" name="industry" formControlName="industry"><br>
+                        <small *ngIf="!clientForm.get('industry')?.valid && clientForm.get('industry')?.touched">
+                            <span style="color:red;">
+                                Please enter valid industry.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+           
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="sector">Sector</label>
+                        <input pInputText type="text" id="sector" name="sector" formControlName="sector"><br>
+                        <small *ngIf="!clientForm.get('sector')?.valid && clientForm.get('sector')?.touched">
+                            <span style="color:red;">
+                                Please enter valid sector.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+                
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="clientContact1">Client Contact 1</label>
+                        <input pInputText type="clientContact1" id="clientContact1" name="clientContact1" formControlName="clientContact1"><br>
+                        <small *ngIf="!clientForm.get('clientContact1')?.valid && clientForm.get('clientContact1')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Contact.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="clientContact2">Client Contact 2</label>
+                        <input pInputText type="text" id="clientContact2" name="clientContact2" formControlName="clientContact2"><br>
+                        <small *ngIf="!clientForm.get('clientContact2')?.valid && clientForm.get('clientContact2')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Contact.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="clientContact3">Client Contact 3</label>
+                        <input pInputText type="text" id="clientContact3" name="clientContact3" formControlName="clientContact3"><br>
+                        <small *ngIf="!clientForm.get('clientContact3')?.valid && clientForm.get('clientContact3')?.touched">
+                            <span style="color:red;">
+                                Please enter valid Contact.
+                            </span>
+                        </small>
+                    </div>
+                </div>
+
+        <p-divider></p-divider>
+    
+        <!-- <ng-template pTemplate="footer">
+            <button pButton>Save</button>
+        </ng-template> -->
+    
+        <div class="p-fluid" style="margin-bottom: 30px;" >
+            <button [disabled]="!clientForm.valid" pButton label="Next" (click)="onSave()">
+            </button>
+        </div>
+        </div>
+        </div>
+</form>

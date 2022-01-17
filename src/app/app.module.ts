@@ -141,9 +141,15 @@ import { DashboardComponent } from './demo/view/dashboard/dashboard.component';
 import { ProjectComponent } from './demo/view/project/project.component';
 import { Subpro1Component } from './demo/view/subpro1/subpro1.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { BillingComponent } from './demo/view/billing/billing.component';
 import { UsersComponent } from './demo/view/users/users.component';
 import { RulesComponent } from './demo/view/rules/rules.component';
+import { ClientComponent } from './demo/view/client/client.component';
+import { MessageService } from 'primeng/api';
+import { ClientStatusComponent } from './demo/view/client-status/client-status.component';
+import { DocumentComponent } from './demo/view/document/document.component';
+import { SpecificDocComponent } from './demo/view/specific-doc/specific-doc.component';
+import { TeamMemberComponent } from './demo/view/team-member/team-member.component';
+import { EmailTemplateComponent } from './demo/view/email-template/email-template.component';
 
 FullCalendarModule.registerPlugins([
     dayGridPlugin,
@@ -275,14 +281,19 @@ FullCalendarModule.registerPlugins([
         DashboardComponent,
         ProjectComponent,
         Subpro1Component,
-        BillingComponent,
         UsersComponent,
         RulesComponent,
+        ClientComponent,
+        ClientStatusComponent,
+        DocumentComponent,
+        SpecificDocComponent,
+        TeamMemberComponent,
+        EmailTemplateComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, BreadcrumbService
+        PhotoService, ProductService, MenuService, BreadcrumbService,MessageService
     ],
     bootstrap: [AppComponent]
 })

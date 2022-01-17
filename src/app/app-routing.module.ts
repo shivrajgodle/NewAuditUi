@@ -21,10 +21,14 @@ import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
 import { DashboardComponent } from './demo/view/dashboard/dashboard.component';
 import { ProjectComponent } from './demo/view/project/project.component';
-import { BillingComponent } from './demo/view/billing/billing.component';
 import { Subpro1Component } from './demo/view/subpro1/subpro1.component';
 import { UsersComponent } from './demo/view/users/users.component';
 import { RulesComponent } from './demo/view/rules/rules.component';
+import { ClientComponent } from './demo/view/client/client.component';
+import { DocumentComponent } from './demo/view/document/document.component';
+import { SpecificDocComponent } from './demo/view/specific-doc/specific-doc.component';
+import { TeamMemberComponent } from './demo/view/team-member/team-member.component';
+import { EmailTemplateComponent } from './demo/view/email-template/email-template.component';
 
 @NgModule({
     imports: [
@@ -34,10 +38,14 @@ import { RulesComponent } from './demo/view/rules/rules.component';
                 children: [
                     {path: '', component:DashboardComponent},
                     {path: 'uikit/project', component:ProjectComponent},
-                    {path:'uikit/billing', component:BillingComponent},
                     {path:'uikit/subpro',component:Subpro1Component},
                     {path:'uikit/users',component:UsersComponent},
                     {path:'uikit/rules',component:RulesComponent},
+                    {path:'uikit/client',component:ClientComponent},
+                    {path:'uikit/docUpload',component:DocumentComponent},
+                    {path:'uikit/specificDoc',component:SpecificDocComponent},
+                    {path:'uikit/team',component:TeamMemberComponent},
+                    {path:'uikit/emailTemplate',component:EmailTemplateComponent},
                     {path: 'utilities/display', component: DisplayComponent},
                     {path: 'utilities/elevation', component: ElevationComponent},
                     {path: 'utilities/flexbox', component: FlexboxComponent},

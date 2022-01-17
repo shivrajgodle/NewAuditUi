@@ -3,8 +3,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ProjectServiceService } from 'src/app/Services/project-service.service';
-import { Project } from '../subpro1/model/project';
-import { Role } from '../users/users.component';
+
+interface Level{
+  level:string;
+}
 
 @Component({
   selector: 'app-rules',
@@ -17,12 +19,20 @@ export class RulesComponent implements OnInit {
   ruleForm!: FormGroup;
   errorMsg!: string;
   projectData:any=[];
-
+  level:Level[];
 
   selectedProjectId:string;
-
+  selectedLevel:string;
   constructor(private router: Router ,private messageService: MessageService,private proservice:ProjectServiceService ) 
   { 
+    this.level=[
+      {level:"Low"},
+      {level:"Mid"},
+      {level:"High"},
+      {level:"Very High"},
+      {level:"Critical"},
+      {level:"Blocked"}
+    ]
 
   }
 
@@ -63,7 +73,8 @@ export class RulesComponent implements OnInit {
   onSave() {
 
     this.ruleForm.value.projectId=this.selectedProjectId['projectId'];
-
+    //console.log(this.ruleForm.value.projectId);
+    this.ruleForm.value.level=this.selectedLevel['level'];   
     this.proservice.ruleData(this.ruleForm.value).subscribe(
       (data:any)=>{
         alert("rule data successfully added");
