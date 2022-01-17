@@ -70,7 +70,7 @@
             <div class="p-fluid">
                 <div class="p-field">
                     <label for="taskCode">Task Code</label>
-                    <input pInputText type="text" id="taskCode" name="taskCode" formControlName="taskCode"><br>
+                    <p-dropdown [options]=taskcodes [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedTaskCode" optionLabel='taskCode' placeholder="select Task Code"></p-dropdown><br>
                     <small *ngIf="!project.get('taskCode')?.valid && project.get('taskCode')?.touched">
                         <span style="color:red;">
                             Please enter valid task code.

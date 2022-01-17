@@ -14,23 +14,23 @@ export class ClientStatusComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.items = [
-      {
-        label: 'Client Data',
-        routerLink:'/uikit/client'
-      },
-      {
-        label: 'Document Upload',
-        routerLink: '/uikit/docUpload'
-      },
-      {
-        label: 'Specific Document Upload',
-        routerLink: '/uikit/specificDoc'
-      },
-      {
-        label: 'Team Member',
-        routerLink: '/uikit/team'
-      }
-    ];
+    // this.items = [
+    //   {
+    //     label: 'Client Data',
+    //     routerLink:'/uikit/client'
+    //   },
+    //   {
+    //     label: 'Document Upload',
+    //     routerLink: '/uikit/docUpload'
+    //   },
+    //   {
+    //     label: 'Specific Document Upload',
+    //     routerLink: '/uikit/specificDoc'
+    //   },
+    //   {
+    //     label: 'Team Member',
+    //     routerLink: '/uikit/team'
+    //   }
+    // ];
   }
 }

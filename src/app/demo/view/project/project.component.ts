@@ -18,13 +18,17 @@ export class ProjectComponent implements OnInit {
 
     this.items = [
       {
-        label: 'Project',
+        label: 'Billing',
         routerLink:'/uikit/subpro'
       },
-      // {
-      //   label: 'Billing',
-      //   routerLink: '/uikit/billing'
-      // },
+      {
+        label: 'Client',
+        routerLink:'/uikit/client'
+      },
+      {
+        label: 'Documents',
+        routerLink:'/uikit/docUpload'
+      },
       {
         label: 'Users',
         routerLink: '/uikit/users'
@@ -32,7 +36,11 @@ export class ProjectComponent implements OnInit {
       {
         label: 'Rules',
         routerLink: '/uikit/rules'
-      }
+      },
+      {
+        label: 'Email Template',
+        routerLink:'/uikit/emailTemplate'
+      },
     ];
   }
 }
