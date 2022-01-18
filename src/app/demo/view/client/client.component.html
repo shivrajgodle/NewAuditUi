@@ -12,7 +12,7 @@
                 <div class="p-fluid">
                     <div class="p-field">
                         <label for="clientId">Client ID</label>
-                        <p-dropdown [options]=clientIds [(ngModel)]="selectedClientId" [ngModelOptions]="{standalone: true}" optionLabel='clientId' (click)="onClick()"  placeholder="select Client"></p-dropdown><br>
+                        <p-dropdown [options]=clientIds [(ngModel)]="selectedClientId" [ngModelOptions]="{standalone: true}" optionLabel='id' (onChange)="onClick()"  placeholder="select Client"></p-dropdown><br>
                         <small *ngIf="!clientForm.get('clientId')?.valid && clientForm.get('clientId')?.touched">
                             <span style="color:red;">
                                 Please enter valid client Id.
@@ -20,11 +20,11 @@
                         </small>
                     </div>
                 </div>
-                
+                <div *ngIf="clientsAllData">
                 <div class="p-fluid">
                     <div class="p-field">
                         <label for="legalName">Legal Name</label>
-                        <input pInputText type="text"  id="legalName" name="legalName" formControlName="legalName"><br>
+                        <input pInputText type="text"  id="legalName" name="legalName" formControlName="legalName" [(ngModel)]="clientData.legalName"><br>
                         <small *ngIf="!clientForm.get('legalName')?.valid && clientForm.get('legalName')?.touched">
                             <span style="color:red;">
                                 Please enter valid legal Name.
@@ -36,7 +36,7 @@
                 <div class="p-fluid">
                     <div class="p-field">
                         <label for="groupCompany">Group Company</label>
-                        <input pInputText type="text"  id="groupCompany" name="groupCompany" formControlName="groupCompany"><br>
+                        <input pInputText type="text"  id="groupCompany" name="groupCompany" formControlName="groupCompany" [(ngModel)]="clientData.groupCompany"><br>
                         <small *ngIf="!clientForm.get('groupCompany')?.valid && clientForm.get('groupCompany')?.touched">
                             <span style="color:red;">
                                 Please enter valid group Company.
@@ -48,7 +48,7 @@
                 <div class="p-fluid">
                     <div class="p-field">
                         <label for="ownershipNature">Ownership Nature</label>
-                        <input pInputText type="text" id="ownershipNature" name="ownershipNature" formControlName="ownershipNature"><br>
+                        <input pInputText type="text" id="ownershipNature" name="ownershipNature" formControlName="ownershipNature" [(ngModel)]="clientData.ownershipNature"><br>
                         <small *ngIf="!clientForm.get('ownershipNature')?.valid && clientForm.get('ownershipNature')?.touched">
                             <span style="color:red;">
                                 Please enter valid ownership Nature.
@@ -56,12 +56,11 @@
                         </small>
                     </div>
                 </div>
-            </div>
-            <div class="p-col-4 p-offset-1">
+           
                 <div class="p-fluid">
                     <div class="p-field">
                         <label for="industry">Industry</label>
-                        <input pInputText type="text" id="industry" name="industry" formControlName="industry"><br>
+                        <input pInputText type="text" id="industry" name="industry" formControlName="industry" [(ngModel)]="clientData.industry"><br>
                         <small *ngIf="!clientForm.get('industry')?.valid && clientForm.get('industry')?.touched">
                             <span style="color:red;">
                                 Please enter valid industry.
@@ -69,11 +68,14 @@
                         </small>
                     </div>
                 </div>
-           
+            </div>
+        </div>
+            <div class="p-col-4 p-offset-1">
+                <div *ngIf="clientsAllData">
                 <div class="p-fluid">
                     <div class="p-field">
                         <label for="sector">Sector</label>
-                        <input pInputText type="text" id="sector" name="sector" formControlName="sector"><br>
+                        <input pInputText type="text" id="sector" name="sector" formControlName="sector" [(ngModel)]="clientData.sector"><br>
                         <small *ngIf="!clientForm.get('sector')?.valid && clientForm.get('sector')?.touched">
                             <span style="color:red;">
                                 Please enter valid sector.
@@ -86,7 +88,7 @@
                 <div class="p-fluid">
                     <div class="p-field">
                         <label for="clientContact1">Client Contact 1</label>
-                        <input pInputText type="clientContact1" id="clientContact1" name="clientContact1" formControlName="clientContact1"><br>
+                        <input pInputText type="clientContact1" id="clientContact1" name="clientContact1" formControlName="clientContact1" [(ngModel)]="clientData.clientContact1"><br>
                         <small *ngIf="!clientForm.get('clientContact1')?.valid && clientForm.get('clientContact1')?.touched">
                             <span style="color:red;">
                                 Please enter valid Contact.
@@ -98,7 +100,7 @@
                 <div class="p-fluid">
                     <div class="p-field">
                         <label for="clientContact2">Client Contact 2</label>
-                        <input pInputText type="text" id="clientContact2" name="clientContact2" formControlName="clientContact2"><br>
+                        <input pInputText type="text" id="clientContact2" name="clientContact2" formControlName="clientContact2" [(ngModel)]="clientData.clientContact2"><br>
                         <small *ngIf="!clientForm.get('clientContact2')?.valid && clientForm.get('clientContact2')?.touched">
                             <span style="color:red;">
                                 Please enter valid Contact.
@@ -110,7 +112,7 @@
                 <div class="p-fluid">
                     <div class="p-field">
                         <label for="clientContact3">Client Contact 3</label>
-                        <input pInputText type="text" id="clientContact3" name="clientContact3" formControlName="clientContact3"><br>
+                        <input pInputText type="text" id="clientContact3" name="clientContact3" formControlName="clientContact3" [(ngModel)]="clientData.clientContact3"><br>
                         <small *ngIf="!clientForm.get('clientContact3')?.valid && clientForm.get('clientContact3')?.touched">
                             <span style="color:red;">
                                 Please enter valid Contact.
@@ -118,7 +120,7 @@
                         </small>
                     </div>
                 </div>
-
+            </div>
         <p-divider></p-divider>
     
         <!-- <ng-template pTemplate="footer">

@@ -18,6 +18,10 @@ export class ProjectComponent implements OnInit {
 
     this.items = [
       {
+        icon:"pi pi-home",
+        routerLink:'/'
+      },
+      {
         label: 'Billing',
         routerLink:'/uikit/subpro'
       },
@@ -31,7 +35,7 @@ export class ProjectComponent implements OnInit {
       },
       {
         label: 'Users',
-        routerLink: '/uikit/users'
+        routerLink: '/uikit/team'
       },
       {
         label: 'Rules',

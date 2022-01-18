@@ -24,16 +24,26 @@ export class TeamMemberComponent implements OnInit {
  projectData:any;
 
   constructor(private router: Router ,private messageService: MessageService,private service:ClientServiceService,private proService:ProjectServiceService) {
-    this.clientIds=[
-      {clientId:"20001"},
-      {clientId:"20002"},
-      {clientId:"20003"},
-      {clientId:"20004"},
-      {clientId:"20005"},
-    ]
+    // this.clientIds=[
+    //   {clientId:"20001"},
+    //   {clientId:"20002"},
+    //   {clientId:"20003"},
+    //   {clientId:"20004"},
+    //   {clientId:"20005"},
+    // ]
   }
 
   ngOnInit(): void {
+
+    this.service.getClientData().subscribe(
+      (data)=>{
+        console.log(data['content'],"all client data");
+        this.clientIds=data['content'];
+      },
+      (error)=>{
+        alert("something went wrong");
+      }
+    )
 
     this.proService.getProjectDetails().subscribe(
       (data)=>{
