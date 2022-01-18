@@ -1,6 +1,7 @@
 export interface Client {
     clientId: string;
-    legalName: string;
+    legalName?: string;
+    groupCompany?:string;
     ownershipNature: string;
     industry: string;
     sector: string;

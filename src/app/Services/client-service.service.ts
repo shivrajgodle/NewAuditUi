@@ -21,9 +21,9 @@ export class ClientServiceService {
     return this.http.get(`${environment.baseUrl}/clients/${id}`);
   }
 
-  postClientData(data: Client) {
+  putClientData(data: Client,id:string) {    
     //calling backed API
-    return this.http.post<Client>(`${environment.baseUrl}/clients`, data);
+    return this.http.put<Client>(`${environment.baseUrl}/clients/${id}`, data);
   }
 
 }

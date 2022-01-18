@@ -1,4 +1,4 @@
-<app-client-status></app-client-status>
+<app-project></app-project>
 
 <h2 style="margin-top: 20px;">
     <p>Team Member Data</p>
@@ -13,7 +13,7 @@
             <div class="p-fluid">
                 <div class="p-field">
                     <label for="cliendId">Client Id</label>
-                    <p-dropdown [options]=clientIds [(ngModel)]="selectedClientId" [ngModelOptions]="{standalone: true}" optionLabel='clientId'  placeholder="select Client"></p-dropdown><br>
+                    <p-dropdown [options]=clientIds [(ngModel)]="selectedClientId" [ngModelOptions]="{standalone: true}" optionLabel='id'  placeholder="select Client"></p-dropdown><br>
                     <small *ngIf="!teamForm.get('cliendId')?.valid && teamForm.get('cliendId')?.touched">
                         <span style="color:red;">
                             Please enter valid client Id.
