@@ -5,7 +5,7 @@ import { MessageService, PrimeNGConfig, SelectItem } from 'primeng/api';
 import { ProjectServiceService } from 'src/app/Services/project-service.service';
 import { Product } from '../../domain/product';
 import { ProductService } from '../../service/productservice';
-import { Client, ClientData } from './client';
+import { Client, ClientData, RuleData } from './client';
 import Swal from 'sweetalert2';
 
 interface Level{
@@ -31,10 +31,12 @@ export class RulesComponent implements OnInit {
 //edit table
 
   products2: Product[];
+  
+  ruleData: RuleData[];
 
   statuses: SelectItem[];
 
-  clonedProducts: { [s: string]: Product; } = {};
+  clonedProducts: { [s: string]: RuleData; } = {};
 
   //crud table
   client1:ClientData[]=[];
@@ -63,6 +65,24 @@ export class RulesComponent implements OnInit {
       {level:"Blocked"}
     ]
 
+    // this.projectData=[
+    //   {
+    //     projectId:'50001'
+    //   },
+    //   {
+    //     projectId:'50002'
+    //   },
+    //   {
+    //     projectId:'50003'
+    //   },
+    //   {
+    //     projectId:'50004'
+    //   },
+    //   {
+    //     projectId:'50005'
+    //   }
+    // ]
+
   }
 
   ngOnInit(): void {
@@ -75,6 +95,12 @@ export class RulesComponent implements OnInit {
      console.log(data['content']);
      this.projectData=data['content'];
      
+    })
+
+    this.proservice.getRuleData().subscribe((data:RuleData)=>{
+      console.log("i am from getRule data",data);
+      this.ruleData = data['content']
+      
     })
 
     
@@ -111,6 +137,9 @@ export class RulesComponent implements OnInit {
      })
  
      this.primengConfig.ripple = true;
+
+     this.statuses = [{label: 'low', value: 'Low'},{label: 'Mid', value: 'Mid'},{label: 'High', value: 'High'},
+     {label: 'Very High', value: 'Very High'},{label: 'Critical', value: 'Critical'},{label: 'Blocked', value: 'Blocked'}]
     
   }
 
@@ -120,44 +149,62 @@ export class RulesComponent implements OnInit {
 
   onSave() {
 
-    console.log("ninad",this.ruleForm);
+    this.submitted=true;
+
+ 
     
 
     this.ruleForm.value.projectId=this.selectedProjectId['projectId'];
     //console.log(this.ruleForm.value.projectId);
-    this.ruleForm.value.level=this.selectedLevel['level'];   
+    this.ruleForm.value.level=this.selectedLevel['level']; 
+
+    console.log("ninad",this.ruleForm.value);
+
     this.proservice.ruleData(this.ruleForm.value).subscribe(
       (data:any)=>{
         alert("rule data successfully added");
         console.log(data);
-        this.router.navigate(['/uikit/rules']);
+        // this.router.navigate(['/uikit/rules']);
+        window.location.reload();
         
       },
       (error)=>{
         alert("something went wrong");
       }
     );    
+    this.hideDialog();
   }
 
 
   //edit table
-  onRowEditInit(product: Product) {
-    this.clonedProducts[product.id] = {...product};
+  onRowEditInit(product: RuleData) {
+    this.clonedProducts[product.projectId] = {...product};
 }
 
-onRowEditSave(product: Product) {
-    if (product.price > 0) {
-        delete this.clonedProducts[product.id];
-        this.messageService.add({severity:'success', summary: 'Success', detail:'Product is updated'});
-    }  
-    else {
-        this.messageService.add({severity:'error', summary: 'Error', detail:'Invalid Price'});
-    }
+onRowEditSave(product: RuleData) {
+    // if (product.price > 0) {
+    //     delete this.clonedProducts[product.id];
+    //     this.messageService.add({severity:'success', summary: 'Success', detail:'Product is updated'});
+    // }  
+    // else {
+    //     this.messageService.add({severity:'error', summary: 'Error', detail:'Invalid Price'});
+    // }
+
+    this.proservice.editRuleData(product.id,product).subscribe((data:any)=>{
+      alert("rule data edited successfully");
+      this.messageService.add({severity:'success', summary: 'Success', detail:'Product is updated'});
+      console.log(data);
+      // this.router.navigate(['/uikit/rules']);
+      
+    },
+    (error)=>{
+      alert("something went wrong");
+    })
 }
 
-onRowEditCancel(product: Product, index: number) {
-    this.products2[index] = this.clonedProducts[product.id];
-    delete this.products2[product.id];
+onRowEditCancel(product: RuleData, index: number) {
+    this.ruleData[index] = this.clonedProducts[product.projectId];
+    delete this.ruleData[product.projectId];
 }
 
 

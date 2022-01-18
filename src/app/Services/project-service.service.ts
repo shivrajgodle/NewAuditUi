@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Product } from '../demo/domain/product';
-import { Client } from '../demo/view/rules/client';
+import { Client, RuleData } from '../demo/view/rules/client';
 import { Project } from '../demo/view/subpro1/model/project';
 import { User } from '../demo/view/users/model/users';
 
@@ -33,9 +33,19 @@ export class ProjectServiceService {
     return this.http.post<User>(`${environment.baseUrl}/auditors`, data);
   }
 
-  ruleData(data:any)
+  ruleData(data:RuleData)
   {
     return this.http.post(`${environment.baseUrl}/escrule`, data);
+  }
+  getRuleData()
+  {
+    return this.http.get(`${environment.baseUrl}/escrule`);
+  }
+  editRuleData(id:string,data:RuleData)
+  {
+    console.log("Rule data",data);
+    
+    return this.http.put(`${environment.baseUrl}/escrule/${id}`,data);
   }
 
 

@@ -274,16 +274,16 @@
                      </div>
                  </div>
              
-         <p-divider></p-divider>
+         <!-- <p-divider></p-divider> -->
      
          <!-- <ng-template pTemplate="footer">
              <button pButton>Save</button>
          </ng-template> -->
      
-         <div class="p-fluid" style="margin-bottom: 30px;" >
-             <button [disabled]="!ruleForm.valid" pButton label="Next" (click)="onSave()">
+         <!-- <div class="p-fluid" style="margin-bottom: 30px;" >
+             <button  pButton label="Next" (click)="onSave()">
              </button>
-         </div>
+         </div> -->
          
  </div>
  </div>
@@ -293,8 +293,8 @@
     
             <ng-template pTemplate="footer">
                 <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-                <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveClient()"></button>
-                <!-- <button type="button" pButton pRipple (click)="showSuccess()" label="Success" class="p-button-success"></button> -->
+                <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="onSave()"></button>
+               
     
             </ng-template>
         </p-dialog>
@@ -395,14 +395,22 @@
         <!-- edit table -->
 
         <div class="card">
-            <h5>Row Editing</h5>
-                <p-table [value]="products2" dataKey="id" editMode="row">
+           
+                <p-table [value]="ruleData" dataKey="id" editMode="row">
                     <ng-template pTemplate="header">
                         <tr>
-                            <th>Code</th>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Quantity</th>
+                            <th>projectId</th>
+                            <th>trigger</th>
+                            <th>level</th>
+                            <th>escalationIds</th>
+                            <th>noDaysNoResponse</th>
+                            <th>reminderPeriod1</th>
+                            <th>reminderIds1</th>
+                            <th>reminderPeriod2</th>
+                            <th>reminderIds2</th>  
+                            <th>templateEscalation</th>
+                            <th>templateReminder</th>
+                            <th>scope</th>
                             <th style="width:8rem"></th>
                         </tr>
                     </ng-template>
@@ -411,43 +419,128 @@
                             <td pEditableColumn>
                                 <p-cellEditor>
                                     <ng-template pTemplate="input">
-                                        <input pInputText type="text" [(ngModel)]="product.code">
+                                        <input pInputText type="text"   [(ngModel)]="product.projectId">
                                     </ng-template>
                                     <ng-template pTemplate="output">
-                                        {{product.code}}
+                                        {{product.projectId}}
                                     </ng-template>
                                 </p-cellEditor>
                             </td>
                             <td pEditableColumn>
                                 <p-cellEditor>
                                     <ng-template pTemplate="input">
-                                        <input pInputText type="text" [(ngModel)]="product.name" required>
+                                        <input pInputText type="text" [(ngModel)]="product.trigger" required>
                                     </ng-template>
                                     <ng-template pTemplate="output">
-                                        {{product.name}}
+                                        {{product.trigger}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td pEditableColumn>
+                               
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <p-dropdown [options]="statuses" [(ngModel)]="product.level" [style]="{'width':'100%'}"></p-dropdown>
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.level}}
+                                    </ng-template>
+                                </p-cellEditor>
+
+
+
+                            </td>
+                            <td pEditableColumn>
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" [(ngModel)]="product.escalationIds">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.escalationIds}}
                                     </ng-template>
                                 </p-cellEditor>
                             </td>
                             <td pEditableColumn>
                                 <p-cellEditor>
                                     <ng-template pTemplate="input">
-                                        <p-dropdown [options]="statuses" [(ngModel)]="product.inventoryStatus" [style]="{'width':'100%'}"></p-dropdown>
+                                        <input pInputText type="text" [(ngModel)]="product.noDaysNoResponse">
                                     </ng-template>
                                     <ng-template pTemplate="output">
-                                        {{product.inventoryStatus}}
+                                        {{product.noDaysNoResponse}}
                                     </ng-template>
                                 </p-cellEditor>
                             </td>
                             <td pEditableColumn>
                                 <p-cellEditor>
                                     <ng-template pTemplate="input">
-                                        <input pInputText type="text" [(ngModel)]="product.price">
+                                        <input pInputText type="text" [(ngModel)]="product.reminderPeriod1">
                                     </ng-template>
                                     <ng-template pTemplate="output">
-                                        {{product.price | currency: 'USD'}}
+                                        {{product.reminderPeriod1}}
                                     </ng-template>
                                 </p-cellEditor>
                             </td>
+                            <td pEditableColumn>
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" [(ngModel)]="product.reminderIds1">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.reminderIds1}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td pEditableColumn>
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" [(ngModel)]="product.reminderPeriod2">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.reminderPeriod2}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td pEditableColumn>
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" [(ngModel)]="product.reminderIds2">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.reminderIds2}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td pEditableColumn>
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" [(ngModel)]="product.templateEscalation">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.templateEscalation}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td pEditableColumn>
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" [(ngModel)]="product.templateReminder">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.templateReminder}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td pEditableColumn>
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" [(ngModel)]="product.scope">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.scope}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+
                             <td style="text-align:center">
                                 <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(product)" class="p-button-rounded p-button-text"></button>
                                 <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(product)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
