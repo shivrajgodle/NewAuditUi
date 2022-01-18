@@ -3,231 +3,460 @@
 <h2 style="margin-top: 30px;">
     <p>Escalation Data</p>
 </h2>
- <p-divider></p-divider>
 
-    <form [formGroup]="ruleForm">
-        <div class="p-grid" style="margin-top: 30px;">
-        <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
-          
-              
+
+
+
+
+
+<!-- crud table -->
+
+
+    <div class="container">
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="Add Escalation" icon="pi pi-plus" (click)="addClient()" class="p-button-success p-mr-2" style="border: 1px solid black; color: black;"></button>
+                </ng-template>
+            </p-toolbar>
+        </div>
     
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="projectId">Project ID</label>
-                        <p-dropdown [options]=projectData [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedProjectId" optionLabel='projectId' placeholder="select Project ID"></p-dropdown><br>
-                        <small *ngIf="!ruleForm.get('projectId')?.valid && ruleForm.get('projectId')?.touched">
-                            <span style="color:red;">
-                                Please enter valid Project ID.
-                            </span>
-                        </small>
-                    </div>
+    
+    
+    
+        <!-- Dialog box to add Client -->
+        <p-dialog [(visible)]="clientDialogue" [style]="{width: '1050px'}" header="Escalation Details" [modal]="true" styleClass="p-fluid">
+            <ng-template pTemplate="content">
+
+
+                <!-- <div class="p-field">
+                    <label for="name">Company Name</label>
+                    <input type="text" pInputText id="name" pattern="[a-zA-Z ]{2,20}" [(ngModel)]="client.companyName" required autofocus />
+                    <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.companyName">Company Name is required.</small>
                 </div>
-                
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="trigger">Trigger</label>
-                        <input pInputText type="text"  id="trigger" name="trigger" formControlName="trigger"><br>
-                        <small *ngIf="!ruleForm.get('trigger')?.valid && ruleForm.get('trigger')?.touched">
-                            <span style="color:red;">
-                                Please enter valid trigger.
-                            </span>
-                        </small>
-                    </div>
+                <div class="p-field">
+                    <label for="description">Permenant Account Number(PAN)</label>
+                    <input type="text" pInputText id="PAN" pInputText pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" [(ngModel)]="client.pan" required autofocus/>
+                </div>
+                <div class="p-field">
+                    <label for="description">TAX collection Account Number(TAN)</label>
+                    <input type="text" pInputText id="TAN" pInputText pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" [(ngModel)]="client.tan" required autofocus/>
+                </div>
+                <div class="p-field">
+                    <label for="name">Group Company</label>
+                    <input type="text" pInputText id="group_company" pattern="[a-zA-Z ]{2,20}" [(ngModel)]="client.groupCompany" required autofocus />
+                    <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.groupCompany">Group Company Name is required.</small>
+                </div>
+                <div class="p-field">
+                    <label for="name">Precision ID</label>
+                    <input type="text" pInputText id="precision ID" pattern="[a-zA-Z 0-9]{2,10}" [(ngModel)]="client.precisionId" required autofocus />
+                    <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.precisionId">Precision ID is required.</small>
                 </div>
     
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="level">Level</label>
-                        <p-dropdown [options]=level [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedLevel" optionLabel='level' placeholder="select Level"></p-dropdown><br>
-                        <small *ngIf="!ruleForm.get('level')?.valid && ruleForm.get('level')?.touched">
-                            <span style="color:red;">
-                                Please enter valid Level.
-                            </span>
-                        </small>
-                    </div>
+                <div class="p-field">
+                    <label for="name">Approver</label>
+                    <input type="text" pInputText id="approver" pattern="^[A-Za-z0-9._%+-]+@pwc.com$" [(ngModel)]="client.approver" required autofocus />
+                    <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.approver">Approver Name is required.</small>
                 </div>
-
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="escalationIds">Escalation Id's</label>
-                        <input pInputTextarea type="text" id="escalationIds" name="escalationIds" formControlName="escalationIds"><br>
-                        <small *ngIf="!ruleForm.get('escalationIds')?.valid && ruleForm.get('escalationIds')?.touched">
-                            <span style="color:red;">
-                                Please enter valid escalation Ids.
-                            </span>
-                        </small>
-                    </div>
-                </div>
-
-                
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="noDaysNoResponse">Number of Days No Response</label>
-                        <input pInputText type="text" id="noDaysNoResponse" name="noDaysNoResponse" formControlName="noDaysNoResponse"><br>
-                        <small *ngIf="!ruleForm.get('noDaysNoResponse')?.valid && ruleForm.get('noDaysNoResponse')?.touched">
-                            <span style="color:red;">
-                                Please enter valid Number of Days of No Response.
-                            </span>
-                        </small>
-                    </div>
-                </div>
+     -->
 
 
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="reminderPeriod1">Reminder Period1</label>
-                        <input pInputText type="text" id="reminderPeriod1" name="reminderPeriod1" formControlName="reminderPeriod1">
-                        <br>
-                        <small *ngIf="!ruleForm.get('reminderPeriod1')?.valid && ruleForm.get('reminderPeriod1')?.touched">
-                            <span style="color:red;">
-                                Please enter valid reminder Period1.
-                            </span>
-                        </small>
-                    </div>
-                </div>
+     <p-divider></p-divider>
 
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="reminderIds1">Reminder Id1</label>
-                        <input pInputTextarea type="text" id="reminderIds1" name="reminderIds1" formControlName="reminderIds1"><br>
-                        <small *ngIf="!ruleForm.get('reminderIds1')?.valid && ruleForm.get('reminderIds1')?.touched">
-                            <span style="color:red;">
-                                Please enter valid reminder Id.
-                            </span>
-                        </small>
-                    </div>
-                </div>
+     <form [formGroup]="ruleForm">
+         <div class="p-grid" style="margin-top: 30px;">
+         <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
            
+               
+     
+                 <div class="p-fluid">
+                     <div class="p-field">
+                         <label for="projectId">Project ID</label>
+                         <p-dropdown [options]=projectData [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedProjectId" optionLabel='projectId' placeholder="select Project ID"></p-dropdown><br>
+                         <small *ngIf="!ruleForm.get('projectId')?.valid && ruleForm.get('projectId')?.touched">
+                             <span style="color:red;">
+                                 Please enter valid Project ID.
+                             </span>
+                         </small>
+                     </div>
+                 </div>
+                 
+                 <div class="p-fluid">
+                     <div class="p-field">
+                         <label for="trigger">Trigger</label>
+                         <input pInputText type="text"  id="trigger" name="trigger" formControlName="trigger"><br>
+                         <small *ngIf="!ruleForm.get('trigger')?.valid && ruleForm.get('trigger')?.touched">
+                             <span style="color:red;">
+                                 Please enter valid trigger.
+                             </span>
+                         </small>
+                     </div>
+                 </div>
+     
+                 <div class="p-fluid">
+                     <div class="p-field">
+                         <label for="level">Level</label>
+                         <p-dropdown [options]=level [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedLevel" optionLabel='level' placeholder="select Level"></p-dropdown><br>
+                         <small *ngIf="!ruleForm.get('level')?.valid && ruleForm.get('level')?.touched">
+                             <span style="color:red;">
+                                 Please enter valid Level.
+                             </span>
+                         </small>
+                     </div>
+                 </div>
+ 
+                 <div class="p-fluid">
+                     <div class="p-field">
+                         <label for="escalationIds">Escalation Id's</label>
+                         <input pInputTextarea type="text" id="escalationIds" name="escalationIds" formControlName="escalationIds"><br>
+                         <small *ngIf="!ruleForm.get('escalationIds')?.valid && ruleForm.get('escalationIds')?.touched">
+                             <span style="color:red;">
+                                 Please enter valid escalation Ids.
+                             </span>
+                         </small>
+                     </div>
+                 </div>
+ 
+                 
+                 <div class="p-fluid">
+                     <div class="p-field">
+                         <label for="noDaysNoResponse">Number of Days No Response</label>
+                         <input pInputText type="text" id="noDaysNoResponse" name="noDaysNoResponse" formControlName="noDaysNoResponse"><br>
+                         <small *ngIf="!ruleForm.get('noDaysNoResponse')?.valid && ruleForm.get('noDaysNoResponse')?.touched">
+                             <span style="color:red;">
+                                 Please enter valid Number of Days of No Response.
+                             </span>
+                         </small>
+                     </div>
+                 </div>
+ 
+ 
+                 <div class="p-fluid">
+                     <div class="p-field">
+                         <label for="reminderPeriod1">Reminder Period1</label>
+                         <input pInputText type="text" id="reminderPeriod1" name="reminderPeriod1" formControlName="reminderPeriod1">
+                         <br>
+                         <small *ngIf="!ruleForm.get('reminderPeriod1')?.valid && ruleForm.get('reminderPeriod1')?.touched">
+                             <span style="color:red;">
+                                 Please enter valid reminder Period1.
+                             </span>
+                         </small>
+                     </div>
+                 </div>
+ 
+                 <div class="p-fluid">
+                     <div class="p-field">
+                         <label for="reminderIds1">Reminder Id1</label>
+                         <input pInputTextarea type="text" id="reminderIds1" name="reminderIds1" formControlName="reminderIds1"><br>
+                         <small *ngIf="!ruleForm.get('reminderIds1')?.valid && ruleForm.get('reminderIds1')?.touched">
+                             <span style="color:red;">
+                                 Please enter valid reminder Id.
+                             </span>
+                         </small>
+                     </div>
+                 </div>
+            
+     
+                 <div class="p-fluid">
+                     <div class="p-field">
+                         <label for="reminderPeriod2">Reminder Period2</label>
+                         <input pInputTextarea type="text" id="reminderPeriod2" name="reminderPeriod2" formControlName="reminderPeriod2"><br>
+                         <small *ngIf="!ruleForm.get('reminderPeriod2')?.valid && ruleForm.get('reminderPeriod2')?.touched">
+                             <span style="color:red;">
+                                 Please enter valid Reminder Period2.
+                             </span>
+                         </small>
+                     </div>
+                 </div>
+ 
+             </div>
+         
+             <div class="p-col-4 p-offset-1">
+         
+                 <div class="p-fluid">
+                     <div class="p-field">
+                         <label for="reminderIds2">Reminder Ids2</label>
+                         <input pInputText type="text" id="reminderIds2" name="reminderIds2" formControlName="reminderIds2"><br>
+                         <small *ngIf="!ruleForm.get('reminderIds2')?.valid && ruleForm.get('reminderIds2')?.touched">
+                             <span style="color:red;">
+                                 Please enter valid Reminder Ids2.
+                             </span>
+                         </small>
+                     </div>
+                 </div>
+ 
+                 
+                 <div class="p-fluid">
+                     <div class="p-field">
+                         <label for="reminderPeriod3">Reminder Period3</label>
+                         <input pInputText type="text" id="reminderPeriod3" name="reminderPeriod3" formControlName="reminderPeriod3"><br>
+                         <small *ngIf="!ruleForm.get('reminderPeriod3')?.valid && ruleForm.get('reminderPeriod3')?.touched">
+                             <span style="color:red;">
+                                 Please enter valid reminder Period3.
+                             </span>
+                         </small>
+                     </div>
+                 </div>
+ 
+                 
+                 <div class="p-fluid">
+                     <div class="p-field">
+                         <label for="reminderIds3">Reminder Ids3</label>
+                         <input pInputText type="email" id="reminderIds3" name="reminderIds3" formControlName="reminderIds3"><br>
+                         <small *ngIf="!ruleForm.get('reminderIds3')?.valid && ruleForm.get('reminderIds3')?.touched">
+                             <span style="color:red;">
+                                 Please enter valid reminder Ids3
+                             </span>
+                         </small>
+                     </div>
+                 </div>
+ 
+                 
+                 <div class="p-fluid">
+                     <div class="p-field">
+                         <label for="templateEscalation">Template Escalation</label>
+                         <input pInputText type="text" id="templateEscalation" name="templateEscalation" formControlName="templateEscalation"><br>
+                         <small *ngIf="!ruleForm.get('templateEscalation')?.valid && ruleForm.get('templateEscalation')?.touched">
+                             <span style="color:red;">
+                                 Please enter valid template Escalation.
+                             </span>
+                         </small>
+                     </div>
+                 </div>
+ 
+                 
+                 <div class="p-fluid">
+                     <div class="p-field">
+                         <label for="templateReminder">Template Reminder</label>
+                         <input pInputText type="text" id="templateReminder" name="templateReminder" formControlName="templateReminder"><br>
+                         <small *ngIf="!ruleForm.get('templateReminder')?.valid && ruleForm.get('templateReminder')?.touched">
+                             <span style="color:red;">
+                                 Please enter valid template Reminder.
+                             </span>
+                         </small>
+                     </div>
+                 </div>
+ 
+                 
+                 <div class="p-fluid">
+                     <div class="p-field">
+                         <label for="scope">Scope</label>
+                         <input pInputText type="text" id="scope" name="scope" formControlName="scope"><br>
+                         <small *ngIf="!ruleForm.get('scope')?.valid && ruleForm.get('scope')?.touched">
+                             <span style="color:red;">
+                                 Please enter valid scope.
+                             </span>
+                         </small>
+                     </div>
+                 </div>
+ 
+                 <div class="p-fluid">
+                     <div class="p-field">
+                         <label for="entityIdStr">Entity Id</label>
+                         <input pInputText type="text" id="entityIdStr" name="entityIdStr" formControlName="entityIdStr"><br>
+                         <small *ngIf="!ruleForm.get('entityIdStr')?.valid && ruleForm.get('entityIdStr')?.touched">
+                             <span style="color:red;">
+                                 Please enter valid Entity Id Str.
+                             </span>
+                         </small>
+                     </div>
+                 </div>
+ 
+                 <div class="p-fluid">
+                     <div class="p-field">
+                         <label for="entityIdNum">Entity Id</label>
+                         <input pInputText type="text" id="entityIdNum" name="entityIdNum" formControlName="entityIdNum"><br>
+                         <small *ngIf="!ruleForm.get('entityIdNum')?.valid && ruleForm.get('entityIdNum')?.touched">
+                             <span style="color:red;">
+                                 Please enter valid entity Id Num.
+                             </span>
+                         </small>
+                     </div>
+                 </div>
+             
+         <p-divider></p-divider>
+     
+         <!-- <ng-template pTemplate="footer">
+             <button pButton>Save</button>
+         </ng-template> -->
+     
+         <div class="p-fluid" style="margin-bottom: 30px;" >
+             <button [disabled]="!ruleForm.valid" pButton label="Next" (click)="onSave()">
+             </button>
+         </div>
+         
+ </div>
+ </div>
+ </form>
     
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="reminderPeriod2">Reminder Period2</label>
-                        <input pInputTextarea type="text" id="reminderPeriod2" name="reminderPeriod2" formControlName="reminderPeriod2"><br>
-                        <small *ngIf="!ruleForm.get('reminderPeriod2')?.valid && ruleForm.get('reminderPeriod2')?.touched">
-                            <span style="color:red;">
-                                Please enter valid Reminder Period2.
-                            </span>
-                        </small>
+            </ng-template>
+    
+            <ng-template pTemplate="footer">
+                <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+                <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveClient()"></button>
+                <!-- <button type="button" pButton pRipple (click)="showSuccess()" label="Success" class="p-button-success"></button> -->
+    
+            </ng-template>
+        </p-dialog>
+        <p-toast></p-toast>
+    
+        <p-progressSpinner *ngIf="loader" id="loader" animationDuration="3s"></p-progressSpinner>
+    
+    
+        <!-- Table to show client data -->
+        <!-- <div>
+            <p-table styleClass="table" #dt [value]="client1" [rows]="5" [paginator]="true" [globalFilterFields]="['companyName','PAN','groupCompany','approver']" [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        <h5 class="p-m-0">Manage Products</h5>
+                        <span class="p-input-icon-left">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+                placeholder="Search..." />
+            </span>
                     </div>
-                </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+    
+                        </th>
+    
+                        <th pSortableColumn="id">Client Id
+                            <p-sortIcon field="id"></p-sortIcon>
+                        </th>
+    
+                        <th pSortableColumn="companyName">Company Name
+                            <p-sortIcon field="companyName"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="PAN">Permenant Account Number (PAN)
+                            <p-sortIcon field="PAN"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="TAN">Tax collection Account Number (TAN)
+                            <p-sortIcon field="TAN"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="groupCompany">Group Company
+                            <p-sortIcon field="groupCompany"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="PrecisionId">Precision Id
+                            <p-sortIcon field="PrecisionId"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="approver">Approver
+                            <p-sortIcon field="approver"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="createdBy">Created By
+                            <p-sortIcon field="createdBy"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="createdOn">Created On
+                            <p-sortIcon field="createdOn"></p-sortIcon>
+                        </th>
+                        <th></th>
+                        <th>Action</th>
+                        <th pSortableColumn="status">Status(Active/Deactive)</th>
+    
+    
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-client1>
+                    <tr>
+                        <td>
+    
+                        </td>
+                        <td>{{client1.id}}</td>
+                        <td>{{client1.companyName}}</td>
+                        <td>{{client1.pan}}</td>
+                        <td>{{client1.tan}}</td>
+                        <td>{{client1.groupCompany}}</td>
+                        <td>{{client1.precisionId}}</td>
+                        <td>{{client1.approver}}</td>
+                        <td>{{client1.createdAt| date:'EEE, dd-MMM yyyy'}}</td>
+                        <td>{{client1.updatedAt | date:'EEE, dd-MMM yyyy'}}</td>
+    
+                        <td></td>
+                        <td>
+                            <p-button pButton pRipple icon="pi pi-pencil" (click)="editClient(client1)" class="p-button-rounded p-button-success p-mr-2"></p-button>
+                        </td>
+                        <td styleClass="tButton">
+                            <p-toggleButton [(ngModel)]="client1.status" onIcon="pi pi-check" offIcon="pi pi-times" (click)="changeStatus(client1)" [style]="{'width': '5em'}"></p-toggleButton>
+                        </td>
+    
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total there are {{client1 ? client1.length : 0 }} clients.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div> -->
 
+
+        <!-- edit table -->
+
+        <div class="card">
+            <h5>Row Editing</h5>
+                <p-table [value]="products2" dataKey="id" editMode="row">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th style="width:8rem"></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-product let-editing="editing" let-ri="rowIndex">
+                        <tr [pEditableRow]="product">
+                            <td pEditableColumn>
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" [(ngModel)]="product.code">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.code}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td pEditableColumn>
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" [(ngModel)]="product.name" required>
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.name}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td pEditableColumn>
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <p-dropdown [options]="statuses" [(ngModel)]="product.inventoryStatus" [style]="{'width':'100%'}"></p-dropdown>
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.inventoryStatus}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td pEditableColumn>
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" [(ngModel)]="product.price">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.price | currency: 'USD'}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td style="text-align:center">
+                                <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(product)" class="p-button-rounded p-button-text"></button>
+                                <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(product)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+                                <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(product, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
             </div>
         
-            <div class="p-col-4 p-offset-1">
-        
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="reminderIds2">Reminder Ids2</label>
-                        <input pInputText type="text" id="reminderIds2" name="reminderIds2" formControlName="reminderIds2"><br>
-                        <small *ngIf="!ruleForm.get('reminderIds2')?.valid && ruleForm.get('reminderIds2')?.touched">
-                            <span style="color:red;">
-                                Please enter valid Reminder Ids2.
-                            </span>
-                        </small>
-                    </div>
-                </div>
 
-                
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="reminderPeriod3">Reminder Period3</label>
-                        <input pInputText type="text" id="reminderPeriod3" name="reminderPeriod3" formControlName="reminderPeriod3"><br>
-                        <small *ngIf="!ruleForm.get('reminderPeriod3')?.valid && ruleForm.get('reminderPeriod3')?.touched">
-                            <span style="color:red;">
-                                Please enter valid reminder Period3.
-                            </span>
-                        </small>
-                    </div>
-                </div>
-
-                
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="reminderIds3">Reminder Ids3</label>
-                        <input pInputText type="email" id="reminderIds3" name="reminderIds3" formControlName="reminderIds3"><br>
-                        <small *ngIf="!ruleForm.get('reminderIds3')?.valid && ruleForm.get('reminderIds3')?.touched">
-                            <span style="color:red;">
-                                Please enter valid reminder Ids3
-                            </span>
-                        </small>
-                    </div>
-                </div>
-
-                
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="templateEscalation">Template Escalation</label>
-                        <input pInputText type="text" id="templateEscalation" name="templateEscalation" formControlName="templateEscalation"><br>
-                        <small *ngIf="!ruleForm.get('templateEscalation')?.valid && ruleForm.get('templateEscalation')?.touched">
-                            <span style="color:red;">
-                                Please enter valid template Escalation.
-                            </span>
-                        </small>
-                    </div>
-                </div>
-
-                
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="templateReminder">Template Reminder</label>
-                        <input pInputText type="text" id="templateReminder" name="templateReminder" formControlName="templateReminder"><br>
-                        <small *ngIf="!ruleForm.get('templateReminder')?.valid && ruleForm.get('templateReminder')?.touched">
-                            <span style="color:red;">
-                                Please enter valid template Reminder.
-                            </span>
-                        </small>
-                    </div>
-                </div>
-
-                
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="scope">Scope</label>
-                        <input pInputText type="text" id="scope" name="scope" formControlName="scope"><br>
-                        <small *ngIf="!ruleForm.get('scope')?.valid && ruleForm.get('scope')?.touched">
-                            <span style="color:red;">
-                                Please enter valid scope.
-                            </span>
-                        </small>
-                    </div>
-                </div>
-
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="entityIdStr">Entity Id</label>
-                        <input pInputText type="text" id="entityIdStr" name="entityIdStr" formControlName="entityIdStr"><br>
-                        <small *ngIf="!ruleForm.get('entityIdStr')?.valid && ruleForm.get('entityIdStr')?.touched">
-                            <span style="color:red;">
-                                Please enter valid Entity Id Str.
-                            </span>
-                        </small>
-                    </div>
-                </div>
-
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="entityIdNum">Entity Id</label>
-                        <input pInputText type="text" id="entityIdNum" name="entityIdNum" formControlName="entityIdNum"><br>
-                        <small *ngIf="!ruleForm.get('entityIdNum')?.valid && ruleForm.get('entityIdNum')?.touched">
-                            <span style="color:red;">
-                                Please enter valid entity Id Num.
-                            </span>
-                        </small>
-                    </div>
-                </div>
-            
-        <p-divider></p-divider>
-    
-        <!-- <ng-template pTemplate="footer">
-            <button pButton>Save</button>
-        </ng-template> -->
-    
-        <div class="p-fluid" style="margin-bottom: 30px;" >
-            <button [disabled]="!ruleForm.valid" pButton label="Next" (click)="onSave()">
-            </button>
-        </div>
-        
-</div>
-</div>
-</form>
-
+    </div>
