@@ -55,64 +55,10 @@ export class CrudRulesComponent implements OnInit {
       }
     )
 
-<<<<<<< HEAD
-
-    this.proservice.getRuleData().subscribe((data:RuleData)=>{
-      // if(data) 
-      // {
-      //   this.hideloader();
-      // }
-       console.log("i am from getRule data",data);
-       // this.ruleData = data['content']
-       this.client=data['content'];
-      console.log("i am from init",this.client);
-    
-       
-     })
-
-
-    this.proservice.getProjectDetails().subscribe((data:any)=>{
-      if(data) 
-     {
-       this.hideloader();
-     }
-     console.log(data['content']);
-     this.projectData=data['content'];
-     
-     console.log("i am from project details",this.projectData);
-     
-     
-    })
-
-     this.primengConfig.ripple = true;
-  }
-
-  hideloader() {
-    this.loader=false;
-  }
-
-  // onSave() {
-
-  //   this.submitted=true;
-
-  //   this.ruleForm.value.projectId=this.selectedProjectId['projectId'];
-  //   //console.log(this.ruleForm.value.projectId);
-  //   this.ruleForm.value.level=this.selectedLevel['level']; 
-
-  //   console.log("ninad",this.ruleForm.value);
-
-  //   this.proservice.ruleData(this.ruleForm.value).subscribe(
-  //     (data:any)=>{
-  //       alert("rule data successfully added");
-  //       console.log(data);
-  //       // this.router.navigate(['/uikit/rules']);
-  //       window.location.reload();
-=======
     this.service.getRuleData().subscribe(
       (data: any)=>{
         this.rule1 = data["content"];
         console.log(this.rule1);
->>>>>>> v4_19thjan
         
       },
       (error)=>{
