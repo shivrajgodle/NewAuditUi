@@ -86,6 +86,8 @@ import {TooltipModule} from 'primeng/tooltip';
 import {TreeModule} from 'primeng/tree';
 import {TreeTableModule} from 'primeng/treetable';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
+import {EditorModule} from 'primeng/editor';
+
 
 // Application Components
 import {AppCodeModule} from './app.code.component';
@@ -247,7 +249,8 @@ FullCalendarModule.registerPlugins([
         TreeTableModule,
         VirtualScrollerModule,
         AppCodeModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        EditorModule
     ],
     declarations: [
         AppComponent,

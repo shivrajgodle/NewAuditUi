@@ -1,3 +1,45 @@
-
 <app-project></app-project>
-<p>document works!</p>
+<!-- <table>
+    <tr>
+        <td>
+            <input pInputText placeholder="Enter Document Name">
+        </td>
+        <td>
+            <input pInputText placeholder="Enter Document Type">
+        </td>
+        <td>
+            <input pInputText placeholder="Enter Preference">
+        </td>
+        <td>
+            <p-fileUpload name=files[] mode="advanced" customUpload="true" (uploadHandler)="myUploader($event)"></p-fileUpload>
+        </td>
+    </tr>
+</table> -->
+<h2 style="margin-top: 20px">
+    <p>
+        Upload Documents
+
+    </p>
+</h2>
+<p-divider></p-divider>
+<table>
+    <tr>
+<td><p-dropdown [options]=clientSpecifics [(ngModel)]="selectedPreference" [ngModelOptions]="{standalone: true}" optionLabel='clientSpecific' (onChange)="onSelect()"  placeholder="select Client"></p-dropdown></td>
+<!-- <p-toggleButton onLabel="Specific" offLabel="Regular" [(ngModel)]="value" (click)="onSelect()"></p-toggleButton> -->
+<!-- <td><input pInputText [(ngModel)]="uploadedDocument.description" placeholder="Document Description"></td> -->
+<!-- <td><input pInputText [(ngModel)]="uploadedDocument.status" placeholder="Status"></td> -->
+<td><input pInputText [(ngModel)]="uploadedDocument.projectId" placeholder="Project ID"></td>
+<td><input pInputText [(ngModel)]="uploadedDocument.docType" placeholder="Document Type"></td>
+
+<td>
+<button  pButton (click)="onClick()"> &nbsp;&nbsp;<i class="pi pi-plus"></i></button>
+</td>
+</tr>
+</table>
+<div *ngFor="let f of files">
+    <p-divider></p-divider>
+
+<td><p-fileUpload  mode="advanced" customUpload="true"  (uploadHandler)="myUploader($event)"></p-fileUpload></td>
+
+<p-divider></p-divider>
+</div>
