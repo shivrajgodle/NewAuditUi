@@ -5,8 +5,9 @@ import { MessageService, PrimeNGConfig, SelectItem } from 'primeng/api';
 import { ProjectServiceService } from 'src/app/Services/project-service.service';
 import { Product } from '../../domain/product';
 import { ProductService } from '../../service/productservice';
-import { Client, ClientData, RuleData } from './client';
+import { Client, ClientData } from './client';
 import Swal from 'sweetalert2';
+import { RuleData } from '../crud-rules/model/rule';
 
 interface Level{
   level:string;

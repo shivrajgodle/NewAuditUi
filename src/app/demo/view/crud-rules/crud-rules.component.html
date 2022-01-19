@@ -1,260 +1,211 @@
 <app-project></app-project>
-
-<h2 style="margin-top: 30px;">
-    <p>Escalation Data</p>
-</h2>
-
-
-
-    <div class="container">
-        <div class="card">
-            <p-toolbar styleClass="p-mb-4">
-                <ng-template pTemplate="left">
-                    <button pButton pRipple label="Add Escalation" icon="pi pi-plus" (click)="addClient()" class="p-button-success p-mr-2" style="border: 1px solid black; color: black;"></button>
-                </ng-template>
-            </p-toolbar>
-        </div>
-    
-
-        
-    <!-- Dialog box to add Client -->
-    <p-dialog [(visible)]="clientDialogue" [style]="{width: '1050px'}" header=" Escalation Rule" [modal]="true" styleClass="p-fluid">
-        <ng-template pTemplate="content">
-        
-            <div class="p-grid" style="margin-top: 30px;">
-
-            <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
-
-            <!-- <p-divider></p-divider> -->
-
-            <div class="p-fluid">
-                <div class="p-field">
-                    <label for="projectId">Project ID</label>
-                    <p-dropdown [options]=projectData [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedProjectId" optionLabel='projectId' placeholder="select Project ID"></p-dropdown><br>
-                    <!-- <small *ngIf="!ruleForm.get('projectId')?.valid && ruleForm.get('projectId')?.touched"> 
-                        <span style="color:red;">
-                            Please enter valid Project ID.
-                        </span>
-                    </small>-->
-                </div>
-            </div>
-
-            <div class="p-field">
-                <label for="name">Trigger</label>
-                <input type="text" pInputText id="name"  [(ngModel)]="client.trigger" required autofocus />
-                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.trigger">Company Name is required.</small> -->
-            </div>
-
-            <div class="p-fluid">
-                <div class="p-field">
-                    <label for="level">Level</label>
-                    <p-dropdown [options]=level [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedLevel" optionLabel='level' placeholder="select Level"></p-dropdown><br>
-                    <!-- <small *ngIf="!ruleForm.get('level')?.valid && ruleForm.get('level')?.touched"> 
-                        <span style="color:red;">
-                            Please enter valid Level.
-                        </span>
-                    </small> -->
-                </div>
-            </div>
-
-            <div class="p-field">
-                <label for="description">escalation Ids</label>
-                <input type="text" pInputText id="escalationIds" pInputText  [(ngModel)]="client.escalationIds" required autofocus/>
-            </div>
-
-            <div class="p-field">
-                <label for="description">no Days No Response</label>
-                <input type="text" pInputText id="noDaysNoResponse" pInputText  [(ngModel)]="client.noDaysNoResponse" required autofocus/>
-            </div>
-
-            <div class="p-field">
-                <label for="name">reminder Period1</label>
-                <input type="text" pInputText id="reminderPeriod1"  [(ngModel)]="client.reminderPeriod1" required autofocus />
-                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.reminderPeriod1">Group Company Name is required.</small> -->
-            </div>
-
-            <div class="p-field">
-                <label for="name">reminder Ids1</label>
-                <input type="text" pInputText id="reminderIds1"  [(ngModel)]="client.reminderIds1" required autofocus />
-                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.reminderIds1">Precision ID is required.</small> -->
-            </div>
-      
-
-
-            <div class="p-field">
-                <label for="name">reminder Period2</label>
-                <input type="text" pInputText id="reminderPeriod2"  [(ngModel)]="client.reminderPeriod2" required autofocus />
-                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.reminderPeriod2">Group Company Name is required.</small> -->
-            </div>
-        </div>
-
-        <div class="p-col-4 p-offset-1">
-            <div class="p-field">
-                <label for="name">reminder Ids2</label>
-                <input type="text" pInputText id="reminderIds2"  [(ngModel)]="client.reminderIds2" required autofocus />
-                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.reminderIds2">Precision ID is required.</small> -->
-            </div>
-
-            <div class="p-field">
-                <label for="name">reminder Period3</label>
-                <input type="text" pInputText id="reminderPeriod3"  [(ngModel)]="client.reminderPeriod3" required autofocus />
-                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.reminderPeriod3">Group Company Name is required.</small> -->
-            </div>
-
-            <div class="p-field">
-                <label for="name">reminder Ids3</label>
-                <input type="text" pInputText id="reminderIds3"  [(ngModel)]="client.reminderIds3" required autofocus />
-                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.reminderIds3">Precision ID is required.</small> -->
-            </div>
-
-            <div class="p-field">
-                <label for="name">template Escalation</label>
-                <input type="text" pInputText id="templateEscalation"  [(ngModel)]="client.templateEscalation" required autofocus />
-                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.templateEscalation">Approver Name is required.</small> -->
-            </div>
-            <div class="p-field">
-                <label for="name">template Reminder</label>
-                <input type="text" pInputText id="templateReminder"  [(ngModel)]="client.templateReminder" required autofocus />
-                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.templateReminder">Approver Name is required.</small> -->
-            </div>
-            <div class="p-field">
-                <label for="name">scope</label>
-                <input type="text" pInputText id="scope"  [(ngModel)]="client.scope" required autofocus />
-                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.scope">Approver Name is required.</small> -->
-            </div>
-            <div class="p-field">
-                <label for="name">entityIdStr</label>
-                <input type="text" pInputText id="entityIdStr"  [(ngModel)]="client.entityIdStr" required autofocus />
-                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.entityIdStr">Approver Name is required.</small> -->
-            </div>
-            <div class="p-field">
-                <label for="name">entityIdNum</label>
-                <input type="text" pInputText id="entityIdNum"  [(ngModel)]="client.entityIdNum" required autofocus />
-                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.entityIdNum">Approver Name is required.</small> -->
-            </div>
-        </div>
+<header>
+    <h3>Escalation Rules</h3>
+</header>
+<div class="container">
+    <div class="card">
+        <p-toolbar styleClass="p-mb-4">
+            <ng-template pTemplate="left">
+                <button pButton pRipple label="Add Client" icon="pi pi-plus" (click)="addRule()" class="p-button-success p-mr-2" style="border: 1px solid black; color: white;"></button>
+            </ng-template>
+        </p-toolbar>
     </div>
 
+    <p-dialog [(visible)]="ruleDialogue" [style]="{width: '70%'}" header="Client Details" [modal]="true" styleClass="p-fluid">
+        <ng-template pTemplate="content">
+            <div class="p-grid" style="margin-top: 30px;">
+            <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
 
+            <div class="p-field">
+                <label for="name">Project ID</label>
+                <p-dropdown [options]=projectData [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedProjectId" optionLabel='projectId' placeholder="select Project ID"></p-dropdown><br>
+                <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.companyName">Company Name is required.</small>
+            </div>
+
+            <div class="p-field">
+                <label for="trigger">Trigger</label>
+                <input type="text" pInputText id="trigger" pInputText [(ngModel)]="rule.trigger" required autofocus/>
+            </div>
+
+            <div class="p-field">
+                <label for="level">Level</label>
+                <p-dropdown [options]=levels [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedLevel" optionLabel='level' placeholder="select Level"></p-dropdown><br>
+            </div>
+
+            <div class="p-field">
+                <label for="escalationId">Escalation ID</label>
+                <input type="text" pInputText id="escalation Id" [(ngModel)]="rule.escalationIds" required autofocus />
+                <small class="p-invalid" style="color: red;" *ngIf="submitted && !rule.escalationId">Escalation ID is required.</small>
+            </div>
+
+            <div class="p-field">
+                <label for="noDaysNoResponse">no. of Days of No Response</label>
+                <input type="text" pInputText id="noDaysNoResponse" [(ngModel)]="rule.noDaysNoResponse" required autofocus />
+                <small class="p-invalid" style="color: red;" *ngIf="submitted && !rule.noDaysNoResponse">no of Days of No Response is required.</small>
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="reminderPeriod1">Reminder Period1</label>
+                    <input pInputText type="text" id="reminderPeriod1" name="reminderPeriod1" [(ngModel)]="rule.reminderPeriod1">
+                    <br>
+                </div>
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="reminderIds1">Reminder Id1</label>
+                    <input pInputText type="text" id="reminderIds1" name="reminderIds1" [(ngModel)]="rule.reminderIds1"><br>
+                </div>
+            </div>
+       
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="reminderPeriod2">Reminder Period2</label>
+                    <input pInputText type="text" id="reminderPeriod2" name="reminderPeriod2" [(ngModel)]="rule.reminderPeriod2"><br>
+                </div>
+            </div>
+        </div>
+    
+        <div class="p-col-4 p-offset-1">
+    
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="reminderIds2">Reminder Ids2</label>
+                    <input pInputText type="text" id="reminderIds2" name="reminderIds2" [(ngModel)]="rule.reminderIds2"><br>                    </div>
+            </div>
+
+            
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="reminderPeriod3">Reminder Period3</label>
+                    <input pInputText type="text" id="reminderPeriod3" name="reminderPeriod3" [(ngModel)]="rule.reminderPeriod3"><br>
+                </div>
+            </div>
+
+            
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="reminderIds3">Reminder Ids3</label>
+                    <input pInputText type="email" id="reminderIds3" name="reminderIds3" [(ngModel)]="rule.reminderIds3"><br>
+                </div>
+            </div>
+
+            
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="templateEscalation">Template Escalation</label>
+                    <input pInputText type="text" id="templateEscalation" name="templateEscalation" [(ngModel)]="rule.templateEscalation"><br>
+                </div>
+            </div>
+
+            
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="templateReminder">Template Reminder</label>
+                    <input pInputText type="text" id="templateReminder" name="templateReminder" [(ngModel)]="rule.templateReminder"><br>
+                </div>
+            </div>
+
+            
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="scope">Scope</label>
+                    <input pInputText type="text" id="scope" name="scope" [(ngModel)]="rule.scope"><br>
+                </div>
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="entityIdStr">Entity Id</label>
+                    <input pInputText type="text" id="entityIdStr" name="entityIdStr" [(ngModel)]="rule.entityIdStr"><br>
+                </div>
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="entityIdNum">Entity Id</label>
+                    <input pInputText type="text" id="entityIdNum" name="entityIdNum" [(ngModel)]="rule.entityIdNum"><br>
+                </div>
+            </div>
+        </div>
+        </div>
         </ng-template>
 
         <ng-template pTemplate="footer">
             <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveClient()"></button>
-            <!-- <button type="button" pButton pRipple (click)="showSuccess()" label="Success" class="p-button-success"></button> -->
-
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveRule()"></button>
         </ng-template>
     </p-dialog>
-    <p-toast></p-toast>
 
-    <p-progressSpinner *ngIf="loader" id="loader" animationDuration="3s"></p-progressSpinner>
-    
-    
-    
-            
-    <!-- Table to show client data -->
+
+
+
     <div>
-        <p-table styleClass="table" #dt [value]="client" [rows]="10" [paginator]="true" [globalFilterFields]="['projectId','trigger','level','escalationIds']" [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        <p-table styleClass="table" #dt [value]="rule1" [rows]="5" [paginator]="true" [globalFilterFields]="['trigger','level','escalationIds','noDaysNoResponse','reminderPeriod1','reminderIds1','templateEscalation','templateReminder','scope']" [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
             [showCurrentPageReport]="true">
             <ng-template pTemplate="caption">
                 <div class="p-d-flex p-ai-center p-jc-between">
-                    <h5 class="p-m-0">Manage Products</h5>
+                    <h5 class="p-m-0">Manage Escalation Rules</h5>
                     <span class="p-input-icon-left">
-          <i class="pi pi-search"></i>
-          <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
-            placeholder="Search..." />
-        </span>
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search..."/>
+                    </span>
                 </div>
             </ng-template>
+            
             <ng-template pTemplate="header">
                 <tr>
-                    <th style="width: 3rem">
+                    <th pSortableColumn="projectId">Project ID</th>
 
-                    </th>
+                    <th pSortableColumn="trigger">Trigger</th>
 
-                    <th pSortableColumn="projectId">project Id
-                        <p-sortIcon field="projectId"></p-sortIcon>
-                    </th>
+                    <th pSortableColumn="level">Level</th>
 
-                    <th pSortableColumn="trigger">trigger
-                        <p-sortIcon field="trigger"></p-sortIcon>
-                    </th>
-                    <th pSortableColumn="level">level
-                        <p-sortIcon field="level"></p-sortIcon>
-                    </th>
-                    <th pSortableColumn="escalationIds">escalation Ids
-                        <p-sortIcon field="escalationIds"></p-sortIcon>
-                    </th>
-                    <th pSortableColumn="noDaysNoResponse">noDaysNoResponse
-                        <p-sortIcon field="noDaysNoResponse"></p-sortIcon>
-                    </th>
-                    <!-- <th pSortableColumn="reminderPeriod1">reminderPeriod1
-                        <p-sortIcon field="reminderPeriod1"></p-sortIcon>
-                    </th>
-                    <th pSortableColumn="reminderIds1">reminderIds1
-                        <p-sortIcon field="reminderIds1"></p-sortIcon>
-                    </th>
-                    <th pSortableColumn="reminderPeriod2"> reminderPeriod2
-                        <p-sortIcon field="reminderPeriod2"></p-sortIcon>
-                    </th>
-                    <th pSortableColumn="reminderIds2">reminderIds2
-                        <p-sortIcon field="reminderIds2"></p-sortIcon>
-                    </th>
-                    <th pSortableColumn="reminderPeriod3"> reminderPeriod2
-                        <p-sortIcon field="reminderPeriod3"></p-sortIcon>
-                    </th>
-                    <th pSortableColumn="reminderIds3"> reminder Period3
-                        <p-sortIcon field="reminderIds3"></p-sortIcon>
-                    </th> -->
-                
-                    <th pSortableColumn="templateEscalation"> templateEscalation
-                        <p-sortIcon field="templateEscalation"></p-sortIcon>
-                    </th>
-                    <th pSortableColumn="templateReminder"> templateReminder
-                        <p-sortIcon field="templateReminder"></p-sortIcon>
-                    </th>
-                    <th pSortableColumn="scope"> scope
-                        <p-sortIcon field="scope"></p-sortIcon>
-                    </th>
-                    <th pSortableColumn="entityIdStr"> entityIdStr
-                        <p-sortIcon field="entityIdStr"></p-sortIcon>
-                    </th>
+                    <th pSortableColumn="escalationIds">Escalation ID</th>
 
-                    <th pSortableColumn="entityIdNum"> entityIdNum
-                        <p-sortIcon field="entityIdNum"></p-sortIcon>
-                    </th>
+                    <th pSortableColumn="noDaysNoResponse">No. Of days No Response</th>
+                    
+                    <th pSortableColumn="reminderPeriod1">Reminder Period1</th>
+
+                    <th pSortableColumn="reminderIds1">Reminder Id1</th>
+
+                    <th pSortableColumn="templateEscalation">Template Escalation</th>
+
+                    <th pSortableColumn="templateReminder">Template Reminder</th>
+
+                    <th pSortableColumn="scope">Scope</th>
+
+                    <th>Action</th>
+                    <th></th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-client>
+
+            <ng-template pTemplate="body" let-rule1>
                 <tr>
+                    <td>{{rule1.projectId}}</td>
+                    <td>{{rule1.trigger}}</td>
+                    <td>{{rule1.level}}</td>
+                    <td>{{rule1.escalationIds}}</td>
+                    <td>{{rule1.noDaysNoResponse}}</td>
+                    <td>{{rule1.reminderPeriod1}}</td>
+                    <td>{{rule1.reminderIds1}}</td>
+                    <td>{{rule1.templateEscalation}}</td>
+                    <td>{{rule1.templateReminder}}</td>
+                    <td>{{rule1.scope}}</td>
                     <td>
-
+                        <button pButton pRipple icon="pi pi-pencil" (click)="editRule(rule1)" class="p-button-success"></button>
                     </td>
-                    <td>{{client.projectId}}</td>
-                    <td>{{client.trigger}}</td>
-                    <td>{{client.level}}</td>
-                    <td>{{client.escalationIds}}</td>
-                    <td>{{client.noDaysNoResponse}}</td>
-                    <!-- <td>{{client.reminderPeriod1}}</td>
-                    <td>{{client.reminderIds1}}</td>
-                    <td>{{client.reminderPeriod2}}</td>
-                    <td>{{client.reminderIds2}}</td>
-                    <td>{{client.reminderPeriod3}}</td>
-                    <td>{{client.reminderIds3}}</td> -->
-                    <td>{{client.templateEscalation}}</td>
-                    <td>{{client.templateReminder}}</td>
-                    <td>{{client.scope}}</td>
-                    <td>{{client.entityIdStr}}</td>
-                    <td>{{client.entityIdNum}}</td>
-                    <td></td>
                     <td>
-                        <p-button pButton pRipple icon="pi pi-pencil" (click)="editClient(client)" class="p-button-rounded p-button-success p-mr-2"></p-button>
+                        <button pButton pRipple icon="pi pi-trash" (click)="deleteRule(rule1.id)" class="p-button-danger"></button>
                     </td>
                 </tr>
             </ng-template>
+
             <ng-template pTemplate="summary">
                 <div class="p-d-flex p-ai-center p-jc-between">
-                    In total there are {{client ? client.length : 0 }} clients.
+                    In total there are {{rule1 ? rule1.length : 0 }} Rules.
                 </div>
             </ng-template>
         </p-table>
