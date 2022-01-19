@@ -44,3 +44,7 @@ export interface Client{
   entityIdStr ?:string;
   entityIdNum ?:string;
   }
+
+
+
+  

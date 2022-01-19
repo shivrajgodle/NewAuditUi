@@ -103,6 +103,7 @@ export class CrudRulesComponent implements OnInit {
        // this.ruleData = data['content']
        this.client=data['content'];
       console.log("i am from init",this.client);
+    
        
      })
 
