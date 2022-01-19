@@ -41,6 +41,12 @@ export class ProjectServiceService {
   {
     return this.http.get(`${environment.baseUrl}/escrule`);
   }
+
+  // getRuleData1()
+  // {
+  //   return this.http.get<any>(`${environment.baseUrl}/escrule`).toPromise().then(res => res.data as RuleData[]).then(data => data);
+  // }
+
   editRuleData(id:string,data:RuleData)
   {
     console.log("Rule data",data);

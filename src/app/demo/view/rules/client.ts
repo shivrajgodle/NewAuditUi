@@ -26,7 +26,7 @@ export interface Client{
   	
   export interface RuleData{
     
-    id?:string;
+   id?:string;
    projectId?:string ;
 	 trigger?:string ;
    level?:string ;

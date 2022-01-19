@@ -1,0 +1,262 @@
+<app-project></app-project>
+
+<h2 style="margin-top: 30px;">
+    <p>Escalation Data</p>
+</h2>
+
+
+
+    <div class="container">
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="Add Escalation" icon="pi pi-plus" (click)="addClient()" class="p-button-success p-mr-2" style="border: 1px solid black; color: black;"></button>
+                </ng-template>
+            </p-toolbar>
+        </div>
+    
+
+        
+    <!-- Dialog box to add Client -->
+    <p-dialog [(visible)]="clientDialogue" [style]="{width: '1050px'}" header=" Escalation Rule" [modal]="true" styleClass="p-fluid">
+        <ng-template pTemplate="content">
+        
+            <div class="p-grid" style="margin-top: 30px;">
+
+            <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
+
+            <!-- <p-divider></p-divider> -->
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="projectId">Project ID</label>
+                    <p-dropdown [options]=projectData [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedProjectId" optionLabel='projectId' placeholder="select Project ID"></p-dropdown><br>
+                    <!-- <small *ngIf="!ruleForm.get('projectId')?.valid && ruleForm.get('projectId')?.touched"> 
+                        <span style="color:red;">
+                            Please enter valid Project ID.
+                        </span>
+                    </small>-->
+                </div>
+            </div>
+
+            <div class="p-field">
+                <label for="name">Trigger</label>
+                <input type="text" pInputText id="name"  [(ngModel)]="client.trigger" required autofocus />
+                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.trigger">Company Name is required.</small> -->
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="level">Level</label>
+                    <p-dropdown [options]=level [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedLevel" optionLabel='level' placeholder="select Level"></p-dropdown><br>
+                    <!-- <small *ngIf="!ruleForm.get('level')?.valid && ruleForm.get('level')?.touched"> 
+                        <span style="color:red;">
+                            Please enter valid Level.
+                        </span>
+                    </small> -->
+                </div>
+            </div>
+
+            <div class="p-field">
+                <label for="description">escalation Ids</label>
+                <input type="text" pInputText id="escalationIds" pInputText  [(ngModel)]="client.escalationIds" required autofocus/>
+            </div>
+
+            <div class="p-field">
+                <label for="description">no Days No Response</label>
+                <input type="text" pInputText id="noDaysNoResponse" pInputText  [(ngModel)]="client.noDaysNoResponse" required autofocus/>
+            </div>
+
+            <div class="p-field">
+                <label for="name">reminder Period1</label>
+                <input type="text" pInputText id="reminderPeriod1"  [(ngModel)]="client.reminderPeriod1" required autofocus />
+                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.reminderPeriod1">Group Company Name is required.</small> -->
+            </div>
+
+            <div class="p-field">
+                <label for="name">reminder Ids1</label>
+                <input type="text" pInputText id="reminderIds1"  [(ngModel)]="client.reminderIds1" required autofocus />
+                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.reminderIds1">Precision ID is required.</small> -->
+            </div>
+      
+
+
+            <div class="p-field">
+                <label for="name">reminder Period2</label>
+                <input type="text" pInputText id="reminderPeriod2"  [(ngModel)]="client.reminderPeriod2" required autofocus />
+                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.reminderPeriod2">Group Company Name is required.</small> -->
+            </div>
+        </div>
+
+        <div class="p-col-4 p-offset-1">
+            <div class="p-field">
+                <label for="name">reminder Ids2</label>
+                <input type="text" pInputText id="reminderIds2"  [(ngModel)]="client.reminderIds2" required autofocus />
+                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.reminderIds2">Precision ID is required.</small> -->
+            </div>
+
+            <div class="p-field">
+                <label for="name">reminder Period3</label>
+                <input type="text" pInputText id="reminderPeriod3"  [(ngModel)]="client.reminderPeriod3" required autofocus />
+                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.reminderPeriod3">Group Company Name is required.</small> -->
+            </div>
+
+            <div class="p-field">
+                <label for="name">reminder Ids3</label>
+                <input type="text" pInputText id="reminderIds3"  [(ngModel)]="client.reminderIds3" required autofocus />
+                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.reminderIds3">Precision ID is required.</small> -->
+            </div>
+
+            <div class="p-field">
+                <label for="name">template Escalation</label>
+                <input type="text" pInputText id="templateEscalation"  [(ngModel)]="client.templateEscalation" required autofocus />
+                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.templateEscalation">Approver Name is required.</small> -->
+            </div>
+            <div class="p-field">
+                <label for="name">template Reminder</label>
+                <input type="text" pInputText id="templateReminder"  [(ngModel)]="client.templateReminder" required autofocus />
+                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.templateReminder">Approver Name is required.</small> -->
+            </div>
+            <div class="p-field">
+                <label for="name">scope</label>
+                <input type="text" pInputText id="scope"  [(ngModel)]="client.scope" required autofocus />
+                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.scope">Approver Name is required.</small> -->
+            </div>
+            <div class="p-field">
+                <label for="name">entityIdStr</label>
+                <input type="text" pInputText id="entityIdStr"  [(ngModel)]="client.entityIdStr" required autofocus />
+                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.entityIdStr">Approver Name is required.</small> -->
+            </div>
+            <div class="p-field">
+                <label for="name">entityIdNum</label>
+                <input type="text" pInputText id="entityIdNum"  [(ngModel)]="client.entityIdNum" required autofocus />
+                <!-- <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.entityIdNum">Approver Name is required.</small> -->
+            </div>
+        </div>
+    </div>
+
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveClient()"></button>
+            <!-- <button type="button" pButton pRipple (click)="showSuccess()" label="Success" class="p-button-success"></button> -->
+
+        </ng-template>
+    </p-dialog>
+    <p-toast></p-toast>
+
+    <p-progressSpinner *ngIf="loader" id="loader" animationDuration="3s"></p-progressSpinner>
+    
+    
+    
+            
+    <!-- Table to show client data -->
+    <div>
+        <p-table styleClass="table" #dt [value]="client" [rows]="10" [paginator]="true" [globalFilterFields]="['projectId','trigger','level','escalationIds']" [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [showCurrentPageReport]="true">
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    <h5 class="p-m-0">Manage Products</h5>
+                    <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+            placeholder="Search..." />
+        </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 3rem">
+
+                    </th>
+
+                    <th pSortableColumn="projectId">project Id
+                        <p-sortIcon field="projectId"></p-sortIcon>
+                    </th>
+
+                    <th pSortableColumn="trigger">trigger
+                        <p-sortIcon field="trigger"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="level">level
+                        <p-sortIcon field="level"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="escalationIds">escalation Ids
+                        <p-sortIcon field="escalationIds"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="noDaysNoResponse">noDaysNoResponse
+                        <p-sortIcon field="noDaysNoResponse"></p-sortIcon>
+                    </th>
+                    <!-- <th pSortableColumn="reminderPeriod1">reminderPeriod1
+                        <p-sortIcon field="reminderPeriod1"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="reminderIds1">reminderIds1
+                        <p-sortIcon field="reminderIds1"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="reminderPeriod2"> reminderPeriod2
+                        <p-sortIcon field="reminderPeriod2"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="reminderIds2">reminderIds2
+                        <p-sortIcon field="reminderIds2"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="reminderPeriod3"> reminderPeriod2
+                        <p-sortIcon field="reminderPeriod3"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="reminderIds3"> reminder Period3
+                        <p-sortIcon field="reminderIds3"></p-sortIcon>
+                    </th> -->
+                
+                    <th pSortableColumn="templateEscalation"> templateEscalation
+                        <p-sortIcon field="templateEscalation"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="templateReminder"> templateReminder
+                        <p-sortIcon field="templateReminder"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="scope"> scope
+                        <p-sortIcon field="scope"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="entityIdStr"> entityIdStr
+                        <p-sortIcon field="entityIdStr"></p-sortIcon>
+                    </th>
+
+                    <th pSortableColumn="entityIdNum"> entityIdNum
+                        <p-sortIcon field="entityIdNum"></p-sortIcon>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-client>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>{{client.projectId}}</td>
+                    <td>{{client.trigger}}</td>
+                    <td>{{client.level}}</td>
+                    <td>{{client.escalationIds}}</td>
+                    <td>{{client.noDaysNoResponse}}</td>
+                    <!-- <td>{{client.reminderPeriod1}}</td>
+                    <td>{{client.reminderIds1}}</td>
+                    <td>{{client.reminderPeriod2}}</td>
+                    <td>{{client.reminderIds2}}</td>
+                    <td>{{client.reminderPeriod3}}</td>
+                    <td>{{client.reminderIds3}}</td> -->
+                    <td>{{client.templateEscalation}}</td>
+                    <td>{{client.templateReminder}}</td>
+                    <td>{{client.scope}}</td>
+                    <td>{{client.entityIdStr}}</td>
+                    <td>{{client.entityIdNum}}</td>
+                    <td></td>
+                    <td>
+                        <p-button pButton pRipple icon="pi pi-pencil" (click)="editClient(client)" class="p-button-rounded p-button-success p-mr-2"></p-button>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    In total there are {{client ? client.length : 0 }} clients.
+                </div>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

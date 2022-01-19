@@ -29,6 +29,7 @@ import { DocumentComponent } from './demo/view/document/document.component';
 import { SpecificDocComponent } from './demo/view/specific-doc/specific-doc.component';
 import { TeamMemberComponent } from './demo/view/team-member/team-member.component';
 import { EmailTemplateComponent } from './demo/view/email-template/email-template.component';
+import { CrudRulesComponent } from './demo/view/crud-rules/crud-rules.component';
 
 @NgModule({
     imports: [
@@ -41,6 +42,7 @@ import { EmailTemplateComponent } from './demo/view/email-template/email-templat
                     {path:'uikit/subpro',component:Subpro1Component},
                     {path:'uikit/users',component:UsersComponent},
                     {path:'uikit/rules',component:RulesComponent},
+                    {path:'uikit/crudrules',component:CrudRulesComponent},
                     {path:'uikit/client',component:ClientComponent},
                     {path:'uikit/docUpload',component:DocumentComponent},
                     {path:'uikit/specificDoc',component:SpecificDocComponent},

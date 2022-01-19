@@ -39,7 +39,7 @@ export class ProjectComponent implements OnInit {
       },
       {
         label: 'Rules',
-        routerLink: '/uikit/rules'
+        routerLink: '/uikit/crudrules'
       },
       {
         label: 'Email Template',
