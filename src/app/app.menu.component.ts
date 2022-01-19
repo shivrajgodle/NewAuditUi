@@ -42,7 +42,7 @@ export class AppMenuComponent implements OnInit {
                     { label: "Client Details", icon: "pi pi-fw pi-info-circle",routerLink:'/uikit/client' },
                     { label: "Documents", icon: "pi pi-fw pi-upload",routerLink:'/uikit/docUpload' },
                     { label: "User Details", icon: "pi pi-fw pi-users",routerLink:'/uikit/team' },
-                    { label: "Escalation Rules", icon: "pi pi-fw pi-globe",routerLink:'/uikit/rules' },
+                    { label: "Escalation Rules", icon: "pi pi-fw pi-globe",routerLink:'/uikit/crudrules' },
                     { label: "Email Template", icon: "pi pi-fw pi-envelope",routerLink:'/uikit/emailTemplate' },
                     { label: "Review Data", icon: "pi pi-fw pi-database",routerLink:'/' },
                 ],

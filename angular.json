@@ -29,12 +29,18 @@
                         ],
                         "styles": [
                             "src/styles.scss"
+<<<<<<< HEAD
                            
+=======
+>>>>>>> v4_19thjan
                         ],
                         "scripts": [
                             "node_modules/prismjs/prism.js",
                             "node_modules/prismjs/components/prism-typescript.js"
+<<<<<<< HEAD
                             
+=======
+>>>>>>> v4_19thjan
                         ],
                         "allowedCommonJsDependencies": ["@fullcalendar/daygrid","@fullcalendar/timegrid","@fullcalendar/interaction","chart.js"]
                     },
