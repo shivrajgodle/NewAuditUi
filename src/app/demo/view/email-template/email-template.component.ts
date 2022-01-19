@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 export class EmailTemplateComponent implements OnInit {
 
   emailTemplateForm!: FormGroup;
-  
   // selectedClientId:string;
 
   constructor(private router: Router) {}

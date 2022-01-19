@@ -5,7 +5,7 @@ import {AppMainComponent} from './app.main.component';
 @Component({
     selector: 'app-config',
     template: `
-        <a style="cursor: pointer" id="layout-config-button" class="layout-config-button" (click)="onConfigButtonClick($event)">
+        <!-- <a style="cursor: pointer" id="layout-config-button" class="layout-config-button" (click)="onConfigButtonClick($event)">
             <i class="pi pi-cog"></i>
         </a>
         <div class="layout-config" [ngClass]="{'layout-config-active': appMain.configActive}" (click)="appMain.onConfigClick($event)">
@@ -111,7 +111,7 @@ import {AppMainComponent} from './app.main.component';
                     </a>
                 </div>
             </div>
-        </div>
+        </div> -->
     `
 })
 export class AppConfigComponent implements OnInit {

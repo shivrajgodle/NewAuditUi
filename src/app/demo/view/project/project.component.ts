@@ -17,10 +17,11 @@ export class ProjectComponent implements OnInit {
   ngOnInit(): void {
 
     this.items = [
-      {
-        icon:"pi pi-home",
-        routerLink:'/'
-      },
+      // {
+      //   icon:"pi pi-home",
+      //   label:"Home",
+      //   routerLink:'/'
+      // },
       {
         label: 'Billing',
         routerLink:'/uikit/subpro'
