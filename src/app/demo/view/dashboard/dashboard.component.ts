@@ -18,10 +18,13 @@ export class DashboardComponent implements OnInit {
   taskcodes:TaskCode[];
   data:any;
 
+  sideBar:boolean=true;
+
   selectedTaskCode:string;
   
   constructor(private router:Router, private service:DataSharedService) { 
-
+    this.sideBar=false;
+    localStorage.setItem('sideBar','this.sideBar');
     this.taskcodes=[
       {taskCode:"0101"},
       {taskCode:"0102"},
@@ -51,7 +54,7 @@ export class DashboardComponent implements OnInit {
     localStorage.setItem('pcode',this.project.value.projectCode);
     localStorage.setItem('tcode',this.project.value.taskCode);
     console.log(this.data);
-  this.router.navigate(['/uikit/subpro']);    
+  this.router.navigate(['/main']);    
   }
 
 }

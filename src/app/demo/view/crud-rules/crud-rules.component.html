@@ -11,16 +11,16 @@
         </p-toolbar>
     </div>
 
-    <p-dialog [(visible)]="ruleDialogue" [style]="{width: '70%'}" header="Client Details" [modal]="true" styleClass="p-fluid">
+    <p-dialog [(visible)]="ruleDialogue" [style]="{width: '70%'}" header="Escalation Rules Details" [modal]="true" styleClass="p-fluid">
         <ng-template pTemplate="content">
             <div class="p-grid" style="margin-top: 30px;">
             <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
 
-            <div class="p-field">
+            <!-- <div class="p-field">
                 <label for="name">Project ID</label>
                 <p-dropdown [options]=projectData [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedProjectId" optionLabel='projectId' placeholder="select Project ID"></p-dropdown><br>
                 <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.companyName">Company Name is required.</small>
-            </div>
+            </div> -->
 
             <div class="p-field">
                 <label for="trigger">Trigger</label>
@@ -157,7 +157,7 @@
             
             <ng-template pTemplate="header">
                 <tr>
-                    <th pSortableColumn="projectId">Project ID</th>
+                    <!-- <th pSortableColumn="projectId">Project ID</th> -->
 
                     <th pSortableColumn="trigger">Trigger</th>
 
@@ -184,7 +184,7 @@
 
             <ng-template pTemplate="body" let-rule1>
                 <tr>
-                    <td>{{rule1.projectId}}</td>
+                    <!-- <td>{{rule1.projectId}}</td> -->
                     <td>{{rule1.trigger}}</td>
                     <td>{{rule1.level}}</td>
                     <td>{{rule1.escalationIds}}</td>

@@ -25,7 +25,7 @@
             <div class="p-fluid">
                 <div class="p-field">
                     <label for="projectId">Project Id</label>
-                    <p-dropdown [options]=projectData [(ngModel)]="selectedProjectId" [ngModelOptions]="{standalone: true}" optionLabel='projectId'  placeholder="select Project"></p-dropdown><br>
+                    <input pInputText readonly type="text"  id="projectId" name="projectId" formControlName="projectId"><br>
                     <small *ngIf="!teamForm.get('projectId')?.valid && teamForm.get('projectId')?.touched">
                         <span style="color:red;">
                             Please enter valid project Id.

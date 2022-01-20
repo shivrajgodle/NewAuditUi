@@ -20,6 +20,7 @@ export class TeamMemberComponent implements OnInit {
  clientIds:ClientId[];
  selectedClientId:string;
  selectedProjectId:string;
+ projectId=localStorage.getItem('pcode');
  
  projectData:any;
 
@@ -64,7 +65,7 @@ export class TeamMemberComponent implements OnInit {
 
     this.teamForm=new FormGroup({
       cliendId:new FormControl(''),
-      projectId:new FormControl('',Validators.required),
+      projectId:new FormControl(this.projectId),
       name:new FormControl('',Validators.required),
       contact:new FormControl('',Validators.required),
       role:new FormControl('',Validators.required),

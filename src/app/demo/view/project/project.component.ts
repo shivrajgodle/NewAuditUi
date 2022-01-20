@@ -24,23 +24,23 @@ export class ProjectComponent implements OnInit {
       // },
       {
         label: 'Billing',
-        routerLink:'/uikit/subpro'
+        routerLink:'/main/'
       },
       {
         label: 'Client',
-        routerLink:'/uikit/client'
+        routerLink:'/main/uikit/client'
       },
       {
         label: 'Documents',
-        routerLink:'/uikit/docUpload'
+        routerLink:'/main/uikit/docUpload'
       },
       {
         label: 'Users',
-        routerLink: '/uikit/team'
+        routerLink: '/main/uikit/team'
       },
       {
         label: 'Rules',
-        routerLink: '/uikit/crudrules'
+        routerLink: '/main/uikit/crudrules'
       },
       {
         label: 'Email Template',

@@ -23,7 +23,7 @@
                 <div class="p-fluid">
                     <div class="p-field">
                         <label for="projectId">Project Id</label>
-                        <input pInputText type="text"  id="projectId" name="projectId" formControlName="projectId"><br>
+                        <input pInputText type="text" readonly  id="projectId" name="projectId" formControlName="projectId"><br>
                         <small *ngIf="!emailTemplateForm.get('projectId')?.valid && emailTemplateForm.get('projectId')?.touched">
                             <span style="color:red;">
                                 Please enter valid project Id.

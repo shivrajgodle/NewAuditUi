@@ -1,0 +1,173 @@
+<app-project></app-project>
+<header>
+    <h3>Escalation Rules</h3>
+</header>
+<div class="container">
+    <div class="card">
+        <p-toolbar styleClass="p-mb-4">
+            <ng-template pTemplate="left">
+                <button pButton pRipple label="Add Billing Details" icon="pi pi-plus" (click)="addRule()" class="p-button-success p-mr-2" style="border: 1px solid black; color: white;"></button>
+            </ng-template>
+        </p-toolbar>
+    </div>
+
+    <p-dialog [(visible)]="ruleDialogue" [style]="{width: '70%'}" header=" Details" [modal]="true" styleClass="p-fluid">
+        
+        <ng-template pTemplate="content">
+            <div class="p-grid" style="margin-top: 50px;">
+
+            <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
+
+            <div class="p-field">
+                <label for="name">Project Code</label>
+                <input pInputText type="text" readonly id="pcode" value="pcode" name="pcode" [(ngModel)]="pcode" required autofocus>
+    
+            </div>
+<br>
+            <div class="p-field">
+                <label for="name">Task Code</label>
+                <input pInputText type="text" readonly id="tcode" value="tcode" name="tcode" [(ngModel)]="tcode" required autofocus>
+    
+            </div>
+            <br>
+
+             <div class="p-field">
+                <label for="projectDescription">Project Description</label>
+                <input type="text" pInputText id="pdesc" pInputText [(ngModel)]="rule.projectDescription" required autofocus/>
+            </div>
+            <br>
+            <div class="p-field">
+                <label for="clientIds">Client Id</label>
+                <p-dropdown [options]=clientIds [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedClient" optionLabel='clientId' placeholder="select Client ID"></p-dropdown><br>
+            </div>
+            <br>
+            <div class="p-field">
+                <label for="billingCode">Billing Code</label>
+                <input type="text" pInputText id="billingCode" [(ngModel)]="rule.billingCode" required autofocus />
+            </div>
+        </div>
+    
+        <div class="p-col-4 p-offset-1">
+
+            <div class="p-field">
+                <label for="clientIds">Annual Year</label>
+                <p-dropdown [options]=years [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedYear" optionLabel='year' placeholder="select year"></p-dropdown><br>
+            </div>
+<br>
+            <div class="p-field">
+                <label for="gPeriod">Grace Period</label>
+                <input pInputText type="text" id="gPeriod" name="gPeriod" [(ngModel)]="rule.gracePeriod"><br>
+            </div>
+        
+<br>
+
+        <div class="p-field">
+            <label for="clientIds">Activity</label>
+            <p-dropdown [options]=activities [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedActivity" optionLabel='activity' placeholder="select activity"></p-dropdown><br>
+        </div>
+        <br>
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="taskCode">Activation Date</label>
+                    <p-calendar [(ngModel)]="activeDate" [ngModelOptions]="{standalone: true}"></p-calendar>
+                   
+                </div>
+            </div>
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="taskCode">Deactivation Date</label>
+                    <p-calendar [(ngModel)]="deactiveDate" [ngModelOptions]="{standalone: true}"></p-calendar>
+                    
+                </div>
+            </div>
+
+            
+            
+             
+
+        </div>
+        </div>
+       
+        </ng-template>
+        
+       
+        
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveBill()"></button>
+        </ng-template>
+    </p-dialog>
+
+
+
+
+    <div>
+        <p-table styleClass="table" #dt [value]="rule1" [rows]="5" [paginator]="true" [globalFilterFields]="['trigger','level','escalationIds','noDaysNoResponse','reminderPeriod1','reminderIds1','templateEscalation','templateReminder','scope']" [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [showCurrentPageReport]="true">
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    <h5 class="p-m-0">Manage Escalation Rules</h5>
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search..."/>
+                    </span>
+                </div>
+            </ng-template>
+            
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="projectCode">Project Code</th>
+
+                    <th pSortableColumn="taskCode">Task Code</th>
+
+                    <th pSortableColumn="projectDescription">Project Description</th>
+
+                    <th pSortableColumn="clientId">Client ID</th>
+
+                    <th pSortableColumn="billingCode">Billing Code</th>
+                    
+                    <th pSortableColumn="anualYear">Annual Year</th>
+
+                    <th pSortableColumn="activatonDate"> Activation Date</th>
+
+                    <th pSortableColumn="deactivatonDate">Deactivaton Date</th>
+
+                    <th pSortableColumn="gracePeriod">Grace Period</th>
+
+                    <th pSortableColumn="activity">Activity</th>
+
+                    <th>Action</th>
+                    <th></th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-rule1>
+                <tr>
+                    <td>{{rule1.projectCode}}</td>
+                    <td>{{rule1.taskCode}}</td>
+                    <td>{{rule1.projectDescription}}</td>
+                    <td>{{rule1.clientId}}</td>
+                    <td>{{rule1.billingCode}}</td>
+                    <td>{{rule1.annualYear}}</td>
+                    <td>{{rule1.activatonDate | date}}</td>
+                    <td>{{rule1.deactivatonDate | date}}</td>
+                    <td>{{rule1.gracePeriod}}</td>
+                    <td>{{rule1.activity}}</td>
+                    <td>
+                        <button pButton pRipple icon="pi pi-pencil" (click)="editBill(rule1)" class="p-button-success"></button>
+                    </td>
+                    <td>
+                        <button pButton pRipple icon="pi pi-trash" (click)="deleteBill(rule1.projectId)" class="p-button-danger"></button>
+                    </td>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="summary">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    In total there are {{rule1 ? rule1.length : 0 }} Rules.
+                </div>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

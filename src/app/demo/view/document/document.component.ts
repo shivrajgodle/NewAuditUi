@@ -21,6 +21,7 @@ export class DocumentComponent implements OnInit {
     selectedPreference: string;
     uploadedDocument!: Document;
     value: any;
+    projectId:string;
 
     constructor(private service:DocumentService) {
         this.clientSpecifics = [
@@ -30,6 +31,7 @@ export class DocumentComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.projectId=localStorage.getItem('pcode');
         this.uploadedDocument = {};
     }
 
@@ -97,7 +99,7 @@ export class DocumentComponent implements OnInit {
         }
 
         console.log(this.uploadedDocument);
-
+        this.uploadedDocument.projectId=this.projectId;
         this.service.documentData(this.uploadedDocument).subscribe(
           (data)=>{
             alert("Document uploaded successfully");

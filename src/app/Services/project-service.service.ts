@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { Product } from "../demo/domain/product";
+import { Billing } from "../demo/view/billing-details/model/billing";
 import { RuleData } from "../demo/view/crud-rules/model/rule";
 import { Client } from "../demo/view/rules/client";
 import { Project } from "../demo/view/subpro1/model/project";
@@ -70,4 +71,23 @@ export class ProjectServiceService {
 
         return this.http.put(`${environment.baseUrl}/escrule/${id}`, data);
     }
+
+    BillingData(data: Billing) {
+        //calling backed API
+        return this.http.post<Billing>(`${environment.baseUrl}/projects`, data);
+    }
+    getBillingData() {
+        return this.http.get(`${environment.baseUrl}/projects`);
+    }
+    editBillData(id: string, data: Billing) {
+        console.log("Bill data", data);
+
+        return this.http.put(`${environment.baseUrl}/projects/${id}`, data);
+    }
+
+    deleteBillData(id:string)
+    {
+      return this.http.delete<any>(`${environment.baseUrl}/projects/${id}`);
+    }
+
 }

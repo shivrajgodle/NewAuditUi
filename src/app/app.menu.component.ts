@@ -33,17 +33,16 @@ export class AppMenuComponent implements OnInit {
                 label: "Project Management",
                 icon: "pi pi-pw pi-folder",
                 items: [
-                    { label: "Project Details", icon: "pi pi-fw pi-file",routerLink:'/' },
                     {
                         label: "Billing Details",
                         icon: "pi pi-fw pi-plus-circle",
-                        routerLink:'/uikit/subpro'
+                        routerLink:'/main/'
                     },
-                    { label: "Client Details", icon: "pi pi-fw pi-info-circle",routerLink:'/uikit/client' },
-                    { label: "Documents", icon: "pi pi-fw pi-upload",routerLink:'/uikit/docUpload' },
-                    { label: "User Details", icon: "pi pi-fw pi-users",routerLink:'/uikit/team' },
-                    { label: "Escalation Rules", icon: "pi pi-fw pi-globe",routerLink:'/uikit/crudrules' },
-                    { label: "Email Template", icon: "pi pi-fw pi-envelope",routerLink:'/uikit/emailTemplate' },
+                    { label: "Client Details", icon: "pi pi-fw pi-info-circle",routerLink:'/main/uikit/client' },
+                    { label: "Documents", icon: "pi pi-fw pi-upload",routerLink:'/main//uikit/docUpload' },
+                    { label: "User Details", icon: "pi pi-fw pi-users",routerLink:'/main//uikit/team' },
+                    { label: "Escalation Rules", icon: "pi pi-fw pi-globe",routerLink:'/main//uikit/crudrules' },
+                    { label: "Email Template", icon: "pi pi-fw pi-envelope",routerLink:'/main//uikit/emailTemplate' },
                     { label: "Review Data", icon: "pi pi-fw pi-database",routerLink:'/' },
                 ],
             },

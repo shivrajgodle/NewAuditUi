@@ -30,16 +30,20 @@ import { SpecificDocComponent } from './demo/view/specific-doc/specific-doc.comp
 import { TeamMemberComponent } from './demo/view/team-member/team-member.component';
 import { EmailTemplateComponent } from './demo/view/email-template/email-template.component';
 import { CrudRulesComponent } from './demo/view/crud-rules/crud-rules.component';
+import { BillingDetailsComponent } from './demo/view/billing-details/billing-details.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
             {
-                path: '', component: AppMainComponent,
+                path: '', component:DashboardComponent
+            },
+             {
+                path: 'main', component: AppMainComponent,
                 children: [
-                    {path: '', component:DashboardComponent},
+                    {path:'',component:BillingDetailsComponent},
                     {path: 'uikit/project', component:ProjectComponent},
-                    {path:'uikit/subpro',component:Subpro1Component},
+                    //{path:'uikit/subpro',component:Subpro1Component},
                     {path:'uikit/users',component:UsersComponent},
                     {path:'uikit/rules',component:RulesComponent},
                     {path:'uikit/crudrules',component:CrudRulesComponent},
@@ -68,7 +72,7 @@ import { CrudRulesComponent } from './demo/view/crud-rules/crud-rules.component'
             {path: 'access', component: AppAccessdeniedComponent},
             {path: 'notfound', component: AppNotfoundComponent},
             {path: 'login', component: AppLoginComponent},
-            {path: '**', redirectTo: '/notfound'},
+            //{path: '**', redirectTo: '/notfound'},
         ], {scrollPositionRestoration: 'enabled'})
     ],
     exports: [RouterModule]

@@ -24,11 +24,11 @@
 <p-divider></p-divider>
 <table>
     <tr>
-<td><p-dropdown [options]=clientSpecifics [(ngModel)]="selectedPreference" [ngModelOptions]="{standalone: true}" optionLabel='clientSpecific' (onChange)="onSelect()"  placeholder="select Client"></p-dropdown></td>
+<td><p-dropdown [options]=clientSpecifics [(ngModel)]="selectedPreference" [ngModelOptions]="{standalone: true}" optionLabel='clientSpecific' (onChange)="onSelect()"  placeholder="Select Preference"></p-dropdown></td>
 <!-- <p-toggleButton onLabel="Specific" offLabel="Regular" [(ngModel)]="value" (click)="onSelect()"></p-toggleButton> -->
 <!-- <td><input pInputText [(ngModel)]="uploadedDocument.description" placeholder="Document Description"></td> -->
 <!-- <td><input pInputText [(ngModel)]="uploadedDocument.status" placeholder="Status"></td> -->
-<td><input pInputText [(ngModel)]="uploadedDocument.projectId" placeholder="Project ID"></td>
+<td><input readonly pInputText [(ngModel)]="projectId" placeholder="Project ID"></td>
 <td><input pInputText [(ngModel)]="uploadedDocument.docType" placeholder="Document Type"></td>
 
 <td>

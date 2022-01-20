@@ -43,7 +43,10 @@ export class AppMainComponent {
 
     configClick: boolean;
 
+    sideBar:boolean=true;
+
     constructor(private menuService: MenuService, public app: AppComponent) { }
+
 
     onLayoutClick() {
         if (!this.topbarItemClick) {

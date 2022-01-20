@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { Sidebar } from 'primeng/sidebar';
 
 @Component({
     selector: 'app-root',
@@ -21,7 +22,9 @@ export class AppComponent {
 
     ripple: boolean;
 
+    sideBar:boolean;
     constructor(private primengConfig: PrimeNGConfig) {
+        this.sideBar=true;
     }
 
     ngOnInit() {

@@ -153,6 +153,7 @@ import { SpecificDocComponent } from './demo/view/specific-doc/specific-doc.comp
 import { TeamMemberComponent } from './demo/view/team-member/team-member.component';
 import { EmailTemplateComponent } from './demo/view/email-template/email-template.component';
 import { CrudRulesComponent } from './demo/view/crud-rules/crud-rules.component';
+import { BillingDetailsComponent } from './demo/view/billing-details/billing-details.component';
 
 FullCalendarModule.registerPlugins([
     dayGridPlugin,
@@ -293,7 +294,8 @@ FullCalendarModule.registerPlugins([
         SpecificDocComponent,
         TeamMemberComponent,
         EmailTemplateComponent,
-        CrudRulesComponent
+        CrudRulesComponent,
+        BillingDetailsComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

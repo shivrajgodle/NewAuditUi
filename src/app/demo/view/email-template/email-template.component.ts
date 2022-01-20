@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class EmailTemplateComponent implements OnInit {
 
+  projectId=localStorage.getItem('pcode');
   emailTemplateForm!: FormGroup;
   // selectedClientId:string;
 
@@ -18,7 +19,7 @@ export class EmailTemplateComponent implements OnInit {
 
     this.emailTemplateForm=new FormGroup({
       templateName:new FormControl(''),
-      projectId:new FormControl(''),
+      projectId:new FormControl(this.projectId),
       toList:new FormControl(''),
       ccList:new FormControl(''),
       bccList:new FormControl(''),
