@@ -1,6 +1,6 @@
 <app-project></app-project>
 <header>
-    <h3>Escalation Rules</h3>
+    <h3>Billing Data</h3>
 </header>
 <div class="container">
     <div class="card">
@@ -107,7 +107,7 @@
             [showCurrentPageReport]="true">
             <ng-template pTemplate="caption">
                 <div class="p-d-flex p-ai-center p-jc-between">
-                    <h5 class="p-m-0">Manage Escalation Rules</h5>
+                    <h5 class="p-m-0">Manage Billing Data</h5>
                     <span class="p-input-icon-left">
                         <i class="pi pi-search"></i>
                         <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search..."/>
@@ -165,7 +165,7 @@
 
             <ng-template pTemplate="summary">
                 <div class="p-d-flex p-ai-center p-jc-between">
-                    In total there are {{rule1 ? rule1.length : 0 }} Rules.
+                    In total there are {{rule1 ? rule1.length : 0 }} Data.
                 </div>
             </ng-template>
         </p-table>

@@ -44,7 +44,7 @@ export class ProjectComponent implements OnInit {
       },
       {
         label: 'Email Template',
-        routerLink:'/uikit/emailTemplate'
+        routerLink:'/main/uikit/emailTemplate'
       },
     ];
   }

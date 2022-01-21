@@ -25,8 +25,8 @@ export class DocumentComponent implements OnInit {
 
     constructor(private service:DocumentService) {
         this.clientSpecifics = [
-            { clientSpecific: "YES" },
-            { clientSpecific: "NO" },
+            { clientSpecific: "Client Specific" },
+            { clientSpecific: "Regular" },
         ];
     }
 

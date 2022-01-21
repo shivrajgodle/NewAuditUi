@@ -81,10 +81,10 @@ export class CrudRulesComponent implements OnInit {
     //save client information
     saveRule() {
     
-      if(this.selectedLevel===undefined)
-      {
-        this.selectedLevel=this.rule.level;
-      }
+    //   if(this.selectedLevel===undefined)
+    //   {
+    //     this.selectedLevel=this.rule.level;
+    //   }
       // console.log(this.selectedLevel,this.selectedProjectId,"akshay");
 
         this.submitted = true;
@@ -155,6 +155,7 @@ export class CrudRulesComponent implements OnInit {
 
     editRule(rule: RuleData) {
         this.rule = { ...rule };
+        this.selectedLevel=rule.level
         // this.submitted=false;
         this.ruleDialogue = true;
         console.log(rule);
