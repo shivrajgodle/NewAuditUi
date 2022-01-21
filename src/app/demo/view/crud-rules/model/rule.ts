@@ -17,3 +17,13 @@ export interface RuleData {
     entityIdStr?: string;
     entityIdNum?: string;
 }
+
+
+
+export interface Level {
+    level: string;
+}
+
+export interface ReminderPeriod{
+    day:number;
+}

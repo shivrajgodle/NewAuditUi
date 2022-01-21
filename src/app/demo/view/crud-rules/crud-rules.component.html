@@ -6,7 +6,7 @@
     <div class="card">
         <p-toolbar styleClass="p-mb-4">
             <ng-template pTemplate="left">
-                <button pButton pRipple label="Add Client" icon="pi pi-plus" (click)="addRule()" class="p-button-success p-mr-2" style="border: 1px solid black; color: white;"></button>
+                <button pButton pRipple label="Add Escalation" icon="pi pi-plus" (click)="addRule()" class="p-button-success p-mr-2" style="border: 1px solid black; color: white;"></button>
             </ng-template>
         </p-toolbar>
     </div>
@@ -24,38 +24,37 @@
 
             <div class="p-field">
                 <label for="trigger">Trigger</label>
-                <input type="text" pInputText id="trigger" pInputText [(ngModel)]="rule.trigger" required autofocus/>
+                <input type="text" pInputText id="trigger" pInputText [(ngModel)]="rule.trigger" required autofocus placeholder="Enter Trigger"/>
             </div>
 
             <div class="p-field">
                 <label for="level">Level</label>
-                <p-dropdown [options]=levels [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedLevel" optionLabel='level' placeholder="select Level"></p-dropdown><br>
+                <p-dropdown [options]=levels [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedLevel" optionLabel='level' placeholder="select Level"></p-dropdown>
             </div>
 
             <div class="p-field">
                 <label for="escalationId">Escalation ID</label>
-                <input type="text" pInputText id="escalation Id" [(ngModel)]="rule.escalationIds" required autofocus />
+                <input type="text" pInputText id="escalation Id" [(ngModel)]="rule.escalationIds" required autofocus placeholder="Enter Escalator's Email-ID" />
                 <small class="p-invalid" style="color: red;" *ngIf="submitted && !rule.escalationId">Escalation ID is required.</small>
             </div>
 
             <div class="p-field">
                 <label for="noDaysNoResponse">no. of Days of No Response</label>
-                <input type="text" pInputText id="noDaysNoResponse" [(ngModel)]="rule.noDaysNoResponse" required autofocus />
+                <p-dropdown [options]=reminderPeriods [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedNoDaysNoResponse" optionLabel='day' placeholder="Select No. of Days of No Response"></p-dropdown>
                 <small class="p-invalid" style="color: red;" *ngIf="submitted && !rule.noDaysNoResponse">no of Days of No Response is required.</small>
             </div>
 
             <div class="p-fluid">
                 <div class="p-field">
                     <label for="reminderPeriod1">Reminder Period1</label>
-                    <input pInputText type="text" id="reminderPeriod1" name="reminderPeriod1" [(ngModel)]="rule.reminderPeriod1">
-                    <br>
+                    <p-dropdown [options]=reminderPeriods [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedReminderPeriod1" optionLabel='day' placeholder="Select Reminder Period-1"></p-dropdown>
                 </div>
             </div>
 
             <div class="p-fluid">
                 <div class="p-field">
-                    <label for="reminderIds1">Reminder Id1</label>
-                    <input pInputText type="text" id="reminderIds1" name="reminderIds1" [(ngModel)]="rule.reminderIds1"><br>
+                    <label for="reminderIds1">Receiver ID-1</label>
+                    <input pInputText type="text" id="reminderIds1" name="reminderIds1" [(ngModel)]="rule.reminderIds1" placeholder="Enter Receivers Email-Id"><br>
                 </div>
             </div>
        
@@ -63,7 +62,7 @@
             <div class="p-fluid">
                 <div class="p-field">
                     <label for="reminderPeriod2">Reminder Period2</label>
-                    <input pInputText type="text" id="reminderPeriod2" name="reminderPeriod2" [(ngModel)]="rule.reminderPeriod2"><br>
+                    <p-dropdown [options]=reminderPeriods [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedReminderPeriod2" optionLabel='day' placeholder="Select Reminder Period-2"></p-dropdown>
                 </div>
             </div>
         </div>
@@ -72,23 +71,24 @@
     
             <div class="p-fluid">
                 <div class="p-field">
-                    <label for="reminderIds2">Reminder Ids2</label>
-                    <input pInputText type="text" id="reminderIds2" name="reminderIds2" [(ngModel)]="rule.reminderIds2"><br>                    </div>
-            </div>
-
-            
-            <div class="p-fluid">
-                <div class="p-field">
-                    <label for="reminderPeriod3">Reminder Period3</label>
-                    <input pInputText type="text" id="reminderPeriod3" name="reminderPeriod3" [(ngModel)]="rule.reminderPeriod3"><br>
+                    <label for="reminderIds2">Receiver ID-2</label>
+                    <input pInputText type="text" id="reminderIds2" name="reminderIds2" [(ngModel)]="rule.reminderIds2" placeholder="Enter Receivers Email-Id"><br>                    
                 </div>
             </div>
 
             
             <div class="p-fluid">
                 <div class="p-field">
-                    <label for="reminderIds3">Reminder Ids3</label>
-                    <input pInputText type="email" id="reminderIds3" name="reminderIds3" [(ngModel)]="rule.reminderIds3"><br>
+                    <label for="reminderPeriod3">Reminder Period3</label>
+                    <p-dropdown [options]=reminderPeriods [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedReminderPeriod3" optionLabel='day' placeholder="Select Reminder Period-3"></p-dropdown>
+                </div>
+            </div>
+
+            
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="reminderIds3">Receiver ID-3</label>
+                    <input pInputText type="email" id="reminderIds3" name="reminderIds3" [(ngModel)]="rule.reminderIds3" placeholder="Enter Receivers Email-Id"><br>
                 </div>
             </div>
 
@@ -96,7 +96,7 @@
             <div class="p-fluid">
                 <div class="p-field">
                     <label for="templateEscalation">Template Escalation</label>
-                    <input pInputText type="text" id="templateEscalation" name="templateEscalation" [(ngModel)]="rule.templateEscalation"><br>
+                    <input pInputText type="text" id="templateEscalation" name="templateEscalation" [(ngModel)]="rule.templateEscalation" placeholder="Enter Template Escalation">
                 </div>
             </div>
 
@@ -104,7 +104,7 @@
             <div class="p-fluid">
                 <div class="p-field">
                     <label for="templateReminder">Template Reminder</label>
-                    <input pInputText type="text" id="templateReminder" name="templateReminder" [(ngModel)]="rule.templateReminder"><br>
+                    <p-dropdown [options]=reminderPeriods [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedTemplateReminder" optionLabel='day' placeholder="Select Template Reminder"></p-dropdown>
                 </div>
             </div>
 
@@ -112,21 +112,21 @@
             <div class="p-fluid">
                 <div class="p-field">
                     <label for="scope">Scope</label>
-                    <input pInputText type="text" id="scope" name="scope" [(ngModel)]="rule.scope"><br>
+                    <input pInputText type="text" id="scope" name="scope" [(ngModel)]="rule.scope" placeholder="Enter Scope"><br>
                 </div>
             </div>
 
             <div class="p-fluid">
                 <div class="p-field">
                     <label for="entityIdStr">Entity Id</label>
-                    <input pInputText type="text" id="entityIdStr" name="entityIdStr" [(ngModel)]="rule.entityIdStr"><br>
+                    <input pInputText type="text" id="entityIdStr" name="entityIdStr" [(ngModel)]="rule.entityIdStr" placeholder="Enter Entity ID in number"><br>
                 </div>
             </div>
 
             <div class="p-fluid">
                 <div class="p-field">
                     <label for="entityIdNum">Entity Id</label>
-                    <input pInputText type="text" id="entityIdNum" name="entityIdNum" [(ngModel)]="rule.entityIdNum"><br>
+                    <input pInputText type="text" id="entityIdNum" name="entityIdNum" [(ngModel)]="rule.entityIdNum" placeholder="Enter Entity ID in letters"><br>
                 </div>
             </div>
         </div>
@@ -144,7 +144,7 @@
 
     <div>
         
-        <p-table styleClass="table" #dt [value]="rule1" [rows]="5" [paginator]="true" [globalFilterFields]="['trigger','level','escalationIds','noDaysNoResponse','reminderPeriod1','reminderIds1','templateEscalation','templateReminder','scope']" [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        <p-table [columns]="selectedColumns" styleClass="table" #dt [value]="rule1" [rows]="5" [paginator]="true" [globalFilterFields]="['trigger','level','escalationIds','noDaysNoResponse','reminderPeriod1','reminderIds1','templateEscalation','templateReminder','scope']" [rowHover]="true" dataKey="id" responsiveLayout="scroll"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
             [showCurrentPageReport]="true">
             <ng-template pTemplate="caption">
                 <div class="p-d-flex p-ai-center p-jc-between">
@@ -154,13 +154,24 @@
                         <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search..."/>
                     </span>
                 </div>
+
+                <div>
+                    <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
+                    selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}" placeholder="Choose Columns"></p-multiSelect>
+                </div>
             </ng-template>
             
-            <ng-template pTemplate="header">
+            <ng-template pTemplate="header" let-columns>
                 <tr>
+                    <th>
+                        Rule ID
+                    </th>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
                     <!-- <th pSortableColumn="projectId">Project ID</th> -->
 
-                    <th pSortableColumn="trigger">Trigger</th>
+                    <!-- <th pSortableColumn="trigger">Trigger</th>
 
                     <th pSortableColumn="level">Level</th>
 
@@ -172,29 +183,53 @@
 
                     <th pSortableColumn="reminderIds1">Reminder Id1</th>
 
+                    <th pSortableColumn="reminderPeriod2">Reminder Period2</th>
+
+                    <th pSortableColumn="reminderIds2">Reminder Id2</th>
+                    
+                    <th pSortableColumn="reminderPeriod3">Reminder Period3</th>
+
+                    <th pSortableColumn="reminderIds3">Reminder Id3</th>
+
                     <th pSortableColumn="templateEscalation">Template Escalation</th>
 
                     <th pSortableColumn="templateReminder">Template Reminder</th>
 
                     <th pSortableColumn="scope">Scope</th>
 
+                    <th pSortableColumn="entityIdStr">Entity ID(String)</th>
+
+                    <th pSortableColumn="entityIdNum">Entity ID(Number)</th>
+-->
                     <th>Action</th>
-                    <th></th>
+                    <th></th> 
                 </tr>
             </ng-template>
 
-            <ng-template pTemplate="body" let-rule1>
+            <ng-template pTemplate="body" let-rule1 let-columns="columns">
                 <tr>
+                    <td>
+                        {{rule1.id}}
+                    </td>
+                    <td *ngFor="let col of columns">
+                        {{rule1[col.field]}}
+                    </td>
                     <!-- <td>{{rule1.projectId}}</td> -->
-                    <td>{{rule1.trigger}}</td>
+                    <!-- <td>{{rule1.trigger}}</td>
                     <td>{{rule1.level}}</td>
                     <td>{{rule1.escalationIds}}</td>
                     <td>{{rule1.noDaysNoResponse}}</td>
                     <td>{{rule1.reminderPeriod1}}</td>
                     <td>{{rule1.reminderIds1}}</td>
+                    <td>{{rule1.reminderPeriod2}}</td>
+                    <td>{{rule1.reminderIds2}}</td>
+                    <td>{{rule1.reminderPeriod3}}</td>
+                    <td>{{rule1.reminderIds3}}</td>
                     <td>{{rule1.templateEscalation}}</td>
                     <td>{{rule1.templateReminder}}</td>
                     <td>{{rule1.scope}}</td>
+                    <td>{{rule1.entityIdStr}}</td>
+                    <td>{{rule1.entityIdNum}}</td> -->
                     <td>
                         <button pButton pRipple icon="pi pi-pencil" (click)="editRule(rule1)" class="p-button-success"></button>
                     </td>
