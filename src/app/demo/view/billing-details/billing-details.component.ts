@@ -1,9 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { MessageService } from "primeng/api";
-import { ProjectServiceService } from "src/app/Services/project-service.service";
-import Swal from "sweetalert2";
-import { Billing } from "./model/billing";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MessageService, PrimeNGConfig, SelectItem } from 'primeng/api';
+import { ProjectServiceService } from 'src/app/Services/project-service.service';
+
+
+import Swal from 'sweetalert2';
+import { RuleData } from '../crud-rules/model/rule';
+import { Billing } from './model/billing';
 
 interface Level {
     level: string;
@@ -234,14 +237,19 @@ export class BillingDetailsComponent implements OnInit {
         console.log(rule1);
     }
 
-    deleteBill(projectId: string) {
-        Swal.fire({
-            title: "Are you sure? want to delete?",
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: "yes",
-            denyButtonText: "No",
-        }).then((result) => {
+  
+
+  deleteBill(projectId:string){
+ 
+    Swal.fire(
+      {
+        title: "Are you sure? want to delete?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "yes",
+        denyButtonText: "No",
+      }).then(
+        (result)=>{
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
                 let currentUrl = this.router.url;
@@ -261,6 +269,15 @@ export class BillingDetailsComponent implements OnInit {
             } else if (result.isDenied) {
                 Swal.fire("Rule is Not Deleted", "", "info");
             }
-        });
-    }
+    })
+
+  }
+
+
+
 }
+      
+
+
+
+

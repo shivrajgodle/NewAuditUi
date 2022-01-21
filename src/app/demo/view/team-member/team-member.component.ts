@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ClientServiceService } from 'src/app/Services/client-service.service';
 import { ProjectServiceService } from 'src/app/Services/project-service.service';
+import { TeamMember } from './model/teammember';
+
+import Swal from 'sweetalert2';
 
 interface ClientId{
   clientId:string;
@@ -16,6 +19,12 @@ interface ClientId{
 })
 export class TeamMemberComponent implements OnInit {
 
+  teamDialogue?: boolean;
+  team1: TeamMember[] = [];
+  team!: TeamMember;
+
+  submitted?: boolean;
+
   teamForm!: FormGroup;
  clientIds:ClientId[];
  selectedClientId:string;
@@ -25,13 +34,7 @@ export class TeamMemberComponent implements OnInit {
  projectData:any;
 
   constructor(private router: Router ,private messageService: MessageService,private service:ClientServiceService,private proService:ProjectServiceService) {
-    // this.clientIds=[
-    //   {clientId:"20001"},
-    //   {clientId:"20002"},
-    //   {clientId:"20003"},
-    //   {clientId:"20004"},
-    //   {clientId:"20005"},
-    // ]
+  
   }
 
   ngOnInit(): void {
@@ -63,35 +66,139 @@ export class TeamMemberComponent implements OnInit {
       alert("something went wrong...!!");
     })
 
-    this.teamForm=new FormGroup({
-      cliendId:new FormControl(''),
-      projectId:new FormControl(this.projectId),
-      name:new FormControl('',Validators.required),
-      contact:new FormControl('',Validators.required),
-      role:new FormControl('',Validators.required),
-      departmentName:new FormControl('',Validators.required),
-      location:new FormControl('',Validators.required),
-      email:new FormControl('',Validators.required),
-      reportingTo:new FormControl('',Validators.required)
-    });
+    this.service.getTeam().subscribe( (data: any) => {
+      this.team1 = data["content"];
+      console.log("all team data",this.team1);
+      },
+      (error) => {
+          alert("something went wrong");
+      })
+
+    
   }
 
-  onSave() {
-//    this.teamForm.value.clientId=this.selectedClientId['clientId'];
-    console.log(this.teamForm.value);
-    alert("done...!!")
 
-    // this.service.projectData(this.teamForm.value).subscribe(
-    //   (data:any)=>{
-    //     alert("sproject data successfully added");
-    //     console.log(data);
-    //     this.router.navigate(['/uikit/docUpload']);   
-    //   },
-    //   (error)=>{
-    //     alert("something went wrong");
-    //   }
-    // );
-  }
+  //to open dialog box
+  addTeam() {
+    this.team = {};
+    this.submitted = false;
+    this.teamDialogue = true;
+}
+editTeam(team1: TeamMember){
+  this.team = { ...team1 };
+  // this.submitted=false;
+  this.teamDialogue = true;
+  console.log("akshay",team1);
+}
+
+ //to hide dialog box
+ hideDialog() {
+  this.teamDialogue = false;
+  this.submitted = false;
+}
+
+deleteTeam(id: string){
+
+  Swal.fire(
+    {
+      title: "Are you sure? want to delete?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "yes",
+      denyButtonText: "No",
+    }).then(
+      (result)=>{
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) 
+          {
+            let currentUrl = this.router.url;
+            Swal.fire("Deleted!", "", "success");
+            //Logic for delete
+            this.service.deleteTeamMember(id).subscribe(
+            (data:any)=>{
+              console.log("team member deleted successfully",data);
+              this.ngOnInit();
+            },
+            (error)=>{
+              alert("Something went wrong while deleting existing team member...!!")
+            });
+          } 
+          else if (result.isDenied) 
+          {
+            Swal.fire("team member is Not Deleted", "", "info");
+          }
+  })
+
+
+}
+
+saveTeam(){
+
+    this.team.cliendId = this.selectedClientId['id'];
+    console.log("my team data",this.team);
+
+    this.submitted = true;
+
+    
+      if (this.team.projectId) {
+        //swal fire code starts here
+        this.hideDialog();
+        Swal.fire({
+          title: "Do you want to save the changes?",
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: "Save",
+          denyButtonText: `Don't save`,
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+
+           
+            this.team.cliendId = this.selectedClientId['id'];
+           
+            Swal.fire("Saved!", "", "success");
+            //Logic for Update
+            this.service.editTeam(this.team.memberId, this.team).subscribe(
+              (data:any) => {
+                console.log("Team updated",data);
+                this.ngOnInit();
+              },
+              (error)=>{
+                alert("something went wrong while updating new Team Member...!!")
+              });
+          } else if (result.isDenied) {
+            Swal.fire("Changes are not saved", "", "info");
+          }
+        });
+      } 
+      else {
+        //code for Saving New Client
+        
+        this.team.cliendId = this.selectedClientId['id'];
+
+        this.service.addTeam(this.team).subscribe(
+          (data:any)=>{
+            console.log("New rule addedd",data);
+            this.ngOnInit();
+            this.messageService.add({
+            severity: "success",
+            summary: "Success",
+            detail: "Team Member Added Successfully",
+          });
+        },
+        (error)=>{
+          alert("something went wrong while creating new Team Member ...!!")
+        });
+        this.teamDialogue = false;
+     
+    }
+
+
+
+
+
+}
+
 
 
 }

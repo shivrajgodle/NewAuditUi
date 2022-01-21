@@ -5,7 +5,7 @@
 </h2>
  <p-divider></p-divider>
 
-    <form [formGroup]="teamForm">
+    <!-- <form [formGroup]="teamForm">
         <div class="p-grid" style="margin-top: 30px;">
         <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
           
@@ -127,9 +127,7 @@
 
         <p-divider></p-divider>
     
-        <!-- <ng-template pTemplate="footer">
-            <button pButton>Save</button>
-        </ng-template> -->
+       
     
         <div class="p-fluid" style="margin-bottom: 30px;" >
             <button [disabled]="!teamForm.valid" pButton label="Next" (click)="onSave()">
@@ -137,4 +135,170 @@
         </div>
         </div>
         </div>
-</form>
+</form> -->
+
+
+
+<div class="container">
+    <div class="card">
+        <p-toolbar styleClass="p-mb-4">
+            <ng-template pTemplate="left">
+                <button pButton pRipple label="Add Team Member" icon="pi pi-plus" (click)="addTeam()" class="p-button-success p-mr-2" style="border: 1px solid black; color: white;"></button>
+            </ng-template>
+        </p-toolbar>
+    </div>
+
+    <p-dialog [(visible)]="teamDialogue" [style]="{width: '70%'}" header="Team Member Details" [modal]="true" styleClass="p-fluid">
+        <ng-template pTemplate="content">
+            <div class="p-grid" style="margin-top: 30px;">
+            <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
+
+
+                
+            <div class="p-field">
+                <label for="cliendId">Client Id</label>
+                <p-dropdown [options]=clientIds [(ngModel)]="selectedClientId" [ngModelOptions]="{standalone: true}" optionLabel='id'  placeholder="select Client"></p-dropdown>
+            </div>
+                
+
+            <div class="p-field">
+                <label for="projectId">Project Id</label>               
+                <input type="text" pInputText id="projectId" pInputText [(ngModel)]="team.projectId" required autofocus/>
+            </div>
+
+            
+
+            <div class="p-field">
+                <label for="name">Name</label>
+                <input type="text" pInputText id="name" [(ngModel)]="team.name" required autofocus />
+            </div>
+
+            <div class="p-field">
+                <label for="contact">Contact</label>
+                <input type="text" pInputText id="contact" [(ngModel)]="team.contact" required autofocus />
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="role">Role</label>
+                    <input pInputText type="text" id="role" name="role" [(ngModel)]="team.role">
+                    <br>
+                </div>
+            </div>
+
+            
+
+        </div>
+    
+        <div class="p-col-4 p-offset-1">
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="departmentName">Department Name</label>
+                    <input pInputText type="text" id="departmentName" name="departmentName" [(ngModel)]="team.departmentName"><br>
+                </div>
+            </div>
+       
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="location">Location</label>
+                    <input pInputText type="text" id="location" name="location" [(ngModel)]="team.location"><br>
+                </div>
+            </div> 
+    
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="email">Email</label>
+                    <input pInputText type="email" id="email" name="email" [(ngModel)]="team.email"><br>                    
+                </div>
+            </div>
+
+            
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="reportingTo">Reporting To</label>
+                    <input pInputText type="email" id="reportingTo" name="reportingTo" [(ngModel)]="team.reportingTo"><br>
+                </div>
+            </div>
+
+            
+            
+        </div>
+        </div>
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveTeam()"></button>
+        </ng-template>
+    </p-dialog>
+</div>
+
+<p-table styleClass="table" #dt [value]="team1" [rows]="5" [paginator]="true" [globalFilterFields]="['trigger','level','escalationIds','noDaysNoResponse','reminderPeriod1','reminderIds1','templateEscalation','templateReminder','scope']" [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+[showCurrentPageReport]="true">
+<ng-template pTemplate="caption">
+    <div class="p-d-flex p-ai-center p-jc-between">
+        <h5 class="p-m-0">Manage Team Members</h5>
+        <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search..."/>
+        </span>
+    </div>
+</ng-template>
+
+<ng-template pTemplate="header">
+    <tr>
+        <!-- <th pSortableColumn="projectId">Project ID</th> -->
+
+        <th pSortableColumn="cliendId">Cliend Id</th>
+
+        <th pSortableColumn="projectId">Project Id</th>
+
+        <th pSortableColumn="name">name</th>
+
+        <th pSortableColumn="contact">contact</th>
+        
+        <th pSortableColumn="role">role</th>
+
+        <th pSortableColumn="departmentName">Department Name</th>
+
+        <th pSortableColumn="location">location</th>
+
+        <th pSortableColumn="email">email</th>
+
+        <th pSortableColumn="reportingTo">Reporting To</th>
+
+        <th>Action</th>
+        <th></th>
+    </tr>
+</ng-template>
+
+<ng-template pTemplate="body" let-team1>
+    <tr>
+      
+        <td>{{team1.cliendId}}</td>
+        <td>{{team1.projectId}}</td>
+        <td>{{team1.name}}</td>
+        <td>{{team1.contact}}</td>
+        <td>{{team1.role}}</td>
+        <td>{{team1.departmentName}}</td>
+        <td>{{team1.location}}</td>
+        <td>{{team1.email}}</td>
+        <td>{{team1.reportingTo}}</td>
+        <td>
+            <button pButton pRipple icon="pi pi-pencil" (click)="editTeam(team1)" class="p-button-success"></button>
+        </td>
+        <td>
+            <button pButton pRipple icon="pi pi-trash" (click)="deleteTeam(team1.memberId)" class="p-button-danger"></button>
+        </td>
+    </tr>
+</ng-template>
+
+<ng-template pTemplate="summary">
+    <div class="p-d-flex p-ai-center p-jc-between">
+        In total there are {{team1 ? team1.length : 0 }} Rules.
+    </div>
+</ng-template>
+</p-table>
+
