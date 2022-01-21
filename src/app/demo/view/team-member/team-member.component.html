@@ -5,7 +5,7 @@
 </h2>
  <p-divider></p-divider>
 
-    <form [formGroup]="teamForm">
+    <!-- <form [formGroup]="teamForm">
         <div class="p-grid" style="margin-top: 30px;">
         <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
           
@@ -127,9 +127,7 @@
 
         <p-divider></p-divider>
     
-        <!-- <ng-template pTemplate="footer">
-            <button pButton>Save</button>
-        </ng-template> -->
+       
     
         <div class="p-fluid" style="margin-bottom: 30px;" >
             <button [disabled]="!teamForm.valid" pButton label="Next" (click)="onSave()">
@@ -137,4 +135,149 @@
         </div>
         </div>
         </div>
-</form>
+</form> -->
+
+
+
+<div class="container">
+    <div class="card">
+        <p-toolbar styleClass="p-mb-4">
+            <ng-template pTemplate="left">
+                <button pButton pRipple label="Add Team Member" icon="pi pi-plus" (click)="addTeam()" class="p-button-success p-mr-2" style="border: 1px solid black; color: white;"></button>
+            </ng-template>
+        </p-toolbar>
+    </div>
+
+    <p-dialog [(visible)]="teamDialogue" [style]="{width: '70%'}" header="Team Member Details" [modal]="true" styleClass="p-fluid">
+        <ng-template pTemplate="content">
+            <div class="p-grid" style="margin-top: 30px;">
+            <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
+
+                
+                <div class="p-field">
+                    <label for="cliendId">Client Id</label>
+                    <p-dropdown [options]=clientIds [(ngModel)]="selectedClientId" [ngModelOptions]="{standalone: true}" optionLabel='id'  placeholder="select Client"></p-dropdown><br>
+                </div>
+
+            <div class="p-field">
+                <label for="level">client id</label>
+                <p-dropdown [options]=clientIds [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedClientId" optionLabel='id' placeholder="select client ids"></p-dropdown><br>
+            </div>
+          
+
+            <div class="p-field">
+                <label for="trigger">Trigger</label>
+                <input type="text" pInputText id="trigger" pInputText [(ngModel)]="rule.trigger" required autofocus/>
+            </div>
+
+            <div class="p-field">
+                <label for="level">Level</label>
+                <p-dropdown [options]=levels [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedLevel" optionLabel='level' placeholder="select Level"></p-dropdown><br>
+            </div>
+
+            <div class="p-field">
+                <label for="escalationId">Escalation ID</label>
+                <input type="text" pInputText id="escalation Id" [(ngModel)]="rule.escalationIds" required autofocus />
+                <small class="p-invalid" style="color: red;" *ngIf="submitted && !rule.escalationId">Escalation ID is required.</small>
+            </div>
+
+            <div class="p-field">
+                <label for="noDaysNoResponse">no. of Days of No Response</label>
+                <input type="text" pInputText id="noDaysNoResponse" [(ngModel)]="rule.noDaysNoResponse" required autofocus />
+                <small class="p-invalid" style="color: red;" *ngIf="submitted && !rule.noDaysNoResponse">no of Days of No Response is required.</small>
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="reminderPeriod1">Reminder Period1</label>
+                    <input pInputText type="text" id="reminderPeriod1" name="reminderPeriod1" [(ngModel)]="rule.reminderPeriod1">
+                    <br>
+                </div>
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="reminderIds1">Reminder Id1</label>
+                    <input pInputText type="text" id="reminderIds1" name="reminderIds1" [(ngModel)]="rule.reminderIds1"><br>
+                </div>
+            </div>
+       
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="reminderPeriod2">Reminder Period2</label>
+                    <input pInputText type="text" id="reminderPeriod2" name="reminderPeriod2" [(ngModel)]="rule.reminderPeriod2"><br>
+                </div>
+            </div>
+        </div>
+    
+        <div class="p-col-4 p-offset-1">
+    
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="reminderIds2">Reminder Ids2</label>
+                    <input pInputText type="text" id="reminderIds2" name="reminderIds2" [(ngModel)]="rule.reminderIds2"><br>                    </div>
+            </div>
+
+            
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="reminderPeriod3">Reminder Period3</label>
+                    <input pInputText type="text" id="reminderPeriod3" name="reminderPeriod3" [(ngModel)]="rule.reminderPeriod3"><br>
+                </div>
+            </div>
+
+            
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="reminderIds3">Reminder Ids3</label>
+                    <input pInputText type="email" id="reminderIds3" name="reminderIds3" [(ngModel)]="rule.reminderIds3"><br>
+                </div>
+            </div>
+
+            
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="templateEscalation">Template Escalation</label>
+                    <input pInputText type="text" id="templateEscalation" name="templateEscalation" [(ngModel)]="rule.templateEscalation"><br>
+                </div>
+            </div>
+
+            
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="templateReminder">Template Reminder</label>
+                    <input pInputText type="text" id="templateReminder" name="templateReminder" [(ngModel)]="rule.templateReminder"><br>
+                </div>
+            </div>
+
+            
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="scope">Scope</label>
+                    <input pInputText type="text" id="scope" name="scope" [(ngModel)]="rule.scope"><br>
+                </div>
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="entityIdStr">Entity Id</label>
+                    <input pInputText type="text" id="entityIdStr" name="entityIdStr" [(ngModel)]="rule.entityIdStr"><br>
+                </div>
+            </div>
+
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="entityIdNum">Entity Id</label>
+                    <input pInputText type="text" id="entityIdNum" name="entityIdNum" [(ngModel)]="rule.entityIdNum"><br>
+                </div>
+            </div>
+        </div>
+        </div>
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveTeam()"></button>
+        </ng-template>
+    </p-dialog>

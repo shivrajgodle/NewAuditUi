@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
+import { MessageService, PrimeNGConfig, SelectItem } from 'primeng/api';
 import { ProjectServiceService } from 'src/app/Services/project-service.service';
+
+
 import Swal from 'sweetalert2';
+import { RuleData } from '../crud-rules/model/rule';
 import { Billing } from './model/billing';
 
 
@@ -233,7 +236,7 @@ export class BillingDetailsComponent implements OnInit {
   }
 
   deleteBill(projectId:string){
-
+ 
     Swal.fire(
       {
         title: "Are you sure? want to delete?",
@@ -268,4 +271,9 @@ export class BillingDetailsComponent implements OnInit {
 
 
 
+
+      
 }
+
+
+

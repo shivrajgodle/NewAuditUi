@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ClientServiceService } from 'src/app/Services/client-service.service';
 import { ProjectServiceService } from 'src/app/Services/project-service.service';
+import { TeamMember } from './model/teammember';
 
 interface ClientId{
   clientId:string;
@@ -15,6 +16,12 @@ interface ClientId{
   styleUrls: ['./team-member.component.scss']
 })
 export class TeamMemberComponent implements OnInit {
+
+  teamDialogue?: boolean;
+  team1: TeamMember[] = [];
+  team!: TeamMember;
+
+  submitted?: boolean;
 
   teamForm!: FormGroup;
  clientIds:ClientId[];
@@ -75,6 +82,18 @@ export class TeamMemberComponent implements OnInit {
       reportingTo:new FormControl('',Validators.required)
     });
   }
+
+
+  //to open dialog box
+  addTeam() {
+    this.team = {};
+    this.submitted = false;
+    this.teamDialogue = true;
+}
+
+saveTeam(){
+
+}
 
   onSave() {
 //    this.teamForm.value.clientId=this.selectedClientId['clientId'];
