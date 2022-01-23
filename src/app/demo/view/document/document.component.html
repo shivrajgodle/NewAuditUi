@@ -39,7 +39,7 @@
 <div *ngFor="let f of files">
     <p-divider></p-divider>
 
-<td><p-fileUpload  mode="advanced" customUpload="true"  (uploadHandler)="myUploader($event)"></p-fileUpload></td>
+<td><p-fileUpload type="file" url="http://localhost:8080/documents"  mode="advanced" customUpload="true"   (uploadHandler)="myUploader($event)"></p-fileUpload></td>
 
 <p-divider></p-divider>
 </div>
