@@ -15,31 +15,108 @@
         </td>
     </tr>
 </table> -->
+
+
 <h2 style="margin-top: 20px">
     <p>
         Upload Documents
-
     </p>
 </h2>
+
 <p-divider></p-divider>
+
 <table>
     <tr>
-<td><p-dropdown [options]=clientSpecifics [(ngModel)]="selectedPreference" [ngModelOptions]="{standalone: true}" optionLabel='clientSpecific' (onChange)="onSelect()"  placeholder="Select Preference"></p-dropdown></td>
-<!-- <p-toggleButton onLabel="Specific" offLabel="Regular" [(ngModel)]="value" (click)="onSelect()"></p-toggleButton> -->
-<!-- <td><input pInputText [(ngModel)]="uploadedDocument.description" placeholder="Document Description"></td> -->
-<!-- <td><input pInputText [(ngModel)]="uploadedDocument.status" placeholder="Status"></td> -->
-<td><input readonly pInputText [(ngModel)]="projectId" placeholder="Project ID"></td>
-<td><input pInputText [(ngModel)]="uploadedDocument.docType" placeholder="Document Type"></td>
 
-<td>
-<button  pButton (click)="onClick()"> &nbsp;&nbsp;<i class="pi pi-plus"></i></button>
-</td>
-</tr>
+        <td><p-dropdown [options]=clientSpecifics [(ngModel)]="selectedPreference" [ngModelOptions]="{standalone: true}" optionLabel='clientSpecific' (onChange)="onSelect()"  placeholder="Select Preference"></p-dropdown></td>
+        <!-- <p-toggleButton onLabel="Specific" offLabel="Regular" [(ngModel)]="value" (click)="onSelect()"></p-toggleButton> -->
+        <!-- <td><input pInputText [(ngModel)]="uploadedDocument.description" placeholder="Document Description"></td> -->
+        <!-- <td><input pInputText [(ngModel)]="uploadedDocument.status" placeholder="Status"></td> -->
+        <td><input readonly pInputText [(ngModel)]="projectId" placeholder="Project ID"></td>
+        <td><input pInputText name="uploadedDocument.docType" [(ngModel)]="uploadedDocument.docType" placeholder="Document Type"></td>
+
+        <td>
+        <button pButton (click)="onClick()"> &nbsp;&nbsp;<i class="pi pi-plus"></i></button>
+        </td>
+    </tr>
+
 </table>
+
 <div *ngFor="let f of files">
     <p-divider></p-divider>
 
-<td><p-fileUpload type="file" url="http://localhost:8080/documents"  mode="advanced" customUpload="true"   (uploadHandler)="myUploader($event)"></p-fileUpload></td>
+    <td><p-fileUpload type="file" url="http://localhost:8080/documents"  mode="advanced" customUpload="true"
+        
+        (uploadHandler)="myUploader($event)"></p-fileUpload>
+    </td>
 
-<p-divider></p-divider>
+    <p-divider></p-divider>
 </div>
+
+
+
+<div>
+    <p-table styleClass="table" #dt [value]="document1" [rows]="5" [paginator]="true" [globalFilterFields]="['trigger','level','escalationIds','noDaysNoResponse','reminderPeriod1','reminderIds1','templateEscalation','templateReminder','scope']" [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h5 class="p-m-0">Uploaded Documents</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search..."/>
+                </span>
+            </div>
+        </ng-template>
+        
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="clientSpecific"> Client Specific</th>
+
+                <th pSortableColumn="projectId">Project Id</th>
+
+                <th pSortableColumn="docType">Document Type</th>
+
+                <th pSortableColumn="fileFormat">File Format</th>
+
+                <th pSortableColumn="fileURL">File URL</th>
+                
+                <th pSortableColumn="description">Description</th>
+
+                <th pSortableColumn="status">Status</th>
+
+                
+
+                <th>Action</th>
+                <th></th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-document1>
+            <tr>
+                <td>{{document1.clientSpecific}}</td>
+                <td>{{document1.projectId}}</td>
+                <td>{{document1.docType}}</td>
+                <td>{{document1.fileFormat}}</td>
+                <td>{{document1.fileURL}}</td>
+                <td>{{document1.description}}</td>
+                <td>{{document1.status}}</td>
+                <!-- <td>
+                    <button pButton pRipple icon="pi pi-pencil" (click)="editBill(document1)" class="p-button-success"></button>
+                </td> -->
+                <td>
+                    <button pButton pRipple icon="pi pi-trash" (click)="deleteDocument(document1.id)" class="p-button-danger"></button>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{document1 ? document1.length : 0 }} Data.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+

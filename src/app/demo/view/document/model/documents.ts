@@ -1,6 +1,7 @@
 import { Url } from "url";
 
 export interface Document{
+    id?:string
     clientSpecific?:boolean;
     projectId?:string;
     docType?:string;

@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { DocumentService } from "src/app/Services/document.service";
 import { Document } from "./model/documents";
+import Swal from 'sweetalert2';
+import { Router } from "@angular/router";
 
 interface Specific {
     clientSpecific: string;
@@ -12,6 +14,10 @@ interface Specific {
     styleUrls: ["./document.component.scss"],
 })
 export class DocumentComponent implements OnInit {
+
+    document1: Document[] = [];
+    document!: Document;
+
     files: any = [];
     file: number;
 
@@ -23,7 +29,7 @@ export class DocumentComponent implements OnInit {
     value: any;
     projectId:string;
 
-    constructor(private service:DocumentService) {
+    constructor(private service:DocumentService,private router: Router) {
         this.clientSpecifics = [
             { clientSpecific: "Client Specific" },
             { clientSpecific: "Regular" },
@@ -33,6 +39,11 @@ export class DocumentComponent implements OnInit {
     ngOnInit(): void {
         this.projectId=localStorage.getItem('pcode');
         this.uploadedDocument = {};
+
+
+        this.service.getDocumentData().subscribe((data) => {
+          this.document1 = data["content"];
+      });
     }
 
     myUploader(event: any) {
@@ -108,6 +119,37 @@ export class DocumentComponent implements OnInit {
     }
 
 
+    deleteDocument(id:string){
+      Swal.fire(
+        {
+          title: "Are you sure? want to delete?",
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: "yes",
+          denyButtonText: "No",
+        }).then(
+          (result)=>{
+              /* Read more about isConfirmed, isDenied below */
+              if (result.isConfirmed) {
+                  let currentUrl = this.router.url;
+                  Swal.fire("Deleted!", "", "success");
+                  //Logic for delete
+                  this.service.deleteDocumentData(id).subscribe(
+                      (data: any) => {
+                          console.log("Document deleted successfully", data);
+                          this.ngOnInit();
+                      },
+                      (error) => {
+                          alert(
+                              "Something went wrong while deleting existing Document...!!"
+                          );
+                      }
+                  );
+              } else if (result.isDenied) {
+                  Swal.fire("Document is Not Deleted", "", "info");
+              }
+      })
+    }
 
 
 

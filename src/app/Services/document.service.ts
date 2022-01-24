@@ -17,4 +17,14 @@ export class DocumentService {
     return this.http.post<Document>(`${environment.baseUrl}/documents`, data);
   }
 
+  getDocumentData() {
+    return this.http.get(`${environment.baseUrl}/documents`);
+  }
+  deleteDocumentData(id:string)
+    {
+      return this.http.delete<any>(`${environment.baseUrl}/documents/${id}`);
+    }
+
+
+
 }
