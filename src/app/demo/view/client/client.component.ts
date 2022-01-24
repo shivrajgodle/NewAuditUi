@@ -22,26 +22,7 @@ export class ClientComponent implements OnInit {
   selectedClientId:string;
   clientsAllData:boolean=false;
 
-  constructor(private router: Router ,private messageService: MessageService,private service:ClientServiceService) {
-    
-  // this.clientIds=[
-  //   {
-  //     clientId:'20001'
-  //   },
-  //   {
-  //     clientId:'20002'
-  //   },
-  //   {
-  //     clientId:'20003'
-  //   },
-  //   {
-  //     clientId:'20004'
-  //   },
-  //   {
-  //     clientId:'20005'
-  //   }
-  // ]
-}
+  constructor(private router: Router ,private messageService: MessageService,private service:ClientServiceService) {}
 
 
 
@@ -49,7 +30,6 @@ export class ClientComponent implements OnInit {
     this.clientData={};
     this.service.getClientData().subscribe(
       (data)=>{
-        console.log(data['content'],"all client data");
         this.clientIds=data['content'];
       },
       (error)=>{
@@ -76,7 +56,6 @@ export class ClientComponent implements OnInit {
     this.service.putClientData(this.clientForm.value,this.selectedClientId['id']).subscribe(
       (data:any)=>{
         alert("project data successfully updated");
-        console.log(data);
         this.router.navigate(['/uikit/docUpload']);   
       },
       (error)=>{
@@ -90,11 +69,9 @@ export class ClientComponent implements OnInit {
   onClick()
   {
     this.clientsAllData=true;
-    console.log("data.....",this.selectedClientId['id']);
     
     this.service.getClintById(this.selectedClientId['id']).subscribe(
       (data)=>{
-        console.log(data,"data after select");  
         this.clientData=data;
       },
       (error)=>{

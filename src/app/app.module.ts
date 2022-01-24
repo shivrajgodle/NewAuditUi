@@ -141,15 +141,11 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { DashboardComponent } from './demo/view/dashboard/dashboard.component';
 import { ProjectComponent } from './demo/view/project/project.component';
-import { Subpro1Component } from './demo/view/subpro1/subpro1.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UsersComponent } from './demo/view/users/users.component';
-import { RulesComponent } from './demo/view/rules/rules.component';
 import { ClientComponent } from './demo/view/client/client.component';
 import { MessageService } from 'primeng/api';
-import { ClientStatusComponent } from './demo/view/client-status/client-status.component';
 import { DocumentComponent } from './demo/view/document/document.component';
-import { SpecificDocComponent } from './demo/view/specific-doc/specific-doc.component';
 import { TeamMemberComponent } from './demo/view/team-member/team-member.component';
 import { EmailTemplateComponent } from './demo/view/email-template/email-template.component';
 import { CrudRulesComponent } from './demo/view/crud-rules/crud-rules.component';
@@ -285,13 +281,9 @@ FullCalendarModule.registerPlugins([
         AppAccessdeniedComponent,
         DashboardComponent,
         ProjectComponent,
-        Subpro1Component,
         UsersComponent,
-        RulesComponent,
         ClientComponent,
-        ClientStatusComponent,
         DocumentComponent,
-        SpecificDocComponent,
         TeamMemberComponent,
         EmailTemplateComponent,
         CrudRulesComponent,

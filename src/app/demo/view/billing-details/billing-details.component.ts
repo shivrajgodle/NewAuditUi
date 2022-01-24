@@ -106,7 +106,6 @@ export class BillingDetailsComponent implements OnInit {
         this.service.getBillingData().subscribe(
             (data: any) => {
                 this.rule1 = data["content"];
-                console.log(this.rule1);
             },
             (error) => {
                 alert("something went wrong");
@@ -130,8 +129,6 @@ export class BillingDetailsComponent implements OnInit {
     saveBill() {
         this.rule.projectCode = this.pcode;
         this.rule.taskCode = this.tcode;
-
-        console.log(this.rule);
 
         this.submitted = true;
         if (this.rule.projectCode?.trim()) {
@@ -181,7 +178,6 @@ export class BillingDetailsComponent implements OnInit {
                             .editBillData(this.rule.projectId, this.rule)
                             .subscribe(
                                 (data: any) => {
-                                    console.log("Bill updated", data);
                                     this.ngOnInit();
                                 },
                                 (error) => {
@@ -205,7 +201,6 @@ export class BillingDetailsComponent implements OnInit {
 
                 this.service.BillingData(this.rule).subscribe(
                     (data: any) => {
-                        console.log("New rule addedd", data);
                         this.ngOnInit();
                         this.messageService.add({
                             severity: "success",
@@ -230,11 +225,7 @@ export class BillingDetailsComponent implements OnInit {
         this.selectedYear = rule1.annualYear || rule1.annualYear["year"];
         this.selectedActivity = rule1.activity || rule1.activity["activity"];
         this.selectedClient = rule1.clientId || rule1.clientId["clientId"];
-        // this.activeDate = rule1.activatonDate;
-        // this.deactiveDate = rule1.deactivatonDate;
-        // this.submitted=false;
         this.ruleDialogue = true;
-        console.log(rule1);
     }
 
   

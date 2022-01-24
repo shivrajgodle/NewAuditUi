@@ -1,125 +1,153 @@
 <app-project></app-project>
-<h2 style="margin-top: 20px;">
-    <p>Email Template</p>
-</h2>
- <p-divider></p-divider>
+<header>
+    <h3>Email Template</h3>
+</header>
+<div class="container">
+    <div class="card">
+        <p-toolbar styleClass="p-mb-4">
+            <ng-template pTemplate="left">
+                <button pButton pRipple label="Add Email Template" icon="pi pi-plus" (click)="addTemplate()" class="p-button-success p-mr-2" style="border: 1px solid black; color: white;"></button>
+            </ng-template>
+        </p-toolbar>
+    </div>
 
-    <form [formGroup]="emailTemplateForm">
-        <div class="p-grid" style="margin-top: 30px;">
-        <div class="p-col-6 p-offset-3" style="border-radius: 1px solid black;">
-                          
-                <div class="p-fluid">
+    <p-dialog [(visible)]="emailTemplateDialogue" [style]="{width: '70%'}" header=" Email Template" [modal]="true" styleClass="p-fluid">
+        
+        <ng-template pTemplate="content">
+            
+            <div class="p-grid" style="margin-top: 50px;">
+                <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
+
+                    <div class="p-field">
+                        <label for="pcode">Project Code</label>
+                        <input pInputText type="text" readonly id="pcode" value="pcode" name="pcode" [(ngModel)]="pcode" required autofocus>
+                    </div>
+            
+                    <br>
+
                     <div class="p-field">
                         <label for="templateName">Template Name</label>
-                        <input pInputText type="text"  id="templateName" name="templateName" formControlName="templateName"><br>
-                        <small *ngIf="!emailTemplateForm.get('templateName')?.valid && emailTemplateForm.get('templateName')?.touched">
-                            <span style="color:red;">
-                                Please enter valid template Name.
-                            </span>
-                        </small>
+                        <input pInputText type="text"  id="templateName" value="templateName" name="templateName" [(ngModel)]="emailTemplateData.templateName" required autofocus>
                     </div>
-                </div>
 
-                <div class="p-fluid">
+                    <br>
+            
                     <div class="p-field">
-                        <label for="projectId">Project Id</label>
-                        <input pInputText type="text" readonly  id="projectId" name="projectId" formControlName="projectId"><br>
-                        <small *ngIf="!emailTemplateForm.get('projectId')?.valid && emailTemplateForm.get('projectId')?.touched">
-                            <span style="color:red;">
-                                Please enter valid project Id.
-                            </span>
-                        </small>
+                        <label for="toList">To List</label>
+                        <input pInputText type="text"  id="toList" value="toList" name="toList" [(ngModel)]="emailTemplateData.toList" required autofocus>
                     </div>
-                </div>
-        
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="toList">To:</label>
-                        <input pInputText="text" id="toList" name="toList" formControlName="toList"><br>
-                        <small *ngIf="!emailTemplateForm.get('toList')?.valid && emailTemplateForm.get('toList')?.touched">
-                            <span style="color:red;">
-                                Please enter valid To List.
-                            </span>
-                        </small>
-                    </div>
-                </div>
-           
-                <div class="p-fluid">
+            
+                    <br>
+
                     <div class="p-field">
                         <label for="ccList">CC List</label>
-                        <input pInputText="text" id="ccList" name="ccList" formControlName="ccList"><br><br>
-                        <small *ngIf="!emailTemplateForm.get('ccList')?.valid && emailTemplateForm.get('ccList')?.touched">
-                            <span style="color:red;">
-                                Please enter valid cc List.
-                            </span>
-                        </small>
+                        <input type="text" pInputText id="ccList" pInputText [(ngModel)]="emailTemplateData.ccList" required autofocus/>
+                    </div>
+            
+                    <br>
+            
+                    <div class="p-field">
+                        <label for="bccList">BCC List</label>
+                        <input type="text" pInputText id="bccList" [(ngModel)]="emailTemplateData.bccList" required autofocus />
                     </div>
                 </div>
-            
-            
+    
+                <div class="p-col-4 p-offset-1">
+                    
+                    <div class="p-field">
+                        <label for="emailSubject">Subject</label>
+                        <input pInputText type="text" id="emailBody" name="emailBody" [(ngModel)]="emailTemplateData.emailSubject"><br>
 
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="sector">bcc List</label>
-                        <input pInputText="text" id="bccList" name="bccList" formControlName="bccList"><br><br>
-                        <small *ngIf="!emailTemplateForm.get('bccList')?.valid && emailTemplateForm.get('bccList')?.touched">
-                            <span style="color:red;">
-                                Please enter valid bcc List.
-                            </span>
-                        </small>
                     </div>
-                </div>
-            
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="emailSubject">Email Subject</label>
-                        <input pInputText="text" id="emailSubject" name="emailSubject" formControlName="emailSubject"><br><br>
-                        <small *ngIf="!emailTemplateForm.get('emailSubject')?.valid && emailTemplateForm.get('emailSubject')?.touched">
-                            <span style="color:red;">
-                                Please enter valid email Subject.
-                            </span>
-                        </small>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="p-grid">
-        <div class="p-col-6 p-offset-3" style="border-radius: 1px solid black;">
-                <div class="p-fluid">
+
+                    
+
                     <div class="p-field">
                         <label for="emailBody">Email Body</label>
-                        <textarea pInputTextarea [rows]="10" [cols]="30" type="text" id="emailBody" name="emailBody" formControlName="emailBody"></textarea><br>
-                        <small *ngIf="!emailTemplateForm.get('emailBody')?.valid && emailTemplateForm.get('emailBody')?.touched">
-                            <span style="color:red;">
-                                Please enter valid email Body.
-                            </span>
-                        </small>
+                        <textarea pInputTextarea [rows]="10" [cols]="50" type="text" id="emailBody" name="emailBody" [(ngModel)]="emailTemplateData.emailBody"></textarea><br><br>
                     </div>
-                </div>
 
-                <div class="p-fluid">
                     <div class="p-field">
                         <label for="variables">Variables</label>
-                        <textarea pInputTextarea [rows]="4" [cols]="30" type="text" id="variables" name="variables" formControlName="variables"></textarea><br>
-                        <small *ngIf="!emailTemplateForm.get('variables')?.valid && emailTemplateForm.get('variables')?.touched">
-                            <span style="color:red;">
-                                Please enter valid variables.
-                            </span>
-                        </small>
+                        <input pInputText type="text" id="variables" name="variables" [(ngModel)]="emailTemplateData.variables"><br>
                     </div>
+        
+                    
                 </div>
+            </div>
+       
+        </ng-template>
+        
+       <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveTemplate()"></button>
+        </ng-template>
+ 
+    </p-dialog>
 
-        <p-divider></p-divider>
-    
-        <!-- <ng-template pTemplate="footer">
-            <button pButton>Save</button>
-        </ng-template> -->
-    
-        <div class="p-fluid" style="margin-bottom: 30px;" >
-            <button [disabled]="!emailTemplateForm.valid" pButton label="Next" (click)="onSave()">
-            </button>
-        </div>
-        </div>
-        </div>
-</form>
+   <div>
+        <p-table styleClass="table" #dt [value]="emailTemplateData1" responsiveLayout="scroll" [rows]="5" [paginator]="true" [globalFilterFields]="['templateid','templateName','projectId','toList','ccList','bccList','emailSubject','emailBody','variables']" [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [showCurrentPageReport]="true">
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    <h5 class="p-m-0">Manage Template Data</h5>
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search..."/>
+                    </span>
+                </div>
+            </ng-template>
+            
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="templateid">Template ID</th>
+
+                    <th pSortableColumn="templateName">Template Name</th>
+
+                    <th pSortableColumn="projectId">Project Code</th>
+
+                    <th pSortableColumn="toList">To List</th>
+
+                    <th pSortableColumn="ccList">CC List</th>
+                    
+                    <th pSortableColumn="bccList">BCC List</th>
+
+                    <th pSortableColumn="emailSubject"> Email Subject</th>
+
+                    <th pSortableColumn="emailBody">Email Body</th>
+
+                    <th pSortableColumn="variables">Variables</th>
+
+                    <th>Action</th>
+                    <th></th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-emailTemplateData1>
+                <tr>
+                    <td>{{emailTemplateData1.templateid}}</td>
+                    <td>{{emailTemplateData1.templateName}}</td>
+                    <td>{{emailTemplateData1.projectId}}</td>
+                    <td>{{emailTemplateData1.toList}}</td>
+                    <td>{{emailTemplateData1.ccList}}</td>
+                    <td>{{emailTemplateData1.bccList}}</td>
+                    <td>{{emailTemplateData1.emailSubject}}</td>
+                    <td>{{emailTemplateData1.emailBody}}</td>
+                    <td>{{emailTemplateData1.variables}}</td>
+                    <td>
+                        <button pButton pRipple icon="pi pi-pencil" (click)="editTemplate(emailTemplateData1)" class="p-button-success"></button>
+                    </td>
+                    <td>
+                        <button pButton pRipple icon="pi pi-trash" (click)="deleteTemplate(emailTemplateData1.templateid)" class="p-button-danger"></button>
+                    </td>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="summary">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    In total there are {{emailTemplateData1 ? emailTemplateData1.length : 0 }} Data.
+                </div>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

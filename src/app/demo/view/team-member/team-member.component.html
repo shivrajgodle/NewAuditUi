@@ -5,138 +5,7 @@
 </h2>
  <p-divider></p-divider>
 
-    <!-- <form [formGroup]="teamForm">
-        <div class="p-grid" style="margin-top: 30px;">
-        <div class="p-col-4 p-offset-1" style="border-radius: 1px solid black;">
-          
-
-            <div class="p-fluid">
-                <div class="p-field">
-                    <label for="cliendId">Client Id</label>
-                    <p-dropdown [options]=clientIds [(ngModel)]="selectedClientId" [ngModelOptions]="{standalone: true}" optionLabel='id'  placeholder="select Client"></p-dropdown><br>
-                    <small *ngIf="!teamForm.get('cliendId')?.valid && teamForm.get('cliendId')?.touched">
-                        <span style="color:red;">
-                            Please enter valid client Id.
-                        </span>
-                    </small>
-                </div>
-            </div>
-
-            <div class="p-fluid">
-                <div class="p-field">
-                    <label for="projectId">Project Id</label>
-                    <input pInputText readonly type="text"  id="projectId" name="projectId" formControlName="projectId"><br>
-                    <small *ngIf="!teamForm.get('projectId')?.valid && teamForm.get('projectId')?.touched">
-                        <span style="color:red;">
-                            Please enter valid project Id.
-                        </span>
-                    </small>
-                </div>
-            </div>
-            
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="name">Name</label>
-                        <input pInputText type="text"  id="name" name="name" formControlName="name"><br>
-                        <small *ngIf="!teamForm.get('name')?.valid && teamForm.get('name')?.touched">
-                            <span style="color:red;">
-                                Please enter valid Name.
-                            </span>
-                        </small>
-                    </div>
-                </div>
-
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="contact">Contact</label>
-                        <input pInputText type="text"  id="contact" name="contact" formControlName="contact"><br>
-                        <small *ngIf="!teamForm.get('contact')?.valid && teamForm.get('contact')?.touched">
-                            <span style="color:red;">
-                                Please enter valid contact.
-                            </span>
-                        </small>
-                    </div>
-                </div>
-           
-                
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="role">Role</label>
-                        <input pInputText type="text" id="role" name="role" formControlName="role"><br>
-                        <small *ngIf="!teamForm.get('role')?.valid && teamForm.get('role')?.touched">
-                            <span style="color:red;">
-                                Please enter valid role.
-                            </span>
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-col-4 p-offset-1">
-           
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="departmentName">Department Name</label>
-                        <input pInputText type="text" id="departmentName" name="departmentName" formControlName="departmentName"><br>
-                        <small *ngIf="!teamForm.get('departmentName')?.valid && teamForm.get('departmentName')?.touched">
-                            <span style="color:red;">
-                                Please enter valid department Name.
-                            </span>
-                        </small>
-                    </div>
-                </div>
-           
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="location">Location</label>
-                        <input pInputText type="text" id="location" name="location" formControlName="location"><br>
-                        <small *ngIf="!teamForm.get('location')?.valid && teamForm.get('location')?.touched">
-                            <span style="color:red;">
-                                Please enter valid location.
-                            </span>
-                        </small>
-                    </div>
-                </div>
-                
-
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="email">Email</label>
-                        <input pInputText type="email" id="email" name="email" formControlName="email"><br>
-                        <small *ngIf="!teamForm.get('email')?.valid && teamForm.get('email')?.touched">
-                            <span style="color:red;">
-                                Please enter valid email.
-                            </span>
-                        </small>
-                    </div>
-                </div>
-
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="reportingTo">Reporting To</label>
-                        <input pInputText type="email" id="reportingTo" name="reportingTo" formControlName="reportingTo"><br>
-                        <small *ngIf="!teamForm.get('reportingTo')?.valid && teamForm.get('reportingTo')?.touched">
-                            <span style="color:red;">
-                                Please enter valid Email.
-                            </span>
-                        </small>
-                    </div>
-                </div>
-
-
-
-        <p-divider></p-divider>
-    
-       
-    
-        <div class="p-fluid" style="margin-bottom: 30px;" >
-            <button [disabled]="!teamForm.valid" pButton label="Next" (click)="onSave()">
-            </button>
-        </div>
-        </div>
-        </div>
-</form> -->
-
+  
 
 
 <div class="container">
@@ -235,7 +104,7 @@
     </p-dialog>
 </div>
 
-<p-table styleClass="table" #dt [value]="team1" [rows]="5" [paginator]="true" [globalFilterFields]="['trigger','level','escalationIds','noDaysNoResponse','reminderPeriod1','reminderIds1','templateEscalation','templateReminder','scope']" [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+<p-table styleClass="table" #dt responsiveLayout="scroll" [value]="team1" [rows]="5" [paginator]="true" [globalFilterFields]="['trigger','level','escalationIds','noDaysNoResponse','reminderPeriod1','reminderIds1','templateEscalation','templateReminder','scope']" [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
 [showCurrentPageReport]="true">
 <ng-template pTemplate="caption">
     <div class="p-d-flex p-ai-center p-jc-between">
