@@ -76,7 +76,6 @@ export class CrudRulesComponent implements OnInit {
         this.service.getRuleData().subscribe(
             (data: any) => {
                 this.rule1 = data["content"];
-                console.log(this.rule1);
             },
             (error) => {
                 alert("something went wrong");
@@ -130,11 +129,6 @@ export class CrudRulesComponent implements OnInit {
 
     //save client information
     saveRule() {
-        //   if(this.selectedLevel===undefined)
-        //   {
-        //     this.selectedLevel=this.rule.level;
-        //   }
-        // console.log(this.selectedLevel,this.selectedProjectId,"akshay");
 
         this.submitted = true;
         if (this.rule.trigger?.trim()) {
@@ -150,10 +144,8 @@ export class CrudRulesComponent implements OnInit {
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
-                        console.log(this.selectedLevel, this.selectedProjectId);
                         this.rule.level = this.selectedLevel["level"];
                        
-
                         if(this.selectedReminderPeriod1["day"]===undefined)
                         {
                             this.rule.reminderPeriod1 =this.selectedReminderPeriod1
@@ -201,7 +193,6 @@ export class CrudRulesComponent implements OnInit {
 
 
                         this.rule.projectId = localStorage.getItem("pcode");
-                        console.log("allData", this.rule);
 
                         Swal.fire("Saved!", "", "success");
                         //Logic for Update
@@ -209,7 +200,6 @@ export class CrudRulesComponent implements OnInit {
                             .editRuleData(this.rule.id, this.rule)
                             .subscribe(
                                 (data: any) => {
-                                    console.log("rule updated", data);
                                     this.ngOnInit();
                                 },
                                 (error) => {
@@ -232,11 +222,9 @@ export class CrudRulesComponent implements OnInit {
                 this.rule.noDaysNoResponse = this.selectedNoDaysNoResponse["day"];
                 this.rule.projectId = localStorage.getItem("pcode");
 
-                console.log("allData", this.rule);
 
                 this.service.ruleData(this.rule).subscribe(
                     (data: any) => {
-                        console.log("New rule addedd", data);
                         this.ngOnInit();
                         this.messageService.add({
                             severity: "success",
@@ -267,7 +255,6 @@ export class CrudRulesComponent implements OnInit {
         this.selectedTemplateReminder=rule.templateReminder|| rule.templateReminder['day']
         // this.submitted=false;
         this.ruleDialogue = true;
-        console.log(rule);
     }
 
     deleteRule(id: string) {
@@ -285,7 +272,6 @@ export class CrudRulesComponent implements OnInit {
                 //Logic for delete
                 this.service.deleteRuleData(id).subscribe(
                     (data: any) => {
-                        console.log("rule deleted successfully", data);
                         this.ngOnInit();
                     },
                     (error) => {

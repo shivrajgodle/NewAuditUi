@@ -42,7 +42,6 @@ export class TeamMemberComponent implements OnInit {
     ngOnInit(): void {
         this.service.getClientData().subscribe(
             (data) => {
-                console.log(data["content"], "all client data");
                 this.clientIds = data["content"];
             },
             (error) => {
@@ -52,7 +51,6 @@ export class TeamMemberComponent implements OnInit {
 
         this.proService.getProjectDetails().subscribe(
             (data) => {
-                console.log(data["content"], "project data");
                 this.projectData = data["content"];
             },
             (error) => {
@@ -60,19 +58,9 @@ export class TeamMemberComponent implements OnInit {
             }
         );
 
-        // this.service.getClientData().subscribe(
-        //     (data) => {
-        //         console.log(data["content"]);
-        //     },
-        //     (error) => {
-        //         alert("something went wrong...!!");
-        //     }
-        // );
-
         this.service.getTeam().subscribe(
             (data: any) => {
                 this.team1 = data["content"];
-                console.log("all team data", this.team1);
             },
             (error) => {
                 alert("something went wrong");
@@ -89,7 +77,6 @@ export class TeamMemberComponent implements OnInit {
 
     saveTeam() {
         // this.team.cliendId = this.selectedClientId["id"];
-        console.log("my team data", this.team);
 
         this.submitted = true;
 
@@ -113,7 +100,6 @@ export class TeamMemberComponent implements OnInit {
                         .editTeam(this.team.memberId, this.team)
                         .subscribe(
                             (data: any) => {
-                                console.log("Team updated", data);
                                 this.ngOnInit();
                             },
                             (error) => {
@@ -133,7 +119,6 @@ export class TeamMemberComponent implements OnInit {
 
             this.service.addTeam(this.team).subscribe(
                 (data: any) => {
-                    console.log("New rule addedd", data);
                     this.ngOnInit();
                     this.messageService.add({
                         severity: "success",
@@ -155,7 +140,6 @@ export class TeamMemberComponent implements OnInit {
         this.team = { ...team1 };
         // this.submitted=false;
         this.teamDialogue = true;
-        console.log("akshay", team1);
     }
 
     //to hide dialog box
@@ -179,7 +163,6 @@ export class TeamMemberComponent implements OnInit {
                 //Logic for delete
                 this.service.deleteTeamMember(id).subscribe(
                     (data: any) => {
-                        console.log("team member deleted successfully", data);
                         this.ngOnInit();
                     },
                     (error) => {
