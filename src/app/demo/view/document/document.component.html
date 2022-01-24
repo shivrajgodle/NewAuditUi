@@ -36,7 +36,7 @@
         <td><input pInputText name="uploadedDocument.docType" [(ngModel)]="uploadedDocument.docType" placeholder="Document Type"></td>
 
         <td>
-        <button pButton [disabled]="!uploadedDocument.docType" (click)="onClick()"> &nbsp;&nbsp;<i class="pi pi-plus"></i></button>
+        <button pButton [disabled]="!selectedPreference || !uploadedDocument.docType" (click)="onClick()"> &nbsp;&nbsp;<i class="pi pi-plus"></i></button>
         </td>
     </tr>
 
