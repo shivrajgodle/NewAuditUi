@@ -47,10 +47,10 @@ export class DocumentComponent implements OnInit {
     }
 
     myUploader(event: any) {
-        console.log(event["files"], "file Uploaded");
+        
         this.fileData = event.files;
 
-        console.log(this.uploadedDocument);
+       
         this.uploadedDocument.projectId=this.projectId;
 
          //for loop
@@ -58,48 +58,45 @@ export class DocumentComponent implements OnInit {
 
          for(let i=0;i<this.fileData.length;i++)
          {
- //          this.uploadedDocument.fileURL=this.fileData[i].objectURL.changingThisBreaksApplicationSecurity;
-           
-           
+ 
            //for removing . from file name
            let s = this.fileData[i].name.split('.')[0];
            this.uploadedDocument.description=s;
-           console.log("file name",this.uploadedDocument.description);
+           
  
  
            //for removing application/filetype from file
            this.uploadedDocument.fileFormat=this.fileData[i].type;
-           console.log("file format",this.uploadedDocument.fileFormat);
+           
            
  
            if(this.uploadedDocument.fileFormat.includes("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")){
                
-             console.log("file is excel file");
              this.uploadedDocument.fileFormat="excel";
  
            }
            else if(this.uploadedDocument.fileFormat.includes("application/pdf")){
-             console.log("file is pdf file");
+            
              this.uploadedDocument.fileFormat="pdf";
            }
            else if(this.uploadedDocument.fileFormat.includes("image/jpeg")){
-             console.log("file is jpeg file");
+            
              this.uploadedDocument.fileFormat="jpeg";
            }
            else if(this.uploadedDocument.fileFormat.includes("image/png")){
-             console.log("file is png file");
+           
              this.uploadedDocument.fileFormat="png";
            }
            else if(this.uploadedDocument.fileFormat.includes("image/gif")){
-             console.log("file is gif file");
+           
              this.uploadedDocument.fileFormat="gif";
            }
            else if(this.uploadedDocument.fileFormat.includes("video/mp4")){
-             console.log("file is mp4 file");
+            
              this.uploadedDocument.fileFormat="mp4";
            }
  
-         //   console.log("file format",this.uploadedDocument.fileFormat);
+        
  
            this.uploadedDocument.status="Uploaded";
  
@@ -138,7 +135,7 @@ export class DocumentComponent implements OnInit {
                   //Logic for delete
                   this.service.deleteDocumentData(id).subscribe(
                       (data: any) => {
-                          console.log("Document deleted successfully", data);
+                        
                           this.ngOnInit();
                       },
                       (error) => {
