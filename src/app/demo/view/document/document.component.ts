@@ -52,14 +52,6 @@ export class DocumentComponent implements OnInit {
 
         console.log(this.uploadedDocument);
         this.uploadedDocument.projectId=this.projectId;
-        this.service.documentData(this.uploadedDocument).subscribe(
-          (data)=>{
-            alert("Document uploaded successfully");
-          },
-          (error)=>{
-            alert("something went wrong..!!");
-          }
-        )
 
          //for loop
                 
@@ -111,9 +103,19 @@ export class DocumentComponent implements OnInit {
  
            this.uploadedDocument.status="Uploaded";
  
-          
-           
          }
+
+        this.service.documentData(this.uploadedDocument).subscribe(
+          (data)=>{
+            alert("Document uploaded successfully");
+            this.ngOnInit();
+          },
+          (error)=>{
+            alert("something went wrong..!!");
+          }
+        )
+
+        
  
  
     }
